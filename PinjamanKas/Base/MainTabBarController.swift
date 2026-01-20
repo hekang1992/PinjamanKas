@@ -22,12 +22,10 @@ class MainTabBarController: UITabBarController {
     }
     
     private func setupViewControllers() {
-        let homeVC = UIViewController()
-        homeVC.view.backgroundColor = .white
+        let homeVC = HomeViewController()
         let homeNav = BaseNavigationController(rootViewController: homeVC)
         
-        let centerVC = UIViewController()
-        centerVC.view.backgroundColor = .white
+        let centerVC = CenterViewController()
         let centerNav = BaseNavigationController(rootViewController: centerVC)
         
         self.viewControllers = [homeNav, centerNav]

@@ -32,4 +32,25 @@ class BaseModel: Codable {
 
 class saggedModel: Codable {
     var petes: String?
+    var magically: [magicallyModel]?
+}
+
+class magicallyModel: Codable {
+    var appear: String?
+    var lighter: [lighterModel]?
+}
+
+class lighterModel: Codable {
+    var holes: Int?
+    var rats: String?
+    var emerge: String?
+    var soltozzo: String?
+    var microphone: String?
+    var stalk: String?
+    var shadows: String?
+    var queer: String?
+    var gled: String?
+    var gleaming: String?
+    var wood: String?
+    var deserted: String?
 }

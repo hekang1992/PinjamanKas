@@ -6,24 +6,50 @@
 //
 
 import UIKit
+import SnapKit
+import MJRefresh
+import Alamofire
 
 class CenterViewController: BaseViewController {
+    
+    lazy var centerView: CenterView = {
+        let centerView = CenterView(frame: .zero)
+        return centerView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.addSubview(centerView)
+        centerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Task {
+            await self.centerInfo()
+        }
     }
-    */
 
+}
+
+extension CenterViewController {
+    
+    private func centerInfo() async {
+        do {
+            LoadingView.shared.show()
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/exemption/magazine/godson", method: .get)
+            let sinking = model.sinking ?? ""
+            if ["0", "00"].contains(sinking) {
+                
+            }
+            LoadingView.shared.hide()
+        } catch {
+            LoadingView.shared.hide()
+        }
+    }
+    
 }

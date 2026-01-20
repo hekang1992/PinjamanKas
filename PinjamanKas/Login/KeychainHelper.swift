@@ -35,7 +35,7 @@ class KeychainHelper {
             kSecValueData as String: data
         ] as [String: Any]
 
-        SecItemDelete(query as CFDictionary) // 删掉旧的
+        SecItemDelete(query as CFDictionary)
         SecItemAdd(query as CFDictionary, nil)
     }
 

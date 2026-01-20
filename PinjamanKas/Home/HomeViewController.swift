@@ -6,24 +6,66 @@
 //
 
 import UIKit
+import SnapKit
+import Alamofire
+import MJRefresh
 
 class HomeViewController: BaseViewController {
-
+    
+    lazy var homeView: HomeView = {
+        let homeView = HomeView()
+        return homeView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        view.addSubview(homeView)
+        homeView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        homeView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            Task {
+                await self.homeInfo()
+            }
+        })
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Task {
+            await self.homeInfo()
+        }
     }
-    */
+    
+}
 
+extension HomeViewController {
+    
+    private func homeInfo() async {
+        do {
+            LoadingView.shared.show()
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/great/family/sonny", method: .get)
+            let sinking = model.sinking ?? ""
+            if ["0", "00"].contains(sinking) {
+                let magicallyModelArray = model.sagged?.magically ?? []
+                if let listModel = magicallyModelArray.first(where: { $0.appear == "wedding2" }) {
+                    self.homeView.listModel = listModel.lighter?.first ?? lighterModel()
+                }
+            }
+            LoadingView.shared.hide()
+            await MainActor.run {
+                self.homeView.scrollView.mj_header?.endRefreshing()
+            }
+        } catch {
+            LoadingView.shared.hide()
+            await MainActor.run {
+                self.homeView.scrollView.mj_header?.endRefreshing()
+            }
+        }
+    }
+    
 }

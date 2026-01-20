@@ -66,3 +66,63 @@ class LoadingView {
     }
     
 }
+
+extension UIColor {
+    convenience init?(hex: String, alpha: CGFloat = 1.0) {
+        var hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        hexString = hexString.replacingOccurrences(of: "#", with: "")
+        
+        var rgb: UInt64 = 0
+        
+        guard Scanner(string: hexString).scanHexInt64(&rgb) else {
+            return nil
+        }
+        
+        let length = hexString.count
+        
+        switch length {
+        case 6: // RRGGBB
+            self.init(
+                red: CGFloat((rgb & 0xFF0000) >> 16) / 255.0,
+                green: CGFloat((rgb & 0x00FF00) >> 8) / 255.0,
+                blue: CGFloat(rgb & 0x0000FF) / 255.0,
+                alpha: alpha
+            )
+        case 8: // AARRGGBB
+            self.init(
+                red: CGFloat((rgb & 0x00FF0000) >> 16) / 255.0,
+                green: CGFloat((rgb & 0x0000FF00) >> 8) / 255.0,
+                blue: CGFloat(rgb & 0x000000FF) / 255.0,
+                alpha: CGFloat((rgb & 0xFF000000) >> 24) / 255.0
+            )
+        default:
+            return nil
+        }
+    }
+    
+    convenience init(hex: Int, alpha: CGFloat = 1.0) {
+        self.init(
+            red: CGFloat((hex >> 16) & 0xFF) / 255.0,
+            green: CGFloat((hex >> 8) & 0xFF) / 255.0,
+            blue: CGFloat(hex & 0xFF) / 255.0,
+            alpha: alpha
+        )
+    }
+    
+    var hexString: String? {
+        guard let components = self.cgColor.components, components.count >= 3 else {
+            return nil
+        }
+        
+        let r = Int(components[0] * 255)
+        let g = Int(components[1] * 255)
+        let b = Int(components[2] * 255)
+        
+        var hexString = "#"
+        hexString += String(format: "%02X", r)
+        hexString += String(format: "%02X", g)
+        hexString += String(format: "%02X", b)
+        
+        return hexString
+    }
+}
