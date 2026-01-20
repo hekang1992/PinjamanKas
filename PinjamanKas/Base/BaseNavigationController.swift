@@ -8,22 +8,38 @@
 import UIKit
 
 class BaseNavigationController: UINavigationController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.delegate = self
+        self.navigationBar.isHidden = true
+        self.navigationBar.isTranslucent = false
+        if let gestureRecognizers = view.gestureRecognizers {
+            for gesture in gestureRecognizers {
+                if let popGesture = gesture as? UIScreenEdgePanGestureRecognizer {
+                    view.removeGestureRecognizer(popGesture)
+                }
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        if let tabVC = self.tabBarController as? MainTabBarController {
+            tabVC.setCustomTabBar(hidden: true, animated: true)
+        }
+        super.pushViewController(viewController, animated: animated)
     }
-    */
+    
+}
 
+extension BaseNavigationController: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if let tabVC = self.tabBarController as? MainTabBarController {
+            let isRoot = (viewController == navigationController.viewControllers.first)
+            if isRoot {
+                tabVC.setCustomTabBar(hidden: false, animated: true)
+            }
+        }
+    }
 }

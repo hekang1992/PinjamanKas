@@ -6,5 +6,13 @@ target 'PinjamanKas' do
   use_frameworks!
 
   # Pods for PinjamanKas
+  pod 'SnapKit'
+  pod 'Kingfisher'
+  pod 'Alamofire'
+  pod 'Toast-Swift'
+  pod 'MJRefresh'
+  pod 'FBSDKCoreKit'
+  pod 'TYAlertController'
+  pod 'IQKeyboardManagerSwift', '~> 6.5.16'
 
 end

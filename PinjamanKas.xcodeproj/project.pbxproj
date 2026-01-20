@@ -13,6 +13,23 @@
 		73FDF93F2F1F168500660198 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF93E2F1F168500660198 /* BaseViewController.swift */; };
 		73FDF9412F1F169700660198 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9402F1F169700660198 /* BaseNavigationController.swift */; };
 		73FDF9432F1F16BF00660198 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9422F1F16BF00660198 /* LaunchViewController.swift */; };
+		73FDF9452F1F181000660198 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9442F1F180B00660198 /* BaseModel.swift */; };
+		73FDF9472F1F187700660198 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9462F1F187700660198 /* NetworkManager.swift */; };
+		73FDF9492F1F1A4000660198 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9482F1F1A4000660198 /* LoginView.swift */; };
+		73FDF94B2F1F1A5000660198 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF94A2F1F1A5000660198 /* LoginViewController.swift */; };
+		73FDF94D2F1F1A5800660198 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF94C2F1F1A5800660198 /* HomeViewController.swift */; };
+		73FDF94F2F1F1A6000660198 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF94E2F1F1A6000660198 /* OrderViewController.swift */; };
+		73FDF9512F1F1A6800660198 /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9502F1F1A6800660198 /* CenterViewController.swift */; };
+		73FDF9532F1F1A7000660198 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9522F1F1A7000660198 /* ProductViewController.swift */; };
+		73FDF9552F1F1A7B00660198 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9542F1F1A7B00660198 /* ProductView.swift */; };
+		73FDF9572F1F1A8600660198 /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9562F1F1A8600660198 /* CenterView.swift */; };
+		73FDF9592F1F1A9700660198 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9582F1F1A9700660198 /* OrderView.swift */; };
+		73FDF95B2F1F1AA100660198 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF95A2F1F1AA100660198 /* HomeView.swift */; };
+		73FDF95D2F1F1BD900660198 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF95C2F1F1BD900660198 /* MainTabBarController.swift */; };
+		73FDF9612F1F216400660198 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9602F1F216400660198 /* UserManager.swift */; };
+		73FDF9632F1F222900660198 /* URLParameterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9622F1F222900660198 /* URLParameterBuilder.swift */; };
+		73FDF9652F1F22D400660198 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9642F1F22D400660198 /* KeychainHelper.swift */; };
+		73FDF9672F1F300200660198 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9662F1F300200660198 /* LoadingView.swift */; };
 		76277831FF744454AFD59F16 /* Pods_PinjamanKas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6335EAF615887F3988B94E9C /* Pods_PinjamanKas.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +44,23 @@
 		73FDF93E2F1F168500660198 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		73FDF9402F1F169700660198 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		73FDF9422F1F16BF00660198 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		73FDF9442F1F180B00660198 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		73FDF9462F1F187700660198 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		73FDF9482F1F1A4000660198 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		73FDF94A2F1F1A5000660198 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		73FDF94C2F1F1A5800660198 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		73FDF94E2F1F1A6000660198 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		73FDF9502F1F1A6800660198 /* CenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
+		73FDF9522F1F1A7000660198 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		73FDF9542F1F1A7B00660198 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		73FDF9562F1F1A8600660198 /* CenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterView.swift; sourceTree = "<group>"; };
+		73FDF9582F1F1A9700660198 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		73FDF95A2F1F1AA100660198 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		73FDF95C2F1F1BD900660198 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		73FDF9602F1F216400660198 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		73FDF9622F1F222900660198 /* URLParameterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterBuilder.swift; sourceTree = "<group>"; };
+		73FDF9642F1F22D400660198 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		73FDF9662F1F300200660198 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D42DC08FF3D51960EC11F2AE /* Pods-PinjamanKas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanKas.debug.xcconfig"; path = "Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas.debug.xcconfig"; sourceTree = "<group>"; };
 		E8A479ADCF324872DA95F1FB /* Pods-PinjamanKas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanKas.release.xcconfig"; path = "Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +126,7 @@
 		73FDF9362F1F158900660198 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				73FDF95C2F1F1BD900660198 /* MainTabBarController.swift */,
 				73FDF93E2F1F168500660198 /* BaseViewController.swift */,
 				73FDF9402F1F169700660198 /* BaseNavigationController.swift */,
 				73FDF9422F1F16BF00660198 /* LaunchViewController.swift */,
@@ -102,6 +137,8 @@
 		73FDF9372F1F158F00660198 /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				73FDF9442F1F180B00660198 /* BaseModel.swift */,
+				73FDF9462F1F187700660198 /* NetworkManager.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -109,6 +146,11 @@
 		73FDF9382F1F159100660198 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				73FDF9642F1F22D400660198 /* KeychainHelper.swift */,
+				73FDF9622F1F222900660198 /* URLParameterBuilder.swift */,
+				73FDF9602F1F216400660198 /* UserManager.swift */,
+				73FDF9482F1F1A4000660198 /* LoginView.swift */,
+				73FDF94A2F1F1A5000660198 /* LoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -116,6 +158,8 @@
 		73FDF9392F1F159400660198 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				73FDF95A2F1F1AA100660198 /* HomeView.swift */,
+				73FDF94C2F1F1A5800660198 /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -123,6 +167,8 @@
 		73FDF93A2F1F159600660198 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				73FDF9582F1F1A9700660198 /* OrderView.swift */,
+				73FDF94E2F1F1A6000660198 /* OrderViewController.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -130,6 +176,8 @@
 		73FDF93B2F1F159900660198 /* Center */ = {
 			isa = PBXGroup;
 			children = (
+				73FDF9562F1F1A8600660198 /* CenterView.swift */,
+				73FDF9502F1F1A6800660198 /* CenterViewController.swift */,
 			);
 			path = Center;
 			sourceTree = "<group>";
@@ -137,6 +185,8 @@
 		73FDF93C2F1F159B00660198 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				73FDF9542F1F1A7B00660198 /* ProductView.swift */,
+				73FDF9522F1F1A7000660198 /* ProductViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -144,6 +194,7 @@
 		73FDF93D2F1F15C600660198 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				73FDF9662F1F300200660198 /* LoadingView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -168,6 +219,7 @@
 				73FBF4FD2F1F0E7F0071C925 /* Sources */,
 				73FBF4FE2F1F0E7F0071C925 /* Frameworks */,
 				73FBF4FF2F1F0E7F0071C925 /* Resources */,
+				7CDA1815147D52E9DC3ABC28 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -225,6 +277,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7CDA1815147D52E9DC3ABC28 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9FB1B446FCF9B8343ACFD938 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -254,10 +327,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73FDF9632F1F222900660198 /* URLParameterBuilder.swift in Sources */,
+				73FDF9612F1F216400660198 /* UserManager.swift in Sources */,
+				73FDF9472F1F187700660198 /* NetworkManager.swift in Sources */,
+				73FDF9652F1F22D400660198 /* KeychainHelper.swift in Sources */,
+				73FDF9572F1F1A8600660198 /* CenterView.swift in Sources */,
+				73FDF9672F1F300200660198 /* LoadingView.swift in Sources */,
+				73FDF94F2F1F1A6000660198 /* OrderViewController.swift in Sources */,
+				73FDF9492F1F1A4000660198 /* LoginView.swift in Sources */,
 				73FBF5232F1F0E880071C925 /* AppDelegate.swift in Sources */,
 				73FDF93F2F1F168500660198 /* BaseViewController.swift in Sources */,
+				73FDF9552F1F1A7B00660198 /* ProductView.swift in Sources */,
+				73FDF94B2F1F1A5000660198 /* LoginViewController.swift in Sources */,
+				73FDF9532F1F1A7000660198 /* ProductViewController.swift in Sources */,
+				73FDF9592F1F1A9700660198 /* OrderView.swift in Sources */,
+				73FDF94D2F1F1A5800660198 /* HomeViewController.swift in Sources */,
 				73FDF9412F1F169700660198 /* BaseNavigationController.swift in Sources */,
+				73FDF95D2F1F1BD900660198 /* MainTabBarController.swift in Sources */,
+				73FDF9512F1F1A6800660198 /* CenterViewController.swift in Sources */,
+				73FDF95B2F1F1AA100660198 /* HomeView.swift in Sources */,
 				73FDF9432F1F16BF00660198 /* LaunchViewController.swift in Sources */,
+				73FDF9452F1F181000660198 /* BaseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
