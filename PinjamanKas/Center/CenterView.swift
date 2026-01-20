@@ -10,6 +10,8 @@ import SnapKit
 
 class CenterView: UIView {
     
+    var cellBlock: ((tailModel) -> Void)?
+    
     private var selectedButton: UIButton?
     
     let languageCode = LanguageManager.shared.getLanguage()
@@ -380,7 +382,7 @@ extension CenterView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = modelArray[indexPath.row]
-        ToastManager.showMessage(model.uptown ?? "")
+        self.cellBlock?(model)
     }
     
 }

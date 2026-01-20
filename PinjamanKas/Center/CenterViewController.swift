@@ -16,10 +16,10 @@ class CenterViewController: BaseViewController {
         let centerView = CenterView(frame: .zero)
         return centerView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.addSubview(centerView)
         centerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -32,6 +32,19 @@ class CenterViewController: BaseViewController {
             }
         })
         
+        centerView.cellBlock = { [weak self] model in
+            guard let self = self else { return }
+            let pageUrl = model.strange ?? ""
+            if pageUrl.isEmpty {
+                return
+            }
+            if pageUrl.hasPrefix(DeepLinkRoute.scheme_url) {
+                URLSchemeRouter.handle(pageURL: pageUrl, from: self)
+            }else if pageUrl.hasPrefix("http") {
+                self.pushWebVc(with: pageUrl)
+            }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +53,7 @@ class CenterViewController: BaseViewController {
             await self.centerInfo()
         }
     }
-
+    
 }
 
 extension CenterViewController {

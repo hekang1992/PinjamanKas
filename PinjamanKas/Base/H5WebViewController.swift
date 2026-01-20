@@ -1,5 +1,5 @@
 //
-//  ProductViewController.swift
+//  H5WebViewController.swift
 //  PinjamanKas
 //
 //  Created by hekang on 2026/1/20.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ProductViewController: UIViewController {
+class H5WebViewController: BaseViewController {
     
-    var productID: String = ""
+    var pageUrl: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()

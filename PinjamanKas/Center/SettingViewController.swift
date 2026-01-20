@@ -1,5 +1,5 @@
 //
-//  ProductViewController.swift
+//  SettingViewController.swift
 //  PinjamanKas
 //
 //  Created by hekang on 2026/1/20.
@@ -7,9 +7,7 @@
 
 import UIKit
 
-class ProductViewController: UIViewController {
-    
-    var productID: String = ""
+class SettingViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

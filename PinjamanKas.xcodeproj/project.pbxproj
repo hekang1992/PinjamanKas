@@ -35,6 +35,9 @@
 		73FDF96D2F1F40B800660198 /* HomeMentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF96C2F1F40B800660198 /* HomeMentView.swift */; };
 		73FDF96F2F1F40CB00660198 /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF96E2F1F40CB00660198 /* HomeCardView.swift */; };
 		73FDF9712F1F752200660198 /* CenterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9702F1F752200660198 /* CenterViewCell.swift */; };
+		73FDF9732F1F816D00660198 /* DeepLinkRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9722F1F816D00660198 /* DeepLinkRoute.swift */; };
+		73FDF9752F1F818C00660198 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9742F1F818C00660198 /* SettingViewController.swift */; };
+		73FDF9772F1F83C500660198 /* H5WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9762F1F83C500660198 /* H5WebViewController.swift */; };
 		76277831FF744454AFD59F16 /* Pods_PinjamanKas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6335EAF615887F3988B94E9C /* Pods_PinjamanKas.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +74,9 @@
 		73FDF96C2F1F40B800660198 /* HomeMentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMentView.swift; sourceTree = "<group>"; };
 		73FDF96E2F1F40CB00660198 /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
 		73FDF9702F1F752200660198 /* CenterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterViewCell.swift; sourceTree = "<group>"; };
+		73FDF9722F1F816D00660198 /* DeepLinkRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkRoute.swift; sourceTree = "<group>"; };
+		73FDF9742F1F818C00660198 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		73FDF9762F1F83C500660198 /* H5WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5WebViewController.swift; sourceTree = "<group>"; };
 		D42DC08FF3D51960EC11F2AE /* Pods-PinjamanKas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanKas.debug.xcconfig"; path = "Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas.debug.xcconfig"; sourceTree = "<group>"; };
 		E8A479ADCF324872DA95F1FB /* Pods-PinjamanKas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanKas.release.xcconfig"; path = "Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +146,7 @@
 				73FDF93E2F1F168500660198 /* BaseViewController.swift */,
 				73FDF9402F1F169700660198 /* BaseNavigationController.swift */,
 				73FDF9422F1F16BF00660198 /* LaunchViewController.swift */,
+				73FDF9762F1F83C500660198 /* H5WebViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -193,6 +200,7 @@
 				73FDF9562F1F1A8600660198 /* CenterView.swift */,
 				73FDF9502F1F1A6800660198 /* CenterViewController.swift */,
 				73FDF9702F1F752200660198 /* CenterViewCell.swift */,
+				73FDF9742F1F818C00660198 /* SettingViewController.swift */,
 			);
 			path = Center;
 			sourceTree = "<group>";
@@ -200,6 +208,7 @@
 		73FDF93C2F1F159B00660198 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				73FDF9722F1F816D00660198 /* DeepLinkRoute.swift */,
 				73FDF9542F1F1A7B00660198 /* ProductView.swift */,
 				73FDF9522F1F1A7000660198 /* ProductViewController.swift */,
 			);
@@ -356,10 +365,13 @@
 				73FDF9552F1F1A7B00660198 /* ProductView.swift in Sources */,
 				73FDF94B2F1F1A5000660198 /* LoginViewController.swift in Sources */,
 				73FDF96D2F1F40B800660198 /* HomeMentView.swift in Sources */,
+				73FDF9772F1F83C500660198 /* H5WebViewController.swift in Sources */,
 				73FDF9532F1F1A7000660198 /* ProductViewController.swift in Sources */,
+				73FDF9732F1F816D00660198 /* DeepLinkRoute.swift in Sources */,
 				73FDF96F2F1F40CB00660198 /* HomeCardView.swift in Sources */,
 				73FDF9592F1F1A9700660198 /* OrderView.swift in Sources */,
 				73FDF9712F1F752200660198 /* CenterViewCell.swift in Sources */,
+				73FDF9752F1F818C00660198 /* SettingViewController.swift in Sources */,
 				73FDF94D2F1F1A5800660198 /* HomeViewController.swift in Sources */,
 				73FDF9412F1F169700660198 /* BaseNavigationController.swift in Sources */,
 				73FDF95D2F1F1BD900660198 /* MainTabBarController.swift in Sources */,
