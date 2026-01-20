@@ -16,6 +16,8 @@ class CenterView: UIView {
     
     let phone = UserManager.shared.getPhone()
     
+    var modelArray: [tailModel] = []
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "ce_bg_image")
@@ -54,16 +56,16 @@ class CenterView: UIView {
         nameLabel.textAlignment = .left
         nameLabel.text = languageCode == "762" ? "Hey" : "Hai"
         nameLabel.textColor = UIColor.init(hex: "#555556")
-        nameLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(400))
+        nameLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return nameLabel
     }()
     
     lazy var phoneLabel: UILabel = {
         let phoneLabel = UILabel()
         phoneLabel.textAlignment = .left
-        phoneLabel.text = phone
+        phoneLabel.text = PhoneNumberFormatter.mask(phone)
         phoneLabel.textColor = UIColor.init(hex: "#000000")
-        phoneLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(400))
+        phoneLabel.font = UIFont.systemFont(ofSize: 16, weight: .black)
         return phoneLabel
     }()
     
@@ -89,6 +91,17 @@ class CenterView: UIView {
         let arrowImageView = UIImageView()
         arrowImageView.image = UIImage(named: "ra_arr_image")
         return arrowImageView
+    }()
+    
+    lazy var ocBtn: UIButton = {
+        let ocBtn = UIButton(type: .custom)
+        ocBtn.setTitle(languageCode == "701" ? "Daftar pesanan" : "Order list", for: .normal)
+        ocBtn.setTitleColor(UIColor.init(hex: "#030305"), for: .normal)
+        ocBtn.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        ocBtn.setImage(UIImage(named: "oc_ce_n_l_image"), for: .normal)
+        ocBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: -2.5, bottom: 0, right: 2.5)
+        ocBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2.5, bottom: 0, right: -2.5)
+        return ocBtn
     }()
     
     lazy var oneBtn: UIButton = {
@@ -149,10 +162,41 @@ class CenterView: UIView {
         return fourBtn
     }()
     
-    lazy var mentImageView: UIImageView = {
-        let mentImageView = UIImageView()
-        mentImageView.backgroundColor = .systemPink
-        return mentImageView
+    lazy var mentView: UIView = {
+        let mentView = UIView()
+        return mentView
+    }()
+    
+    lazy var serviceBtn: UIButton = {
+        let serviceBtn = UIButton(type: .custom)
+        serviceBtn.setBackgroundImage(UIImage(named: languageCode == "701" ? "s_ci_y_image" : "s_c_y_image"), for: .normal)
+        serviceBtn.adjustsImageWhenHighlighted = false
+        return serviceBtn
+    }()
+    
+    lazy var privacyBtn: UIButton = {
+        let privacyBtn = UIButton(type: .custom)
+        privacyBtn.setBackgroundImage(UIImage(named: languageCode == "701" ? "sa_ci_y_image" : "sa_c_y_image"), for: .normal)
+        privacyBtn.adjustsImageWhenHighlighted = false
+        return privacyBtn
+    }()
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.estimatedRowHeight = 66
+        tableView.isScrollEnabled = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(CenterViewCell.self, forCellReuseIdentifier: "CenterViewCell")
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        return tableView
     }()
     
     override init(frame: CGRect) {
@@ -179,11 +223,15 @@ class CenterView: UIView {
         scrollView.addSubview(whiteView)
         whiteView.addSubview(ocView)
         ocView.addSubview(arrowImageView)
+        ocView.addSubview(ocBtn)
         whiteView.addSubview(oneBtn)
         whiteView.addSubview(twoBtn)
         whiteView.addSubview(threeBtn)
         whiteView.addSubview(fourBtn)
-        scrollView.addSubview(mentImageView)
+        scrollView.addSubview(mentView)
+        mentView.addSubview(serviceBtn)
+        mentView.addSubview(privacyBtn)
+        scrollView.addSubview(tableView)
     }
     
     private func setupConstraints() {
@@ -239,6 +287,11 @@ class CenterView: UIView {
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-18)
         }
+        ocBtn.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(20)
+            make.height.equalTo(26)
+        }
         
         oneBtn.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(9)
@@ -260,10 +313,28 @@ class CenterView: UIView {
             make.size.equalTo(CGSize(width: 76, height: 38))
             make.bottom.equalToSuperview().offset(-12)
         }
-        mentImageView.snp.makeConstraints { make in
+        mentView.snp.makeConstraints { make in
             make.top.equalTo(whiteView.snp.bottom).offset(13)
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 340, height: 75))
+        }
+        serviceBtn.snp.makeConstraints { make in
+            make.left.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.size.equalTo(CGSize(width: 161, height: 75))
+        }
+        privacyBtn.snp.makeConstraints { make in
+            make.right.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.size.equalTo(CGSize(width: 161, height: 75))
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(privacyBtn.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview()
+            make.height.equalTo(300)
+            make.bottom.equalToSuperview().offset(-80)
         }
     }
     
@@ -290,6 +361,26 @@ class CenterView: UIView {
         
         selectedButton = button
         
+    }
+    
+}
+
+extension CenterView: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return modelArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CenterViewCell", for: indexPath) as! CenterViewCell
+        let model = modelArray[indexPath.row]
+        cell.model = model
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = modelArray[indexPath.row]
+        ToastManager.showMessage(model.uptown ?? "")
     }
     
 }

@@ -8,10 +8,12 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    
+    let languageCode = LanguageManager.shared.getLanguage()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .white
     }
     
 }

@@ -74,6 +74,12 @@ class MainTabBarController: UITabBarController {
     }
     
     @objc private func tabBarItemTapped(_ sender: UIButton) {
+        if !UserManager.shared.isLogin {
+            let navc = BaseNavigationController(rootViewController: LoginViewController())
+            navc.modalPresentationStyle = .overFullScreen
+            self.present(navc, animated: true)
+            return
+        }
         self.selectedIndex = sender.tag
         buttons.forEach { $0.isSelected = ($0 == sender) }
     }

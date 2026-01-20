@@ -19,7 +19,15 @@ class BaseModel: Codable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         strangler = try container.decodeIfPresent(String.self, forKey: .strangler)
-        sinking = try container.decodeIfPresent(String.self, forKey: .sinking)
+        
+        if let stringValue = try? container.decode(String.self, forKey: .sinking) {
+            sinking = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .sinking) {
+            sinking = String(intValue)
+        } else {
+            sinking = nil
+        }
+        
         if let model = try? container.decode(saggedModel.self, forKey: .sagged) {
             sagged = model
         } else if let _ = try? container.decode([saggedModel].self, forKey: .sagged) {
@@ -33,6 +41,9 @@ class BaseModel: Codable {
 class saggedModel: Codable {
     var petes: String?
     var magically: [magicallyModel]?
+    var waste: String?
+    var speculatively: String?
+    var tail: [tailModel]?
 }
 
 class magicallyModel: Codable {
@@ -53,4 +64,10 @@ class lighterModel: Codable {
     var gleaming: String?
     var wood: String?
     var deserted: String?
+}
+
+class tailModel: Codable {
+    var uptown: String?
+    var lucas: String?
+    var strange: String?
 }

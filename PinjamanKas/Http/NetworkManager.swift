@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import Toast_Swift
 
 final class NetworkManager {
 
@@ -99,5 +100,12 @@ extension NetworkManager {
                 }
             }
         }
+    }
+}
+
+class ToastManager {
+    static func showMessage(_ message: String) {
+        guard let window = UIApplication.shared.windows.first else { return }
+        window.makeToast(message, duration: 3.0, position: .center)
     }
 }

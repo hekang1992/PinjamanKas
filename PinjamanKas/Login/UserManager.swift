@@ -32,8 +32,8 @@ class UserManager {
         return UserDefaults.standard.string(forKey: kUserToken)
     }
     
-    func getPhone() -> String? {
-        return UserDefaults.standard.string(forKey: kUserPhone)
+    func getPhone() -> String {
+        return UserDefaults.standard.string(forKey: kUserPhone) ?? ""
     }
     
     func clearLoginInfo() {

@@ -25,6 +25,13 @@ class CenterViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
+        centerView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            Task {
+                await self.centerInfo()
+            }
+        })
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,11 +51,20 @@ extension CenterViewController {
             let model: BaseModel = try await NetworkManager.shared.request("/softly/exemption/magazine/godson", method: .get)
             let sinking = model.sinking ?? ""
             if ["0", "00"].contains(sinking) {
-                
+                self.centerView.modelArray = model.sagged?.tail ?? []
+                self.centerView.tableView.reloadData()
+            }else {
+                ToastManager.showMessage(model.strangler ?? "")
             }
             LoadingView.shared.hide()
+            await MainActor.run {
+                self.centerView.scrollView.mj_header?.endRefreshing()
+            }
         } catch {
             LoadingView.shared.hide()
+            await MainActor.run {
+                self.centerView.scrollView.mj_header?.endRefreshing()
+            }
         }
     }
     

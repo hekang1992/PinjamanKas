@@ -31,16 +31,16 @@ class HomeHeadView: UIView {
         nameLabel.textAlignment = .left
         nameLabel.text = languageCode == "762" ? "Hey" : "Hai"
         nameLabel.textColor = UIColor.init(hex: "#555556")
-        nameLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(400))
+        nameLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return nameLabel
     }()
     
     lazy var phoneLabel: UILabel = {
         let phoneLabel = UILabel()
         phoneLabel.textAlignment = .left
-        phoneLabel.text = phone
+        phoneLabel.text = PhoneNumberFormatter.mask(phone)
         phoneLabel.textColor = UIColor.init(hex: "#000000")
-        phoneLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(400))
+        phoneLabel.font = UIFont.systemFont(ofSize: 16, weight: .black)
         return phoneLabel
     }()
     
@@ -74,4 +74,19 @@ class HomeHeadView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+class PhoneNumberFormatter {
+    
+    static func mask(_ phone: String) -> String {
+        guard phone.count >= 8 else {
+            return phone
+        }
+        
+        let prefix = String(phone.prefix(3))
+        let suffix = String(phone.suffix(2))
+        let starCount = max(phone.count - 5, 3)
+        
+        return "\(prefix)" + String(repeating: "*", count: starCount) + "\(suffix)"
+    }
 }

@@ -15,6 +15,7 @@ class HomeMentView: UIView {
         sureBtn.isSelected = true
         sureBtn.setImage(UIImage(named: "sure_nor_image"), for: .normal)
         sureBtn.setImage(UIImage(named: "sure_sel_image"), for: .selected)
+        sureBtn.addTarget(self, action: #selector(sureClick), for: .touchUpInside)
         return sureBtn
     }()
     
@@ -71,6 +72,10 @@ class HomeMentView: UIView {
 extension HomeMentView {
     
     @objc private func handleTextTap(_ gesture: UITapGestureRecognizer) {
-        
+        ToastManager.showMessage("协议====")
+    }
+    
+    @objc private func sureClick() {
+        sureBtn.isSelected.toggle()
     }
 }

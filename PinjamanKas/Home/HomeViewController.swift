@@ -32,6 +32,15 @@ class HomeViewController: BaseViewController {
             }
         })
         
+        homeView.clickBlock = { [weak self] productID in
+            guard let self = self else { return }
+            if !UserManager.shared.isLogin {
+                let navc = BaseNavigationController(rootViewController: LoginViewController())
+                navc.modalPresentationStyle = .overFullScreen
+                self.present(navc, animated: true)
+            }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

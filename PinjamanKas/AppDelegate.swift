@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     
     private func noti() {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         NotificationCenter.default.addObserver(self, selector: #selector(changeRootVc), name: Notification.Name("changeRootVc"), object: nil)
     }
     

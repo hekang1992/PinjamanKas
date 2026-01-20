@@ -36,6 +36,8 @@ class HomeView: UIView {
         }
     }
     
+    var clickBlock: ((String) -> Void)?
+    
     let languageCode = LanguageManager.shared.getLanguage()
     
     lazy var bgImageView: UIImageView = {
@@ -90,6 +92,7 @@ class HomeView: UIView {
         applyBtn.setTitleColor(UIColor.init(hex: "#030305"), for: .normal)
         applyBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(700))
         applyBtn.setBackgroundImage(UIImage(named: "apply_b_image"), for: .normal)
+        applyBtn.addTarget(self, action: #selector(applyClick), for: .touchUpInside)
         return applyBtn
     }()
     
@@ -128,6 +131,12 @@ class HomeView: UIView {
         return footWhiteView
     }()
     
+    lazy var clickBtn: UIButton = {
+        let clickBtn = UIButton(type: .custom)
+        clickBtn.addTarget(self, action: #selector(applyClick), for: .touchUpInside)
+        return clickBtn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgImageView)
@@ -139,6 +148,7 @@ class HomeView: UIView {
         scrollView.addSubview(cardView)
         scrollView.addSubview(mentView)
         scrollView.addSubview(applyBtn)
+        scrollView.addSubview(clickBtn)
         
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -184,6 +194,12 @@ class HomeView: UIView {
             make.top.equalTo(mentView.snp.bottom).offset(19)
             make.size.equalTo(CGSize(width: 335, height: 50))
         }
+        clickBtn.snp.makeConstraints { make in
+            make.top.equalTo(cardView)
+            make.left.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(cardView)
+        }
         
         if languageCode == "762" {
             scrollView.addSubview(descImageView)
@@ -224,10 +240,21 @@ class HomeView: UIView {
             }
         }
         
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+extension HomeView {
+    
+    @objc private func applyClick() {
+        if let listModel = listModel {
+            self.clickBlock?(String(listModel.holes ?? 0))
+        }
     }
     
 }
