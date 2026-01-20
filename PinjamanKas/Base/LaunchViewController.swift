@@ -14,7 +14,7 @@ class LaunchViewController: BaseViewController {
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "launch_image")
-        bgImageView.contentMode = .scaleAspectFit
+        bgImageView.contentMode = .scaleAspectFill
         return bgImageView
     }()
     

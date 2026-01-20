@@ -38,6 +38,7 @@
 		73FDF9732F1F816D00660198 /* DeepLinkRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9722F1F816D00660198 /* DeepLinkRoute.swift */; };
 		73FDF9752F1F818C00660198 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9742F1F818C00660198 /* SettingViewController.swift */; };
 		73FDF9772F1F83C500660198 /* H5WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9762F1F83C500660198 /* H5WebViewController.swift */; };
+		73FDF97B2F1F847600660198 /* AppHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF97A2F1F847600660198 /* AppHeadView.swift */; };
 		76277831FF744454AFD59F16 /* Pods_PinjamanKas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6335EAF615887F3988B94E9C /* Pods_PinjamanKas.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		73FDF9722F1F816D00660198 /* DeepLinkRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkRoute.swift; sourceTree = "<group>"; };
 		73FDF9742F1F818C00660198 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		73FDF9762F1F83C500660198 /* H5WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5WebViewController.swift; sourceTree = "<group>"; };
+		73FDF97A2F1F847600660198 /* AppHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeadView.swift; sourceTree = "<group>"; };
 		D42DC08FF3D51960EC11F2AE /* Pods-PinjamanKas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanKas.debug.xcconfig"; path = "Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas.debug.xcconfig"; sourceTree = "<group>"; };
 		E8A479ADCF324872DA95F1FB /* Pods-PinjamanKas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanKas.release.xcconfig"; path = "Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				73FDF9662F1F300200660198 /* LoadingView.swift */,
+				73FDF97A2F1F847600660198 /* AppHeadView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				73FDF95B2F1F1AA100660198 /* HomeView.swift in Sources */,
 				73FDF9432F1F16BF00660198 /* LaunchViewController.swift in Sources */,
 				73FDF9452F1F181000660198 /* BaseModel.swift in Sources */,
+				73FDF97B2F1F847600660198 /* AppHeadView.swift in Sources */,
 				73FDF9692F1F34EE00660198 /* HomeHeadView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

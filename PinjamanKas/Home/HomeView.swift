@@ -43,7 +43,7 @@ class HomeView: UIView {
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "home_gb_image")
-        bgImageView.contentMode = .scaleAspectFit
+        bgImageView.contentMode = .scaleAspectFill
         return bgImageView
     }()
 

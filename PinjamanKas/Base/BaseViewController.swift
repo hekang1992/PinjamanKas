@@ -10,6 +10,11 @@ import UIKit
 class BaseViewController: UIViewController {
     
     let languageCode = LanguageManager.shared.getLanguage()
+    
+    lazy var appHeadView: AppHeadView = {
+        let appHeadView = AppHeadView(frame: .zero)
+        return appHeadView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
