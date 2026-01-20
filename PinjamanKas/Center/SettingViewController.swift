@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import TYAlertController
+import Alamofire
 
 class SettingViewController: BaseViewController {
     
@@ -27,7 +29,7 @@ class SettingViewController: BaseViewController {
         twoView.backgroundColor = UIColor.white
         twoView.layer.borderWidth = 1
         twoView.layer.borderColor = UIColor.init(hex: "#F1F1F3")?.cgColor
-        twoView.isHidden = languageCode == "701" ? true : false
+        //        twoView.isHidden = languageCode == "701" ? true : false
         return twoView
     }()
     
@@ -59,6 +61,18 @@ class SettingViewController: BaseViewController {
         let twoImageView = UIImageView()
         twoImageView.image = UIImage(named: "ra_arr_image")
         return twoImageView
+    }()
+    
+    lazy var oneBtn: UIButton = {
+        let oneBtn = UIButton(type: .custom)
+        oneBtn.addTarget(self, action: #selector(outClick), for: .touchUpInside)
+        return oneBtn
+    }()
+    
+    lazy var twoBtn: UIButton = {
+        let twoBtn = UIButton(type: .custom)
+        twoBtn.addTarget(self, action: #selector(delClick), for: .touchUpInside)
+        return twoBtn
     }()
     
     override func viewDidLoad() {
@@ -105,7 +119,7 @@ class SettingViewController: BaseViewController {
         twoView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 327, height: 50))
-            make.top.equalTo(twoView.snp.bottom).offset(20)
+            make.top.equalTo(oneView.snp.bottom).offset(20)
         }
         
         oneView.addSubview(oneLabel)
@@ -136,6 +150,93 @@ class SettingViewController: BaseViewController {
             make.centerY.equalToSuperview()
         }
         
+        oneView.addSubview(oneBtn)
+        twoView.addSubview(twoBtn)
+        
+        oneBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        twoBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+    }
+    
+}
+
+extension SettingViewController {
+    
+    @objc func outClick() {
+        let popView = PopOutView(frame: self.view.bounds)
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        popView.cancelBlock = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
+        popView.sureBlock = { [weak self] in
+            guard let self = self else { return }
+            Task {
+                await self.outInfo()
+            }
+        }
+    }
+    
+    @objc func delClick() {
+        let popView = PopDeleteView(frame: self.view.bounds)
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        popView.cancelBlock = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
+        popView.sureBlock = { [weak self] in
+            guard let self = self else { return }
+            if popView.mentBtn.isSelected == false {
+                ToastManager.showMessage("Please confirm the agreement first.")
+                return
+            }
+            Task {
+                await self.deleteInfo()
+            }
+        }
+    }
+    
+    private func outInfo() async {
+        do {
+            LoadingView.shared.show()
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/heavy/gatto/askedluca", method: .get)
+            let sinking = model.sinking ?? ""
+            ToastManager.showMessage(model.strangler ?? "")
+            if ["0", "00"].contains(sinking) {
+                self.dismiss(animated: true)
+                UserManager.shared.clearLoginInfo()
+                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                NotificationCenter.default.post(name: Notification.Name("changeRootVc"), object: nil)
+            }
+            LoadingView.shared.hide()
+        } catch {
+            LoadingView.shared.hide()
+        }
+    }
+    
+    private func deleteInfo() async {
+        do {
+            LoadingView.shared.show()
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/alone/exquisitely/obviously", method: .get)
+            let sinking = model.sinking ?? ""
+            ToastManager.showMessage(model.strangler ?? "")
+            if ["0", "00"].contains(sinking) {
+                self.dismiss(animated: true)
+                UserManager.shared.clearLoginInfo()
+                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                NotificationCenter.default.post(name: Notification.Name("changeRootVc"), object: nil)
+            }
+            LoadingView.shared.hide()
+        } catch {
+            LoadingView.shared.hide()
+        }
     }
     
 }

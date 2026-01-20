@@ -39,6 +39,8 @@
 		73FDF9752F1F818C00660198 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9742F1F818C00660198 /* SettingViewController.swift */; };
 		73FDF9772F1F83C500660198 /* H5WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9762F1F83C500660198 /* H5WebViewController.swift */; };
 		73FDF97B2F1F847600660198 /* AppHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF97A2F1F847600660198 /* AppHeadView.swift */; };
+		73FF7EFD2F1FA6A20072F5B6 /* PopOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FF7EFC2F1FA6A20072F5B6 /* PopOutView.swift */; };
+		73FF7EFF2F1FAA360072F5B6 /* PopDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FF7EFE2F1FAA360072F5B6 /* PopDeleteView.swift */; };
 		76277831FF744454AFD59F16 /* Pods_PinjamanKas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6335EAF615887F3988B94E9C /* Pods_PinjamanKas.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		73FDF9742F1F818C00660198 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		73FDF9762F1F83C500660198 /* H5WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5WebViewController.swift; sourceTree = "<group>"; };
 		73FDF97A2F1F847600660198 /* AppHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeadView.swift; sourceTree = "<group>"; };
+		73FF7EFC2F1FA6A20072F5B6 /* PopOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOutView.swift; sourceTree = "<group>"; };
+		73FF7EFE2F1FAA360072F5B6 /* PopDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopDeleteView.swift; sourceTree = "<group>"; };
 		D42DC08FF3D51960EC11F2AE /* Pods-PinjamanKas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanKas.debug.xcconfig"; path = "Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas.debug.xcconfig"; sourceTree = "<group>"; };
 		E8A479ADCF324872DA95F1FB /* Pods-PinjamanKas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamanKas.release.xcconfig"; path = "Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,6 +207,8 @@
 				73FDF9502F1F1A6800660198 /* CenterViewController.swift */,
 				73FDF9702F1F752200660198 /* CenterViewCell.swift */,
 				73FDF9742F1F818C00660198 /* SettingViewController.swift */,
+				73FF7EFC2F1FA6A20072F5B6 /* PopOutView.swift */,
+				73FF7EFE2F1FAA360072F5B6 /* PopDeleteView.swift */,
 			);
 			path = Center;
 			sourceTree = "<group>";
@@ -355,9 +361,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				73FDF9632F1F222900660198 /* URLParameterBuilder.swift in Sources */,
+				73FF7EFF2F1FAA360072F5B6 /* PopDeleteView.swift in Sources */,
 				73FDF9612F1F216400660198 /* UserManager.swift in Sources */,
 				73FDF9472F1F187700660198 /* NetworkManager.swift in Sources */,
 				73FDF96B2F1F3E3400660198 /* HomeItemView.swift in Sources */,
+				73FF7EFD2F1FA6A20072F5B6 /* PopOutView.swift in Sources */,
 				73FDF9652F1F22D400660198 /* KeychainHelper.swift in Sources */,
 				73FDF9572F1F1A8600660198 /* CenterView.swift in Sources */,
 				73FDF9672F1F300200660198 /* LoadingView.swift in Sources */,
@@ -414,6 +422,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PinjamanKas/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pinjaman Kas";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -453,6 +462,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PinjamanKas/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pinjaman Kas";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

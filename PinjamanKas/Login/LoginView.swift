@@ -209,12 +209,12 @@ class LoginView: UIView {
             make.edges.equalToSuperview()
         }
         backBtn.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(39)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(20)
             make.left.equalToSuperview().offset(20)
             make.width.height.equalTo(30)
         }
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(backBtn.snp.bottom).offset(20)
+            make.top.equalTo(backBtn.snp.bottom).offset(10)
             make.left.right.bottom.equalToSuperview()
         }
         bgView.snp.makeConstraints { make in

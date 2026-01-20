@@ -37,6 +37,11 @@ class LoginViewController: BaseViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loginView.phoneFiled.becomeFirstResponder()
+    }
+    
     @MainActor
     deinit {
         stopCountdown()
@@ -62,6 +67,8 @@ extension LoginViewController {
     }
     
     @objc func getLogin() {
+        self.loginView.phoneFiled.resignFirstResponder()
+        self.loginView.codeFiled.resignFirstResponder()
         guard let phone = loginView.phoneFiled.text, !phone.isEmpty else {
             ToastManager.showMessage(languageCode == "701" ? "Silakan masukkan nomor ponsel yang benar." : "Please enter the correct mobile phone number.")
             return
