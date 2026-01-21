@@ -85,19 +85,31 @@ extension ProductViewController {
                 await self.frontInfo(with: model)
             }
             break
+            
         case "extreme2":
             break
+            
         case "extreme3":
             let personalVc = PersonalViewController()
             personalVc.params = ["title": model.uptown ?? "",
                                  "productID": productID,
                                  "orderID": orderID]
             self.navigationController?.pushViewController(personalVc, animated: true)
-            break
+            
         case "extreme4":
-            break
+            let contactVc = ContactViewController()
+            contactVc.params = ["title": model.uptown ?? "",
+                                "productID": productID,
+                                "orderID": orderID]
+            self.navigationController?.pushViewController(contactVc, animated: true)
+            
         case "extreme5":
-            break
+            let walletVc = WalletViewController()
+            walletVc.params = ["title": model.uptown ?? "",
+                               "productID": productID,
+                               "orderID": orderID]
+            self.navigationController?.pushViewController(walletVc, animated: true)
+            
         default:
             break
         }

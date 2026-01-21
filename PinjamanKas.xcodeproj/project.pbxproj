@@ -14,6 +14,8 @@
 		739CE0622F207F840017256F /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0612F207F840017256F /* PersonalViewController.swift */; };
 		739CE0642F20A0570017256F /* PopSelectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0632F20A0570017256F /* PopSelectListView.swift */; };
 		739CE0662F20AE530017256F /* CityDecodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0652F20AE530017256F /* CityDecodeModel.swift */; };
+		739CE0682F20B4000017256F /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0672F20B4000017256F /* ContactViewController.swift */; };
+		739CE06A2F20B40B0017256F /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0692F20B40B0017256F /* WalletViewController.swift */; };
 		73FBF5232F1F0E880071C925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FBF5192F1F0E880071C925 /* AppDelegate.swift */; };
 		73FBF5262F1F0E880071C925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FBF51A2F1F0E880071C925 /* Assets.xcassets */; };
 		73FBF5282F1F0E880071C925 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73FBF51D2F1F0E880071C925 /* LaunchScreen.storyboard */; };
@@ -65,6 +67,8 @@
 		739CE0612F207F840017256F /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		739CE0632F20A0570017256F /* PopSelectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopSelectListView.swift; sourceTree = "<group>"; };
 		739CE0652F20AE530017256F /* CityDecodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDecodeModel.swift; sourceTree = "<group>"; };
+		739CE0672F20B4000017256F /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		739CE0692F20B40B0017256F /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		73FBF5012F1F0E7F0071C925 /* PinjamanKas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinjamanKas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FBF5192F1F0E880071C925 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73FBF51A2F1F0E880071C925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -249,9 +253,9 @@
 		73FDF93D2F1F15C600660198 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				739CE0652F20AE530017256F /* CityDecodeModel.swift */,
 				73FDF9662F1F300200660198 /* LoadingView.swift */,
 				73FDF97A2F1F847600660198 /* AppHeadView.swift */,
+				739CE0652F20AE530017256F /* CityDecodeModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -280,6 +284,8 @@
 				73FF7F082F1FC4CF0072F5B6 /* FaceViewController.swift */,
 				739CE05F2F207B430017256F /* CompleteViewController.swift */,
 				739CE0612F207F840017256F /* PersonalViewController.swift */,
+				739CE0672F20B4000017256F /* ContactViewController.swift */,
+				739CE0692F20B40B0017256F /* WalletViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -419,6 +425,7 @@
 				73FDF9612F1F216400660198 /* UserManager.swift in Sources */,
 				739CE05A2F20679E0017256F /* PopFrontListView.swift in Sources */,
 				73FDF9472F1F187700660198 /* NetworkManager.swift in Sources */,
+				739CE06A2F20B40B0017256F /* WalletViewController.swift in Sources */,
 				73FDF96B2F1F3E3400660198 /* HomeItemView.swift in Sources */,
 				73FF7EFD2F1FA6A20072F5B6 /* PopOutView.swift in Sources */,
 				73FDF9652F1F22D400660198 /* KeychainHelper.swift in Sources */,
@@ -426,6 +433,7 @@
 				73FDF9672F1F300200660198 /* LoadingView.swift in Sources */,
 				73FF7F012F1FB52E0072F5B6 /* BaseView.swift in Sources */,
 				73FDF94F2F1F1A6000660198 /* OrderViewController.swift in Sources */,
+				739CE0682F20B4000017256F /* ContactViewController.swift in Sources */,
 				73FDF9492F1F1A4000660198 /* LoginView.swift in Sources */,
 				739CE0602F207B430017256F /* CompleteViewController.swift in Sources */,
 				73FBF5232F1F0E880071C925 /* AppDelegate.swift in Sources */,

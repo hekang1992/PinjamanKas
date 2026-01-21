@@ -1,5 +1,5 @@
 //
-//  PersonalViewController.swift
+//  WalletViewController.swift
 //  PinjamanKas
 //
 //  Created by hekang on 2026/1/20.
@@ -11,7 +11,7 @@ import Alamofire
 import TYAlertController
 import BRPickerView
 
-class PersonalViewController: BaseViewController {
+class WalletViewController: BaseViewController {
     
     var params: [String: String] = [:]
     
@@ -115,7 +115,7 @@ class PersonalViewController: BaseViewController {
     
 }
 
-extension PersonalViewController {
+extension WalletViewController {
     
     @objc func applyClick() {
         var dict = ["rival": params["productID"] ?? ""]
@@ -130,7 +130,7 @@ extension PersonalViewController {
     }
 }
 
-extension PersonalViewController {
+extension WalletViewController {
     
     private func getPersonalInfo() async {
         do {
@@ -168,7 +168,7 @@ extension PersonalViewController {
     
 }
 
-extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
+extension WalletViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
