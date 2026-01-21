@@ -79,6 +79,11 @@ extension BaseViewController {
                                        "orderID": orderID]
                     self.navigationController?.pushViewController(walletVc, animated: true)
                     
+                case "":
+                    Task {
+                        await self.applyOrderInfo(with: model)
+                    }
+                    
                 default:
                     break
                 }
@@ -87,6 +92,29 @@ extension BaseViewController {
         } catch {
             LoadingView.shared.hide()
         }
+    }
+    
+    func applyOrderInfo(with model: BaseModel) async {
+        let site = model.sagged?.retainer?.shipment ?? ""
+        let bridge = model.sagged?.retainer?.bridge ?? ""
+        let drove = model.sagged?.retainer?.drove ?? ""
+        let beauties = model.sagged?.retainer?.beauties ?? ""
+        let land = model.sagged?.retainer?.land ?? ""
+        do {
+            let params = ["site": site,
+                          "bridge": bridge,
+                          "drove": drove,
+                          "beauties": beauties,
+                          "land": land]
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/stack/hagen/corleones", method: .post, params: params)
+            let sinking = model.sinking ?? ""
+            if ["0", "00"].contains(sinking) {
+                
+            }
+        } catch {
+            
+        }
+        
     }
     
 }

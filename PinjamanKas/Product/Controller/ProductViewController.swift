@@ -110,6 +110,13 @@ extension ProductViewController {
                                "orderID": orderID]
             self.navigationController?.pushViewController(walletVc, animated: true)
             
+        case "":
+            Task {
+                if let model = self.model {
+                    await self.applyOrderInfo(with: model)
+                }
+            }
+            
         default:
             break
         }
