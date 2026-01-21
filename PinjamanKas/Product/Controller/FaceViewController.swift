@@ -101,7 +101,7 @@ class FaceViewController: BaseViewController {
     
     lazy var lineView: UIView = {
         let lineView = UIView()
-        lineView.backgroundColor = UIColor.init(hex: "#F1F1F3")
+        lineView.backgroundColor = UIColor.init(hex: "#F5F5F5")
         return lineView
     }()
     
@@ -113,7 +113,7 @@ class FaceViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hex: "#F1F1F3")
+        view.backgroundColor = UIColor(hex: "#F5F5F5")
         view.addSubview(headImageView)
         headImageView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()

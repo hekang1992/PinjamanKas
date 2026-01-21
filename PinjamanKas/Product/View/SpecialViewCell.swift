@@ -29,6 +29,15 @@ class SpecialViewCell: UITableViewCell {
         }
     }
     
+    var model: furnishingModel? {
+        didSet {
+            guard let model = model else { return }
+            nameLabel.text = model.uptown ?? ""
+            nameField.placeholder = model.jump ?? ""
+            nameField.text = model.scrambled ?? ""
+        }
+    }
+    
     var tapClickBlock: (() -> Void)?
     
     lazy var bgImageView: UIImageView = {

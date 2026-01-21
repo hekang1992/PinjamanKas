@@ -18,7 +18,7 @@ class SettingViewController: BaseViewController {
         oneView.layer.masksToBounds = true
         oneView.backgroundColor = UIColor.white
         oneView.layer.borderWidth = 1
-        oneView.layer.borderColor = UIColor.init(hex: "#F1F1F3")?.cgColor
+        oneView.layer.borderColor = UIColor.init(hex: "#F5F5F5")?.cgColor
         return oneView
     }()
     
@@ -28,7 +28,7 @@ class SettingViewController: BaseViewController {
         twoView.layer.masksToBounds = true
         twoView.backgroundColor = UIColor.white
         twoView.layer.borderWidth = 1
-        twoView.layer.borderColor = UIColor.init(hex: "#F1F1F3")?.cgColor
+        twoView.layer.borderColor = UIColor.init(hex: "#F5F5F5")?.cgColor
         twoView.isHidden = languageCode == "701" ? true : false
         return twoView
     }()

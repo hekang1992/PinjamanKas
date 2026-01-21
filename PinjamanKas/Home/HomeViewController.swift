@@ -50,6 +50,10 @@ class HomeViewController: BaseViewController {
             
         }
         
+        Task {
+            await self.getCitysInfo()
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,6 +114,18 @@ extension HomeViewController {
             LoadingView.shared.hide()
         } catch {
             LoadingView.shared.hide()
+        }
+    }
+    
+    private func getCitysInfo() async {
+        do {
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/fortyeight/threats/checking", method: .get)
+            let sinking = model.sinking ?? ""
+            if ["0", "00"].contains(sinking) {
+                CitysModel.shared.modelArray = model.sagged?.magically ?? []
+            }
+        } catch {
+            
         }
     }
     

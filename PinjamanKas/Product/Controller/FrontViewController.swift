@@ -101,7 +101,7 @@ class FrontViewController: BaseViewController {
     
     lazy var lineView: UIView = {
         let lineView = UIView()
-        lineView.backgroundColor = UIColor.init(hex: "#F1F1F3")
+        lineView.backgroundColor = UIColor.init(hex: "#F5F5F5")
         return lineView
     }()
     
@@ -113,7 +113,7 @@ class FrontViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hex: "#F1F1F3")
+        view.backgroundColor = UIColor(hex: "#F5F5F5")
         view.addSubview(headImageView)
         headImageView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
@@ -319,6 +319,7 @@ extension FrontViewController {
     
     private func saveFrontInfo(with name: String, number: String, date: String) async {
         do {
+            LoadingView.shared.show()
             let params = ["mario": date,
                           "hellos": number,
                           "view": UserManager.shared.getPhone(),
@@ -327,6 +328,7 @@ extension FrontViewController {
                           "rival": self.params["productID"] ?? ""]
             let model: BaseModel = try await NetworkManager.shared.request("/softly/sollozzo/leather/flickered", method: .post, params: params)
             let sinking = model.sinking ?? ""
+            LoadingView.shared.hide()
             if ["0", "00"].contains(sinking) {
                 self.dismiss(animated: true) {
                     let faceVc = FaceViewController()
@@ -337,7 +339,7 @@ extension FrontViewController {
                 ToastManager.showMessage(model.strangler ?? "")
             }
         } catch {
-            
+            LoadingView.shared.hide()
         }
     }
     

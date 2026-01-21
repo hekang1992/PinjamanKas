@@ -15,6 +15,8 @@ class PersonalViewController: BaseViewController {
     
     var params: [String: String] = [:]
     
+    var modelArray: [furnishingModel] = []
+    
     lazy var headImageView: UIImageView = {
         let headImageView = UIImageView()
         headImageView.image = UIImage(named: "pro_head_bg_image")
@@ -24,14 +26,8 @@ class PersonalViewController: BaseViewController {
     
     lazy var oneImageView: UIImageView = {
         let oneImageView = UIImageView()
-        oneImageView.image = languageCode == "701" ? UIImage(named: "pro_oy_desc_image") : UIImage(named: "pro_one_image")
+        oneImageView.image = languageCode == "701" ? UIImage(named: "id_min_ca_image") : UIImage(named: "idn_min_ca_image")
         return oneImageView
-    }()
-    
-    lazy var twoImageView: UIImageView = {
-        let twoImageView = UIImageView()
-        twoImageView.image = languageCode == "701" ? UIImage(named: "pro_ones_desc_image") : UIImage(named: "pro_one_desc_image")
-        return twoImageView
     }()
     
     lazy var applyBtn: UIButton = {
@@ -44,9 +40,29 @@ class PersonalViewController: BaseViewController {
         return applyBtn
     }()
     
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .white
+        tableView.estimatedRowHeight = 88
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(CommonViewCell.self, forCellReuseIdentifier: "CommonViewCell")
+        tableView.register(SpecialViewCell.self, forCellReuseIdentifier: "SpecialViewCell")
+        tableView.layer.cornerRadius = 18
+        tableView.layer.masksToBounds = true
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hex: "#F1F1F3")
+        view.backgroundColor = UIColor(hex: "#F5F5F5")
         view.addSubview(headImageView)
         headImageView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
@@ -74,6 +90,27 @@ class PersonalViewController: BaseViewController {
             make.size.equalTo(CGSize(width: 335, height: 50))
         }
         
+        view.addSubview(oneImageView)
+        oneImageView.snp.makeConstraints { make in
+            make.top.equalTo(appHeadView.snp.bottom).offset(7)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 335, height: 40))
+        }
+        
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(oneImageView.snp.bottom).offset(22)
+            make.width.equalTo(335)
+            make.bottom.equalTo(applyBtn.snp.top).offset(-10)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Task {
+            await self.getPersonalInfo()
+        }
     }
     
 }
@@ -83,4 +120,102 @@ extension PersonalViewController {
     @objc func applyClick() {
         
     }
+}
+
+extension PersonalViewController {
+    
+    private func getPersonalInfo() async {
+        do {
+            LoadingView.shared.show()
+            let params = ["rival": params["productID"] ?? ""]
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/narrow/hollywood/thats", method: .post, params: params)
+            let sinking = model.sinking ?? ""
+            if ["0", "00"].contains(sinking) {
+                self.modelArray = model.sagged?.furnishing ?? []
+                self.tableView.reloadData()
+            }
+            LoadingView.shared.hide()
+        } catch {
+            LoadingView.shared.hide()
+        }
+    }
+    
+}
+
+extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return modelArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = modelArray[indexPath.row]
+        let mounted = model.mounted ?? ""
+        if mounted == "proclaim2" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CommonViewCell", for: indexPath) as! CommonViewCell
+            cell.model = model
+            cell.textEnterBlock = { text in
+                model.scrambled = text
+            }
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SpecialViewCell", for: indexPath) as! SpecialViewCell
+            cell.model = model
+            cell.tapClickBlock = { [weak self] in
+                guard let self = self else { return }
+                if mounted == "proclaim3" {
+                    self.popSelectCityView(with: model, cell: cell)
+                }else {
+                    self.popSelectView(with: model, cell: cell)
+                }
+            }
+            return cell
+        }
+        
+    }
+    
+    private func popSelectView(with model: furnishingModel, cell: SpecialViewCell) {
+        let popView = PopSelectListView(frame: self.view.bounds)
+        popView.nameLabel.text = model.uptown ?? ""
+        
+        let modelArray = model.offensive ?? []
+        popView.modelArray = modelArray
+        
+        if let selectedValue = cell.nameField.text,
+           let selectedIndex = modelArray.firstIndex(where: { $0.steering == selectedValue }) {
+            popView.selectedIndex = selectedIndex
+        }
+        
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        
+        popView.cancelBlock = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
+        
+        popView.confirmBlock = { [weak self] listModel in
+            guard let self = self else { return }
+            self.dismiss(animated: true) {
+                let name = listModel.steering ?? ""
+                cell.nameField.text = name
+                model.scrambled = name
+                model.appear = listModel.appear ?? ""
+            }
+        }
+        
+    }
+    
+    private func popSelectCityView(with model: furnishingModel, cell: SpecialViewCell) {
+        
+    }
+    
 }

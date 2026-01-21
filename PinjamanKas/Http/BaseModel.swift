@@ -56,6 +56,71 @@ class saggedModel: Codable {
     var forgetting: String?
     var bait: String?
     var swallowed: String?
+    var furnishing: [furnishingModel]?
+}
+
+class furnishingModel: Codable {
+    var uptown: String?
+    var jump: String?
+    var sinking: String?
+    var mounted: String?
+    var usually: String?
+    var offensive: [offensiveModel]?
+    var scrambled: String?
+    var appear: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case uptown, jump, sinking, mounted, usually, offensive, scrambled, appear
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        uptown = try decodeStringOrInt(from: container, forKey: .uptown)
+        jump = try decodeStringOrInt(from: container, forKey: .jump)
+        sinking = try decodeStringOrInt(from: container, forKey: .sinking)
+        mounted = try decodeStringOrInt(from: container, forKey: .mounted)
+        usually = try decodeStringOrInt(from: container, forKey: .usually)
+        scrambled = try decodeStringOrInt(from: container, forKey: .scrambled)
+        appear = try decodeStringOrInt(from: container, forKey: .appear)
+        
+        offensive = try container.decodeIfPresent([offensiveModel].self, forKey: .offensive)
+    }
+    
+    private func decodeStringOrInt(from container: KeyedDecodingContainer<CodingKeys>, forKey key: CodingKeys) throws -> String? {
+        if let stringValue = try? container.decode(String.self, forKey: key) {
+            return stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: key) {
+            return String(intValue)
+        } else {
+            return nil
+        }
+    }
+}
+
+class offensiveModel: Codable {
+    var steering: String?
+    var appear: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case steering, appear
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        steering = try container.decodeIfPresent(String.self, forKey: .steering)
+        
+        if let stringValue = try? container.decode(String.self, forKey: .appear) {
+            appear = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .appear) {
+            appear = String(intValue)
+        } else {
+            appear = nil
+        }
+        
+    }
+    
 }
 
 class veraModel: Codable {
@@ -81,6 +146,9 @@ class flingingModel: Codable {
 class magicallyModel: Codable {
     var appear: String?
     var lighter: [lighterModel]?
+    var enemy: [magicallyModel]?
+    var steering: String?
+    var sinking: String?
 }
 
 class lighterModel: Codable {

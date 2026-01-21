@@ -10,6 +10,8 @@ import SnapKit
 
 class CommonViewCell: UITableViewCell {
     
+    var textEnterBlock: ((String) -> Void)?
+    
     var title: String? {
         didSet {
             guard let title = title else { return }
@@ -26,6 +28,17 @@ class CommonViewCell: UITableViewCell {
             }else {
                 nameField.text = name
             }
+        }
+    }
+    
+    var model: furnishingModel? {
+        didSet {
+            guard let model = model else { return }
+            let usually = model.usually ?? ""
+            nameField.keyboardType = usually == "1" ? .numberPad : .default
+            nameLabel.text = model.uptown ?? ""
+            nameField.placeholder = model.jump ?? ""
+            nameField.text = model.scrambled ?? ""
         }
     }
     
@@ -51,7 +64,7 @@ class CommonViewCell: UITableViewCell {
         nameField.addTarget(self, action: #selector(nameFieldDidChange(_:)), for: .editingChanged)
         return nameField
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
@@ -90,7 +103,7 @@ extension CommonViewCell {
     
     @objc private func nameFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
-        print("输入的内容: \(text)")
+        self.textEnterBlock?(text)
     }
     
 }
