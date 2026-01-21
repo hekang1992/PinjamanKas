@@ -12,6 +12,7 @@ target 'PinjamanKas' do
   pod 'Toast-Swift'
   pod 'MJRefresh'
   pod 'FBSDKCoreKit'
+  pod 'BRPickerView'
   pod 'TYAlertController'
   pod 'IQKeyboardManagerSwift', '~> 6.5.16'
 

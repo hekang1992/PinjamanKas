@@ -8,14 +8,12 @@
 import UIKit
 import SnapKit
 
-class CenterView: UIView {
+class CenterView: BaseView {
     
     var cellBlock: ((tailModel) -> Void)?
     
     private var selectedButton: UIButton?
-    
-    let languageCode = LanguageManager.shared.getLanguage()
-    
+        
     let phone = UserManager.shared.getPhone()
     
     var modelArray: [tailModel] = []

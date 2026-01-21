@@ -115,7 +115,7 @@ extension LoginViewController {
                 let phone = model.sagged?.waste ?? ""
                 let token = model.sagged?.speculatively ?? ""
                 UserManager.shared.saveLoginInfo(phone: phone, token: token)
-                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                try? await Task.sleep(nanoseconds: 500_000_000)
                 NotificationCenter.default.post(name: Notification.Name("changeRootVc"), object: nil)
             }
             LoadingView.shared.hide()

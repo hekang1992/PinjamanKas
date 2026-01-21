@@ -9,14 +9,12 @@
 import UIKit
 import SnapKit
 
-class PopDeleteView: UIView {
+class PopDeleteView: BaseView {
     
     var cancelBlock: (() -> Void)?
     
     var sureBlock: (() -> Void)?
-    
-    let languageCode = LanguageManager.shared.getLanguage()
-    
+        
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: languageCode == "701" ? "del_le_image" : "del_le_image")

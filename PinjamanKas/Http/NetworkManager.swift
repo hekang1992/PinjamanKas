@@ -63,7 +63,7 @@ extension NetworkManager {
         fileData: Data,
         fileKey: String = "youngest",
         fileName: String = "youngest.jpg",
-        mimeType: String = "application/octet-stream"
+        mimeType: String = "image/jpeg"
     ) async throws -> T {
 
         return try await withCheckedThrowingContinuation { continuation in

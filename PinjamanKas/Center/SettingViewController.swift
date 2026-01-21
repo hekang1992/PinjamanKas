@@ -29,7 +29,7 @@ class SettingViewController: BaseViewController {
         twoView.backgroundColor = UIColor.white
         twoView.layer.borderWidth = 1
         twoView.layer.borderColor = UIColor.init(hex: "#F1F1F3")?.cgColor
-        //        twoView.isHidden = languageCode == "701" ? true : false
+        twoView.isHidden = languageCode == "701" ? true : false
         return twoView
     }()
     
@@ -212,7 +212,7 @@ extension SettingViewController {
             if ["0", "00"].contains(sinking) {
                 self.dismiss(animated: true)
                 UserManager.shared.clearLoginInfo()
-                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                try? await Task.sleep(nanoseconds: 500_000_000)
                 NotificationCenter.default.post(name: Notification.Name("changeRootVc"), object: nil)
             }
             LoadingView.shared.hide()
@@ -230,7 +230,7 @@ extension SettingViewController {
             if ["0", "00"].contains(sinking) {
                 self.dismiss(animated: true)
                 UserManager.shared.clearLoginInfo()
-                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                try? await Task.sleep(nanoseconds: 500_000_000)
                 NotificationCenter.default.post(name: Notification.Name("changeRootVc"), object: nil)
             }
             LoadingView.shared.hide()

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class HomeMentView: UIView {
+class HomeMentView: BaseView {
     
     lazy var sureBtn: UIButton = {
         let sureBtn = UIButton(type: .custom)
@@ -21,8 +21,8 @@ class HomeMentView: UIView {
     
     private lazy var loanLabel: UILabel = {
         
-        let fullText = "Please read the <Loan terms> carefully for a worry-free borrowing experience."
-        let targetText = "<Loan terms>"
+        let fullText = languageCode == "701" ? "Harap baca <Syarat dan Ketentuan Pinjaman> dengan saksama untuk pengalaman meminjam yang nyaman." : "Please read the <Loan terms> carefully for a worry-free borrowing experience."
+        let targetText = languageCode == "701" ? "<Syarat dan Ketentuan Pinjaman>" : "<Loan terms>"
         
         let label = UILabel()
         label.numberOfLines = 0

@@ -8,10 +8,8 @@
 import UIKit
 import SnapKit
 
-class LoginView: UIView {
-    
-    let languageCode = LanguageManager.shared.getLanguage()
-    
+class LoginView: BaseView {
+        
     var backBlock: (() -> Void)?
     
     lazy var bgImageView: UIImageView = {

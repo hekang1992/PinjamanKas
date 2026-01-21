@@ -38,7 +38,16 @@ class HomeViewController: BaseViewController {
                 let navc = BaseNavigationController(rootViewController: LoginViewController())
                 navc.modalPresentationStyle = .overFullScreen
                 self.present(navc, animated: true)
+                return
             }
+            if homeView.mentView.sureBtn.isSelected == false {
+                ToastManager.showMessage(languageCode == "701" ? "Harap konfirmasi perjanjian pinjaman terlebih dahulu." : "Please confirm the loan agreement first.")
+                return
+            }
+            Task {
+                await self.clickProductInfo(with: productID)
+            }
+            
         }
         
     }
@@ -74,6 +83,33 @@ extension HomeViewController {
             await MainActor.run {
                 self.homeView.scrollView.mj_header?.endRefreshing()
             }
+        }
+    }
+    
+    private func clickProductInfo(with productID: String) async {
+        do {
+            LoadingView.shared.show()
+            let params = ["barely": "1001",
+                          "swayed": String(Int(900 + 100)),
+                          "pretended": "1000",
+                          "rival": productID,
+                          "infatuated": String(Int(100 + 200))]
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/would/preferred/concealed", method: .post, params: params)
+            let sinking = model.sinking ?? ""
+            if ["0", "00"].contains(sinking) {
+                let pageUrl = model.sagged?.busied ?? ""
+                if pageUrl.isEmpty {
+                    return
+                }
+                if pageUrl.hasPrefix(DeepLinkRoute.scheme_url) {
+                    URLSchemeRouter.handle(pageURL: pageUrl, from: self)
+                }else if pageUrl.hasPrefix("http") {
+                    self.pushWebVc(with: pageUrl)
+                }
+            }
+            LoadingView.shared.hide()
+        } catch {
+            LoadingView.shared.hide()
         }
     }
     

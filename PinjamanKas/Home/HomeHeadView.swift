@@ -8,10 +8,8 @@
 import UIKit
 import SnapKit
 
-class HomeHeadView: UIView {
-    
-    let languageCode = LanguageManager.shared.getLanguage()
-    
+class HomeHeadView: BaseView {
+        
     let phone = UserManager.shared.getPhone()
     
     lazy var bgView: UIView = {

@@ -8,14 +8,12 @@
 import UIKit
 import SnapKit
 
-class PopOutView: UIView {
+class PopOutView: BaseView {
     
     var cancelBlock: (() -> Void)?
     
     var sureBlock: (() -> Void)?
-    
-    let languageCode = LanguageManager.shared.getLanguage()
-    
+        
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: languageCode == "701" ? "out_led_image" : "out_le_image")

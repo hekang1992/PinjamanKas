@@ -31,4 +31,14 @@ extension BaseViewController {
         self.navigationController?.pushViewController(webVc, animated: true)
     }
     
+    func toProductDetailVc() {
+        guard let nav = navigationController,
+              let productVC = nav.viewControllers.first(where: { $0 is ProductViewController })
+        else {
+            navigationController?.popToRootViewController(animated: true)
+            return
+        }
+        nav.popToViewController(productVC, animated: true)
+    }
+    
 }

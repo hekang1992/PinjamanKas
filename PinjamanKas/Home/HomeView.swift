@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class HomeView: UIView {
+class HomeView: BaseView {
     
     var listModel: lighterModel? {
         didSet {
@@ -37,9 +37,7 @@ class HomeView: UIView {
     }
     
     var clickBlock: ((String) -> Void)?
-    
-    let languageCode = LanguageManager.shared.getLanguage()
-    
+        
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "home_gb_image")

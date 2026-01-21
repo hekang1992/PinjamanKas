@@ -44,6 +44,38 @@ class saggedModel: Codable {
     var waste: String?
     var speculatively: String?
     var tail: [tailModel]?
+    var busied: String?
+    var retainer: retainerModel?
+    var flinging: [flingingModel]?
+    var earth: flingingModel?
+    var vera: veraModel?
+    var park: veraModel?
+    var steering: String?
+    var hellos: String?
+    var mario: String?
+    var forgetting: String?
+    var bait: String?
+    var swallowed: String?
+}
+
+class veraModel: Codable {
+    var cronies: Int?
+    var busied: String?
+    var acquaintances: acquaintancesModel?
+}
+
+class acquaintancesModel: Codable {
+    var steering: String?
+    var hellos: String?
+    var mario: String?
+}
+
+class flingingModel: Codable {
+    var uptown: String?
+    var jump: String?
+    var lucrative: String?
+    var cronies: Int?
+    var interior: String?
 }
 
 class magicallyModel: Codable {
@@ -70,4 +102,115 @@ class tailModel: Codable {
     var uptown: String?
     var lucas: String?
     var strange: String?
+}
+
+class retainerModel: Codable {
+    var rats: String?
+    var bridge: String?
+    var drove: String?
+    var beauties: String?
+    var land: String?
+    var swamplands: String?
+    var shipment: String?
+    var soltozzo: String?
+    var emerge: String?
+    var continued: String?
+    var meadowbrook: meadowbrookModel?
+    
+    enum CodingKeys: String, CodingKey {
+        case rats,
+             bridge,
+             drove,
+             beauties,
+             land,
+             swamplands,
+             shipment,
+             soltozzo,
+             meadowbrook,
+             continued
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        meadowbrook = try container.decodeIfPresent(meadowbrookModel.self, forKey: .meadowbrook)
+        
+        continued = try container.decodeIfPresent(String.self, forKey: .continued)
+        
+        if let stringValue = try? container.decode(String.self, forKey: .rats) {
+            rats = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .rats) {
+            rats = String(intValue)
+        } else {
+            rats = nil
+        }
+        
+        if let stringValue = try? container.decode(String.self, forKey: .bridge) {
+            bridge = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .bridge) {
+            bridge = String(intValue)
+        } else {
+            bridge = nil
+        }
+        
+        if let stringValue = try? container.decode(String.self, forKey: .drove) {
+            drove = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .drove) {
+            drove = String(intValue)
+        } else {
+            drove = nil
+        }
+        
+        if let stringValue = try? container.decode(String.self, forKey: .beauties) {
+            beauties = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .beauties) {
+            beauties = String(intValue)
+        } else {
+            beauties = nil
+        }
+        
+        if let stringValue = try? container.decode(String.self, forKey: .land) {
+            land = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .land) {
+            land = String(intValue)
+        } else {
+            land = nil
+        }
+        
+        if let stringValue = try? container.decode(String.self, forKey: .swamplands) {
+            swamplands = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .swamplands) {
+            swamplands = String(intValue)
+        } else {
+            swamplands = nil
+        }
+        
+        if let stringValue = try? container.decode(String.self, forKey: .shipment) {
+            shipment = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .shipment) {
+            shipment = String(intValue)
+        } else {
+            shipment = nil
+        }
+        
+        if let stringValue = try? container.decode(String.self, forKey: .soltozzo) {
+            soltozzo = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .soltozzo) {
+            soltozzo = String(intValue)
+        } else {
+            soltozzo = nil
+        }
+        
+    }
+    
+}
+
+class meadowbrookModel: Codable {
+    var toes: toesModel?
+    var causeway: toesModel?
+}
+
+class toesModel: Codable {
+    var uptown: String?
+    var merrick: String?
 }
