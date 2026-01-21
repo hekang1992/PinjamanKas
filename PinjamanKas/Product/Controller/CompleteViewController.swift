@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 import Alamofire
-internal import AVFoundation
 import TYAlertController
 
 class CompleteViewController: BaseViewController {

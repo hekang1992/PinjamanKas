@@ -318,6 +318,9 @@ extension FrontViewController {
     }
     
     private func saveFrontInfo(with name: String, number: String, date: String) async {
+        
+        let apiUrl = languageCode == "701" ? "/softly/sollozzo/leather/flickered" : "/softly/suddenly/sulked/youre"
+        
         do {
             LoadingView.shared.show()
             let params = ["mario": date,
@@ -326,7 +329,7 @@ extension FrontViewController {
                           "steering": name,
                           "site": self.params["orderID"] ?? "",
                           "rival": self.params["productID"] ?? ""]
-            let model: BaseModel = try await NetworkManager.shared.request("/softly/sollozzo/leather/flickered", method: .post, params: params)
+            let model: BaseModel = try await NetworkManager.shared.request(apiUrl, method: .post, params: params)
             let sinking = model.sinking ?? ""
             LoadingView.shared.hide()
             if ["0", "00"].contains(sinking) {

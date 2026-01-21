@@ -37,8 +37,8 @@ struct URLParameterBuilder {
             Keys.idfv2: idfv,
             Keys.osVersion: osVersion,
             Keys.market: "apptrore-pjny",
-//            Keys.language: LanguageManager.shared.getLanguage()
-            Keys.language: "762"
+            Keys.language: LanguageManager.shared.getLanguage()
+//            Keys.language: "762"
         ]
         
         if let session = UserManager.shared.getToken() {

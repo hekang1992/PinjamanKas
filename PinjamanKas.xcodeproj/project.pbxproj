@@ -16,6 +16,8 @@
 		739CE0662F20AE530017256F /* CityDecodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0652F20AE530017256F /* CityDecodeModel.swift */; };
 		739CE0682F20B4000017256F /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0672F20B4000017256F /* ContactViewController.swift */; };
 		739CE06A2F20B40B0017256F /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0692F20B40B0017256F /* WalletViewController.swift */; };
+		739CE06C2F20B5C50017256F /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE06B2F20B5C50017256F /* ContactViewCell.swift */; };
+		739CE0722F20C5190017256F /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0712F20C5190017256F /* ContactManager.swift */; };
 		73FBF5232F1F0E880071C925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FBF5192F1F0E880071C925 /* AppDelegate.swift */; };
 		73FBF5262F1F0E880071C925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FBF51A2F1F0E880071C925 /* Assets.xcassets */; };
 		73FBF5282F1F0E880071C925 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73FBF51D2F1F0E880071C925 /* LaunchScreen.storyboard */; };
@@ -69,6 +71,8 @@
 		739CE0652F20AE530017256F /* CityDecodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDecodeModel.swift; sourceTree = "<group>"; };
 		739CE0672F20B4000017256F /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		739CE0692F20B40B0017256F /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		739CE06B2F20B5C50017256F /* ContactViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
+		739CE0712F20C5190017256F /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		73FBF5012F1F0E7F0071C925 /* PinjamanKas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinjamanKas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FBF5192F1F0E880071C925 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73FBF51A2F1F0E880071C925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 		73FDF93D2F1F15C600660198 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				739CE0712F20C5190017256F /* ContactManager.swift */,
 				73FDF9662F1F300200660198 /* LoadingView.swift */,
 				73FDF97A2F1F847600660198 /* AppHeadView.swift */,
 				739CE0652F20AE530017256F /* CityDecodeModel.swift */,
@@ -272,6 +277,7 @@
 				739CE05B2F206B980017256F /* CommonViewCell.swift */,
 				739CE05D2F206CCB0017256F /* SpecialViewCell.swift */,
 				739CE0632F20A0570017256F /* PopSelectListView.swift */,
+				739CE06B2F20B5C50017256F /* ContactViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 			files = (
 				739CE0642F20A0570017256F /* PopSelectListView.swift in Sources */,
 				73FDF9632F1F222900660198 /* URLParameterBuilder.swift in Sources */,
+				739CE06C2F20B5C50017256F /* ContactViewCell.swift in Sources */,
 				73FF7EFF2F1FAA360072F5B6 /* PopDeleteView.swift in Sources */,
 				73FF7F072F1FC4BB0072F5B6 /* FrontViewController.swift in Sources */,
 				73FDF9612F1F216400660198 /* UserManager.swift in Sources */,
@@ -439,6 +446,7 @@
 				73FBF5232F1F0E880071C925 /* AppDelegate.swift in Sources */,
 				73FDF93F2F1F168500660198 /* BaseViewController.swift in Sources */,
 				73FF7F032F1FB9DD0072F5B6 /* ProductListView.swift in Sources */,
+				739CE0722F20C5190017256F /* ContactManager.swift in Sources */,
 				73FDF9552F1F1A7B00660198 /* ProductView.swift in Sources */,
 				73FDF94B2F1F1A5000660198 /* LoginViewController.swift in Sources */,
 				73FDF96D2F1F40B800660198 /* HomeMentView.swift in Sources */,

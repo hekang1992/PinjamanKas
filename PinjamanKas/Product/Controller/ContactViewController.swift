@@ -15,7 +15,7 @@ class ContactViewController: BaseViewController {
     
     var params: [String: String] = [:]
     
-    var modelArray: [furnishingModel] = []
+    var modelArray: [magicallyModel] = []
     
     lazy var headImageView: UIImageView = {
         let headImageView = UIImageView()
@@ -26,7 +26,7 @@ class ContactViewController: BaseViewController {
     
     lazy var oneImageView: UIImageView = {
         let oneImageView = UIImageView()
-        oneImageView.image = languageCode == "701" ? UIImage(named: "id_min_ca_image") : UIImage(named: "idn_min_ca_image")
+        oneImageView.image = languageCode == "701" ? UIImage(named: "con_idn_a_image") : UIImage(named: "con_dn_a_image")
         return oneImageView
     }()
     
@@ -43,17 +43,14 @@ class ContactViewController: BaseViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .white
-        tableView.estimatedRowHeight = 88
+        tableView.backgroundColor = .clear
+        tableView.estimatedRowHeight = 100
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(CommonViewCell.self, forCellReuseIdentifier: "CommonViewCell")
-        tableView.register(SpecialViewCell.self, forCellReuseIdentifier: "SpecialViewCell")
-        tableView.layer.cornerRadius = 18
-        tableView.layer.masksToBounds = true
+        tableView.register(ContactViewCell.self, forCellReuseIdentifier: "ContactViewCell")
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
@@ -118,54 +115,29 @@ class ContactViewController: BaseViewController {
 extension ContactViewController {
     
     @objc func applyClick() {
-        var dict = ["rival": params["productID"] ?? ""]
+        var dictArray: [[String: String]] = []
+        var dict: [String: String] = [:]
         for model in modelArray {
-            let key = model.sinking ?? ""
-            let value = model.appear ?? ""
-            dict[key] = value
+            dict["view"] = model.view ?? ""
+            dict["soldiers"] = model.soldiers ?? ""
+            dict["steering"] = model.steering ?? ""
+            dict["headquarters"] = model.headquarters ?? ""
+            dictArray.append(dict)
         }
+        
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: dictArray),
+              let jsonString = String(data: jsonData, encoding: .utf8) else {
+            print("Failed JSON serialization")
+            return
+        }
+        
         Task {
+            let dict = ["rival": params["productID"] ?? "",
+                        "sagged": jsonString]
             await self.saveInfo(with: dict)
         }
+        
     }
-}
-
-extension ContactViewController {
-    
-    private func getPersonalInfo() async {
-        do {
-            LoadingView.shared.show()
-            let params = ["rival": params["productID"] ?? ""]
-            let model: BaseModel = try await NetworkManager.shared.request("/softly/narrow/hollywood/thats", method: .post, params: params)
-            let sinking = model.sinking ?? ""
-            if ["0", "00"].contains(sinking) {
-                self.modelArray = model.sagged?.furnishing ?? []
-                self.tableView.reloadData()
-            }
-            LoadingView.shared.hide()
-        } catch {
-            LoadingView.shared.hide()
-        }
-    }
-    
-    private func saveInfo(with params: [String: String]) async {
-        do {
-            LoadingView.shared.show()
-            let model: BaseModel = try await NetworkManager.shared.request("/softly/fight/monthsmaybe/happy", method: .post, params: params)
-            LoadingView.shared.hide()
-            let sinking = model.sinking ?? ""
-            if ["0", "00"].contains(sinking) {
-                Task {
-                    await self.nextDetailInfo(with: params["rival"] ?? "")
-                }
-            }else {
-                ToastManager.showMessage(model.strangler ?? "")
-            }
-        } catch {
-            LoadingView.shared.hide()
-        }
-    }
-    
 }
 
 extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
@@ -184,37 +156,60 @@ extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = modelArray[indexPath.row]
-        let mounted = model.mounted ?? ""
-        if mounted == "proclaim2" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CommonViewCell", for: indexPath) as! CommonViewCell
-            cell.model = model
-            cell.textEnterBlock = { text in
-                model.scrambled = text
-                model.appear = text
-            }
-            return cell
-        }else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SpecialViewCell", for: indexPath) as! SpecialViewCell
-            cell.model = model
-            cell.tapClickBlock = { [weak self] in
-                guard let self = self else { return }
-                self.view.endEditing(true)
-                if mounted == "proclaim3" {
-                    self.popSelectCityView(with: model, cell: cell)
-                }else {
-                    self.popSelectView(with: model, cell: cell)
-                }
-            }
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactViewCell", for: indexPath) as! ContactViewCell
+        cell.model = model
+        
+        cell.relationBlock = { [weak self] in
+            guard let self = self else { return }
+            self.popSelectView(with: model, cell: cell)
         }
         
+        cell.contactBlock = { [weak self] in
+            guard let self = self else { return }
+            ContactManager.shared.selectSingleContact(from: self) { [weak self] result in
+                guard let self = self else { return }
+                let single = result.first ?? [:]
+                let phone = single["bulging"] ?? ""
+                let name = single["steering"] ?? ""
+                if phone.isEmpty || name.isEmpty {
+                    ToastManager.showMessage(languageCode == "701" ? "Format nama atau nomor kontak tidak benar." : "The name or contact number format is incorrect.")
+                    return
+                }
+                model.view = phone
+                model.steering = name
+                cell.oField.text = "\(name): \(phone)"
+            }
+            ContactManager.shared.fetchAllContacts { [weak self] result in
+                guard let self = self else { return }
+                print("result===\(result)")
+                if result.isEmpty {
+                    return
+                }
+                
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: result, options: [])
+                    let base64String = jsonData.base64EncodedString()
+                    Task {
+                        let params = ["appear": String(Int(2 + 1)), "sagged": base64String]
+                        await self.uploadInfo(with: params)
+                    }
+                } catch {
+                    print("error：\(error)")
+                }
+                
+                
+            }
+        }
+        
+        return cell
     }
     
-    private func popSelectView(with model: furnishingModel, cell: SpecialViewCell) {
+    private func popSelectView(with model: magicallyModel, cell: ContactViewCell) {
         let popView = PopSelectListView(frame: self.view.bounds)
-        popView.nameLabel.text = model.uptown ?? ""
+        popView.nameLabel.text = model.relationship_title ?? ""
         
-        let modelArray = model.offensive ?? []
+        let modelArray = model.opponents ?? []
+        
         popView.modelArray = modelArray
         
         if let selectedValue = cell.nameField.text,
@@ -235,44 +230,56 @@ extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
             self.dismiss(animated: true) {
                 let name = listModel.steering ?? ""
                 cell.nameField.text = name
-                model.scrambled = name
-                model.appear = listModel.appear ?? ""
+                model.soldiers = listModel.appear ?? ""
             }
         }
         
     }
     
-    private func popSelectCityView(with model: furnishingModel, cell: SpecialViewCell) {
-        
-        let cityModelArray = CitysModel.shared.modelArray ?? []
-        
-        let listArray = CityDecodeModel.getAddressModelArray(from: cityModelArray)
-        
-        let stringPickerView = BRTextPickerView()
-        stringPickerView.pickerMode = .componentCascade
-        stringPickerView.title = model.uptown ?? ""
-        stringPickerView.dataSourceArr = listArray
-        
-        let style = BRPickerStyle()
-        style.rowHeight = 45
-        style.language = "en"
-        style.doneBtnTitle = languageCode == "701" ? "OKE" : "OK"
-        style.cancelBtnTitle = languageCode == "701" ? "Batal" : "Cancel"
-        style.doneTextColor = UIColor(hex: "#030305")
-        style.selectRowTextColor = UIColor(hex: "#030305")
-        style.pickerTextFont = UIFont.systemFont(ofSize: 18, weight: .bold)
-        style.selectRowTextFont = UIFont.systemFont(ofSize: 18, weight: .bold)
-        stringPickerView.pickerStyle = style
-        
-        stringPickerView.multiResultBlock = { models, indexs in
-            if let models = models {
-                let selectText = models.map { $0.text ?? "" }.joined(separator: "|")
-                cell.nameField.text = selectText
-                model.scrambled = selectText
-                model.appear = selectText
+}
+
+extension ContactViewController {
+    
+    private func getPersonalInfo() async {
+        do {
+            LoadingView.shared.show()
+            let params = ["rival": params["productID"] ?? ""]
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/always/johnny/cigarette", method: .post, params: params)
+            let sinking = model.sinking ?? ""
+            if ["0", "00"].contains(sinking) {
+                self.modelArray = model.sagged?.rooms?.magically ?? []
+                self.tableView.reloadData()
             }
+            LoadingView.shared.hide()
+        } catch {
+            LoadingView.shared.hide()
         }
-        stringPickerView.show()
+    }
+    
+    private func saveInfo(with params: [String: String]) async {
+        do {
+            LoadingView.shared.show()
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/wouldnt/understand/hagen", method: .post, params: params)
+            LoadingView.shared.hide()
+            let sinking = model.sinking ?? ""
+            if ["0", "00"].contains(sinking) {
+                Task {
+                    await self.nextDetailInfo(with: params["rival"] ?? "")
+                }
+            }else {
+                ToastManager.showMessage(model.strangler ?? "")
+            }
+        } catch {
+            LoadingView.shared.hide()
+        }
+    }
+    
+    private func uploadInfo(with params: [String: String]) async {
+        do {
+            let _: BaseModel = try await NetworkManager.shared.request("/softly/loaves/businessit/datesduring", method: .post, params: params)
+        } catch {
+            
+        }
     }
     
 }

@@ -57,6 +57,11 @@ class saggedModel: Codable {
     var bait: String?
     var swallowed: String?
     var furnishing: [furnishingModel]?
+    var rooms: roomsModel?
+}
+
+class roomsModel: Codable {
+    var magically: [magicallyModel]?
 }
 
 class furnishingModel: Codable {
@@ -147,8 +152,17 @@ class magicallyModel: Codable {
     var appear: String?
     var lighter: [lighterModel]?
     var enemy: [magicallyModel]?
+    var opponents: [offensiveModel]?
     var steering: String?
     var sinking: String?
+    var merrick: String?
+    var relationship_title: String?
+    var relationship_placeholder: String?
+    var contact_title: String?
+    var contact_placeholder: String?
+    var soldiers: String?
+    var view: String?
+    var headquarters: String?
 }
 
 class lighterModel: Codable {

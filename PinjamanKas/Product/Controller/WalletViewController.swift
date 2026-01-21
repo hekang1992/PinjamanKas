@@ -26,7 +26,7 @@ class WalletViewController: BaseViewController {
     
     lazy var oneImageView: UIImageView = {
         let oneImageView = UIImageView()
-        oneImageView.image = languageCode == "701" ? UIImage(named: "id_min_ca_image") : UIImage(named: "idn_min_ca_image")
+        oneImageView.image = languageCode == "701" ? UIImage(named: "z_idn_a_image") : UIImage(named: "zc_idn_a_image")
         return oneImageView
     }()
     
@@ -136,7 +136,7 @@ extension WalletViewController {
         do {
             LoadingView.shared.show()
             let params = ["rival": params["productID"] ?? ""]
-            let model: BaseModel = try await NetworkManager.shared.request("/softly/narrow/hollywood/thats", method: .post, params: params)
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/morning/equally/moment", method: .post, params: params)
             let sinking = model.sinking ?? ""
             if ["0", "00"].contains(sinking) {
                 self.modelArray = model.sagged?.furnishing ?? []
@@ -151,7 +151,7 @@ extension WalletViewController {
     private func saveInfo(with params: [String: String]) async {
         do {
             LoadingView.shared.show()
-            let model: BaseModel = try await NetworkManager.shared.request("/softly/fight/monthsmaybe/happy", method: .post, params: params)
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/parents/agrees/afternoon", method: .post, params: params)
             LoadingView.shared.hide()
             let sinking = model.sinking ?? ""
             if ["0", "00"].contains(sinking) {
