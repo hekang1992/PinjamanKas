@@ -10,6 +10,8 @@
 		739CE05A2F20679E0017256F /* PopFrontListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0592F20679E0017256F /* PopFrontListView.swift */; };
 		739CE05C2F206B980017256F /* CommonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE05B2F206B980017256F /* CommonViewCell.swift */; };
 		739CE05E2F206CCB0017256F /* SpecialViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE05D2F206CCB0017256F /* SpecialViewCell.swift */; };
+		739CE0602F207B430017256F /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE05F2F207B430017256F /* CompleteViewController.swift */; };
+		739CE0622F207F840017256F /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0612F207F840017256F /* PersonalViewController.swift */; };
 		73FBF5232F1F0E880071C925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FBF5192F1F0E880071C925 /* AppDelegate.swift */; };
 		73FBF5262F1F0E880071C925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FBF51A2F1F0E880071C925 /* Assets.xcassets */; };
 		73FBF5282F1F0E880071C925 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73FBF51D2F1F0E880071C925 /* LaunchScreen.storyboard */; };
@@ -57,6 +59,8 @@
 		739CE0592F20679E0017256F /* PopFrontListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFrontListView.swift; sourceTree = "<group>"; };
 		739CE05B2F206B980017256F /* CommonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewCell.swift; sourceTree = "<group>"; };
 		739CE05D2F206CCB0017256F /* SpecialViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialViewCell.swift; sourceTree = "<group>"; };
+		739CE05F2F207B430017256F /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
+		739CE0612F207F840017256F /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		73FBF5012F1F0E7F0071C925 /* PinjamanKas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinjamanKas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FBF5192F1F0E880071C925 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73FBF51A2F1F0E880071C925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 				73FDF9522F1F1A7000660198 /* ProductViewController.swift */,
 				73FF7F062F1FC4BB0072F5B6 /* FrontViewController.swift */,
 				73FF7F082F1FC4CF0072F5B6 /* FaceViewController.swift */,
+				739CE05F2F207B430017256F /* CompleteViewController.swift */,
+				739CE0612F207F840017256F /* PersonalViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -414,6 +420,7 @@
 				73FF7F012F1FB52E0072F5B6 /* BaseView.swift in Sources */,
 				73FDF94F2F1F1A6000660198 /* OrderViewController.swift in Sources */,
 				73FDF9492F1F1A4000660198 /* LoginView.swift in Sources */,
+				739CE0602F207B430017256F /* CompleteViewController.swift in Sources */,
 				73FBF5232F1F0E880071C925 /* AppDelegate.swift in Sources */,
 				73FDF93F2F1F168500660198 /* BaseViewController.swift in Sources */,
 				73FF7F032F1FB9DD0072F5B6 /* ProductListView.swift in Sources */,
@@ -433,6 +440,7 @@
 				73FF7F152F1FD6940072F5B6 /* SimpleCameraManager.swift in Sources */,
 				73FDF9412F1F169700660198 /* BaseNavigationController.swift in Sources */,
 				73FDF95D2F1F1BD900660198 /* MainTabBarController.swift in Sources */,
+				739CE0622F207F840017256F /* PersonalViewController.swift in Sources */,
 				73FDF9512F1F1A6800660198 /* CenterViewController.swift in Sources */,
 				73FDF95B2F1F1AA100660198 /* HomeView.swift in Sources */,
 				73FDF9432F1F16BF00660198 /* LaunchViewController.swift in Sources */,

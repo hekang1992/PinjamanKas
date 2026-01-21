@@ -58,6 +58,8 @@ class ProductViewController: BaseViewController {
             let cronies = model.cronies ?? 0
             if cronies == 0 {
                 productView.nextBlock?()
+            }else {
+                tapClickInfo(with: model)
             }
         }
         
@@ -76,15 +78,21 @@ extension ProductViewController {
     
     private func tapClickInfo(with model: flingingModel) {
         let interior = model.interior ?? ""
+        let orderID = self.model?.sagged?.retainer?.shipment ?? ""
         switch interior {
         case "extreme1":
-            let frontVc = FrontViewController()
-            frontVc.params = ["title": model.uptown ?? "", "productID": productID]
-            self.navigationController?.pushViewController(frontVc, animated: true)
+            Task {
+                await self.frontInfo(with: model)
+            }
             break
         case "extreme2":
             break
         case "extreme3":
+            let personalVc = PersonalViewController()
+            personalVc.params = ["title": model.uptown ?? "",
+                                 "productID": productID,
+                                 "orderID": orderID]
+            self.navigationController?.pushViewController(personalVc, animated: true)
             break
         case "extreme4":
             break
@@ -92,6 +100,50 @@ extension ProductViewController {
             break
         default:
             break
+        }
+    }
+    
+    private func frontInfo(with listModel: flingingModel) async {
+        do {
+            LoadingView.shared.show()
+            let params = ["rival": productID,
+                          "road": "1"]
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/fiveyear/during/never", method: .get, params: params)
+            let sinking = model.sinking ?? ""
+            if ["0", "00"].contains(sinking) {
+                let front = model.sagged?.vera?.cronies ?? 0
+                let face = model.sagged?.park?.cronies ?? 0
+                if front == 0 {
+                    let frontVc = FrontViewController()
+                    frontVc.params = ["title": listModel.uptown ?? "",
+                                      "productID": productID,
+                                      "orderID": self.model?.sagged?.retainer?.shipment ?? ""]
+                    self.navigationController?.pushViewController(frontVc, animated: true)
+                    return
+                }
+                
+                if face == 0 {
+                    let faceVc = FaceViewController()
+                    faceVc.params = ["title": listModel.uptown ?? "",
+                                     "productID": productID,
+                                     "orderID": self.model?.sagged?.retainer?.shipment ?? ""]
+                    self.navigationController?.pushViewController(faceVc, animated: true)
+                    return
+                }
+                
+                if face == 1 && front == 1 {
+                    let completeVc = CompleteViewController()
+                    completeVc.params = ["title": listModel.uptown ?? "",
+                                         "productID": productID,
+                                         "orderID": self.model?.sagged?.retainer?.shipment ?? ""]
+                    self.navigationController?.pushViewController(completeVc, animated: true)
+                    return
+                }
+                
+            }
+            LoadingView.shared.hide()
+        } catch {
+            LoadingView.shared.hide()
         }
     }
     

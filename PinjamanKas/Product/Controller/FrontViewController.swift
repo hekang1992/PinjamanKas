@@ -79,6 +79,7 @@ class FrontViewController: BaseViewController {
     lazy var cImageView: UIImageView = {
         let cImageView = UIImageView()
         cImageView.image = languageCode == "701" ? UIImage(named: "foot_ain_f_image") : UIImage(named: "foot_a_f_image")
+        cImageView.contentMode = .scaleAspectFit
         return cImageView
     }()
     
@@ -310,7 +311,34 @@ extension FrontViewController {
         
         popView.confirmBlock = { [weak self] name, number, date in
             guard let self = self else { return }
-            ToastManager.showMessage(date)
+            Task {
+                await self.saveFrontInfo(with: name, number: number, date: date)
+            }
         }
     }
+    
+    private func saveFrontInfo(with name: String, number: String, date: String) async {
+        do {
+            let params = ["mario": date,
+                          "hellos": number,
+                          "view": UserManager.shared.getPhone(),
+                          "steering": name,
+                          "site": self.params["orderID"] ?? "",
+                          "rival": self.params["productID"] ?? ""]
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/sollozzo/leather/flickered", method: .post, params: params)
+            let sinking = model.sinking ?? ""
+            if ["0", "00"].contains(sinking) {
+                self.dismiss(animated: true) {
+                    let faceVc = FaceViewController()
+                    faceVc.params = self.params
+                    self.navigationController?.pushViewController(faceVc, animated: true)
+                }
+            }else {
+                ToastManager.showMessage(model.strangler ?? "")
+            }
+        } catch {
+            
+        }
+    }
+    
 }

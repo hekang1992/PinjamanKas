@@ -144,7 +144,7 @@ extension PopFrontListView {
             name = cell.nameField.text ?? ""
         }
         if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? CommonViewCell {
-             number = cell.nameField.text ?? ""
+            number = cell.nameField.text ?? ""
         }
         if let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? SpecialViewCell {
             date = cell.nameField.text ?? ""
@@ -185,69 +185,68 @@ extension PopFrontListView: UITableViewDelegate, UITableViewDataSource {
 extension PopFrontListView {
     
     private func tapTimeClick(cell: SpecialViewCell) {
-        let time = cell.nameField.text ?? ""
+        let currentTime = cell.nameField.text ?? ""
+        let selectedDate = parseDate(from: currentTime)
+        
+        showDatePicker(for: cell, with: selectedDate)
+    }
+    
+    private func showDatePicker(for cell: SpecialViewCell, with selectedDate: Date) {
         let datePickerView = createDatePickerView()
-        datePickerView.selectDate = parseDate(from: time)
+        datePickerView.selectDate = selectedDate
         datePickerView.pickerStyle = createPickerStyle()
         
-        datePickerView.resultBlock = { [weak self] selectDate, selectValue in
-            self?.handleDateSelection(selectDate, cell: cell)
+        datePickerView.resultBlock = { [weak self] selectedDate, _ in
+            self?.updateCell(cell, with: selectedDate)
         }
         
         datePickerView.show()
     }
     
     private func createDatePickerView() -> BRDatePickerView {
-        let datePickerView = BRDatePickerView()
-        datePickerView.pickerMode = .YMD
-        datePickerView.title = languageCode == "701" ? "Pilih tanggal" : "Select date"
-        return datePickerView
+        let pickerView = BRDatePickerView()
+        pickerView.pickerMode = .YMD
+        pickerView.title = languageCode == "701" ? "Pilih tanggal" : "Select date"
+        return pickerView
     }
     
     private func parseDate(from timeString: String?) -> Date {
         guard let timeString = timeString, !timeString.isEmpty else {
-            return getDefaultDate()
+            return defaultDate()
         }
         
-        let dateFormats = ["dd/MM/yyyy"]
-        let dateFormatter = DateFormatter()
-        
-        for format in dateFormats {
-            dateFormatter.dateFormat = format
-            if let date = dateFormatter.date(from: timeString) {
-                return date
-            }
-        }
-        
-        return getDefaultDate()
+        return parseDateString(timeString) ?? defaultDate()
     }
     
-    private func getDefaultDate() -> Date {
+    private func parseDateString(_ dateString: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        return dateFormatter.date(from: "20/11/1990") ?? Date()
+        return dateFormatter.date(from: dateString)
+    }
+    
+    private func defaultDate() -> Date {
+        return parseDateString("20/11/1990") ?? Date()
     }
     
     private func createPickerStyle() -> BRPickerStyle {
-        let customStyle = BRPickerStyle()
-        customStyle.rowHeight = 45
-        customStyle.language = "en"
-        customStyle.doneBtnTitle = languageCode == "701" ? "OKE" : "OK"
-        customStyle.cancelBtnTitle = languageCode == "701" ? "Batal" : "Cancel"
-        customStyle.doneTextColor = UIColor(hex: "#030305")
-        customStyle.selectRowTextColor = UIColor(hex: "#030305")
-        customStyle.pickerTextFont = UIFont.systemFont(ofSize: 18, weight: .bold)
-        customStyle.selectRowTextFont = UIFont.systemFont(ofSize: 18, weight: .bold)
-        return customStyle
+        let style = BRPickerStyle()
+        style.rowHeight = 45
+        style.language = "en"
+        style.doneBtnTitle = languageCode == "701" ? "OKE" : "OK"
+        style.cancelBtnTitle = languageCode == "701" ? "Batal" : "Cancel"
+        style.doneTextColor = UIColor(hex: "#030305")
+        style.selectRowTextColor = UIColor(hex: "#030305")
+        style.pickerTextFont = UIFont.systemFont(ofSize: 18, weight: .bold)
+        style.selectRowTextFont = UIFont.systemFont(ofSize: 18, weight: .bold)
+        return style
     }
     
-    private func handleDateSelection(_ selectedDate: Date?, cell: SpecialViewCell) {
-        guard let selectedDate = selectedDate else { return }
+    private func updateCell(_ cell: SpecialViewCell, with date: Date?) {
+        guard let date = date else { return }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        let resultDateString = dateFormatter.string(from: selectedDate)
-        cell.nameField.text = resultDateString
+        cell.nameField.text = dateFormatter.string(from: date)
     }
     
 }
