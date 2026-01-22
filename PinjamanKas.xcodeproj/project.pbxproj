@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		73004AAA2F21BACB00CEAFAC /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AA92F21BACB00CEAFAC /* NetworkMonitor.swift */; };
+		73004AAC2F21D2B200CEAFAC /* OrderEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AAB2F21D2B200CEAFAC /* OrderEmptyView.swift */; };
+		73004AAE2F21D38A00CEAFAC /* OrderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AAD2F21D38A00CEAFAC /* OrderViewCell.swift */; };
 		739CE05A2F20679E0017256F /* PopFrontListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0592F20679E0017256F /* PopFrontListView.swift */; };
 		739CE05C2F206B980017256F /* CommonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE05B2F206B980017256F /* CommonViewCell.swift */; };
 		739CE05E2F206CCB0017256F /* SpecialViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE05D2F206CCB0017256F /* SpecialViewCell.swift */; };
@@ -64,6 +66,8 @@
 /* Begin PBXFileReference section */
 		6335EAF615887F3988B94E9C /* Pods_PinjamanKas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinjamanKas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73004AA92F21BACB00CEAFAC /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		73004AAB2F21D2B200CEAFAC /* OrderEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEmptyView.swift; sourceTree = "<group>"; };
+		73004AAD2F21D38A00CEAFAC /* OrderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewCell.swift; sourceTree = "<group>"; };
 		739CE0592F20679E0017256F /* PopFrontListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFrontListView.swift; sourceTree = "<group>"; };
 		739CE05B2F206B980017256F /* CommonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewCell.swift; sourceTree = "<group>"; };
 		739CE05D2F206CCB0017256F /* SpecialViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialViewCell.swift; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 			children = (
 				73FDF9582F1F1A9700660198 /* OrderView.swift */,
 				73FDF94E2F1F1A6000660198 /* OrderViewController.swift */,
+				73004AAB2F21D2B200CEAFAC /* OrderEmptyView.swift */,
+				73004AAD2F21D38A00CEAFAC /* OrderViewCell.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -439,6 +445,7 @@
 				73FDF96B2F1F3E3400660198 /* HomeItemView.swift in Sources */,
 				73FF7EFD2F1FA6A20072F5B6 /* PopOutView.swift in Sources */,
 				73FDF9652F1F22D400660198 /* KeychainHelper.swift in Sources */,
+				73004AAE2F21D38A00CEAFAC /* OrderViewCell.swift in Sources */,
 				73FDF9572F1F1A8600660198 /* CenterView.swift in Sources */,
 				73FDF9672F1F300200660198 /* LoadingView.swift in Sources */,
 				73FF7F012F1FB52E0072F5B6 /* BaseView.swift in Sources */,
@@ -464,6 +471,7 @@
 				73FDF9752F1F818C00660198 /* SettingViewController.swift in Sources */,
 				73FDF94D2F1F1A5800660198 /* HomeViewController.swift in Sources */,
 				73FF7F152F1FD6940072F5B6 /* SimpleCameraManager.swift in Sources */,
+				73004AAC2F21D2B200CEAFAC /* OrderEmptyView.swift in Sources */,
 				73FDF9412F1F169700660198 /* BaseNavigationController.swift in Sources */,
 				73FDF95D2F1F1BD900660198 /* MainTabBarController.swift in Sources */,
 				739CE0622F207F840017256F /* PersonalViewController.swift in Sources */,

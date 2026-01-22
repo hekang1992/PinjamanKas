@@ -171,6 +171,7 @@ class magicallyModel: Codable {
     var soldiers: String?
     var view: String?
     var headquarters: String?
+    var possibly: Int?
 }
 
 class lighterModel: Codable {

@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import Alamofire
+import MJRefresh
 
 class OrderViewController: BaseViewController {
     
@@ -14,9 +16,18 @@ class OrderViewController: BaseViewController {
     
     private var selectedButton: UIButton?
     
+    var modelArray: [magicallyModel] = []
+    
     lazy var orderView: OrderView = {
         let orderView = OrderView(frame: .zero)
+        orderView.isHidden = true
         return orderView
+    }()
+    
+    lazy var emptyView: OrderEmptyView = {
+        let emptyView = OrderEmptyView(frame: .zero)
+        emptyView.isHidden = true
+        return emptyView
     }()
     
     lazy var oneImageView: UIImageView = {
@@ -90,6 +101,23 @@ class OrderViewController: BaseViewController {
         return fourBtn
     }()
     
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.estimatedRowHeight = 100
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(OrderViewCell.self, forCellReuseIdentifier: "OrderViewCell")
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(orderView)
@@ -120,7 +148,7 @@ class OrderViewController: BaseViewController {
         view.addSubview(contentView)
         contentView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(oneImageView.snp.bottom).offset(20)
+            make.top.equalTo(oneImageView.snp.bottom).offset(10)
             make.size.equalTo(CGSize(width: 335, height: 40))
         }
         
@@ -132,23 +160,46 @@ class OrderViewController: BaseViewController {
         oneBtn.snp.makeConstraints { make in
             make.left.equalToSuperview()
             make.size.equalTo(CGSize(width: 80, height: 38))
-            make.bottom.equalToSuperview().offset(-12)
+            make.centerY.equalToSuperview()
         }
         twoBtn.snp.makeConstraints { make in
             make.left.equalTo(oneBtn.snp.right).offset(4)
             make.size.equalTo(CGSize(width: 80, height: 38))
-            make.bottom.equalToSuperview().offset(-12)
+            make.centerY.equalToSuperview()
         }
         threeBtn.snp.makeConstraints { make in
             make.left.equalTo(twoBtn.snp.right).offset(4)
             make.size.equalTo(CGSize(width: 80, height: 38))
-            make.bottom.equalToSuperview().offset(-12)
+            make.centerY.equalToSuperview()
         }
         fourBtn.snp.makeConstraints { make in
             make.left.equalTo(threeBtn.snp.right).offset(4)
             make.size.equalTo(CGSize(width: 80, height: 38))
-            make.bottom.equalToSuperview().offset(-12)
+            make.centerY.equalToSuperview()
         }
+        
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.bottom).offset(2)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
+        view.addSubview(emptyView)
+        emptyView.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.bottom).offset(2)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
+        emptyView.clickBlock = {
+            NotificationCenter.default.post(name: Notification.Name("changeRootVc"), object: nil)
+        }
+        
+        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            Task {
+                await self.orderListInfo(with: self.type)
+            }
+        })
         
         setupInitialSelectedButton()
     }
@@ -176,6 +227,11 @@ class OrderViewController: BaseViewController {
         if let button = initialButton {
             selectButton(button)
         }
+        
+        Task {
+            await self.orderListInfo(with: type)
+        }
+        
     }
     
 }
@@ -184,28 +240,29 @@ extension OrderViewController {
     
     @objc private func buttonTapped(_ sender: UIButton) {
         let tag = sender.tag
+        var type: String = ""
         switch tag {
         case 0:
-            // All按钮点击处理
-            break
+            type = "4"
             
         case 1:
-            // Applying按钮点击处理
-            break
+            type = "7"
             
         case 2:
-            // Repayment按钮点击处理
-            break
+            type = "6"
             
         case 3:
-            // Finished按钮点击处理
-            break
+            type = "5"
             
         default:
             break
         }
         
         selectButton(sender)
+        
+        Task {
+            await self.orderListInfo(with: type)
+        }
     }
     
     private func selectButton(_ button: UIButton) {
@@ -229,4 +286,58 @@ extension OrderViewController {
         
     }
     
+}
+
+extension OrderViewController {
+    
+    private func orderListInfo(with type: String) async {
+        do {
+            LoadingView.shared.show()
+            let params = ["balance": type, "partners": "1", "profitable": "99"]
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/never/instructed/great", method: .post, params: params)
+            let sinking = model.sinking ?? ""
+            if ["0", "00"].contains(sinking) {
+                let modelArray = model.sagged?.magically ?? []
+                self.modelArray = modelArray
+                if modelArray.isEmpty {
+                    tableView.isHidden = true
+                    emptyView.isHidden = false
+                }else {
+                    tableView.isHidden = false
+                    emptyView.isHidden = true
+                }
+                self.tableView.reloadData()
+            }
+            LoadingView.shared.hide()
+            await self.tableView.mj_header?.endRefreshing()
+        } catch {
+            tableView.isHidden = true
+            emptyView.isHidden = false
+            LoadingView.shared.hide()
+            await self.tableView.mj_header?.endRefreshing()
+        }
+    }
+    
+}
+
+extension OrderViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.modelArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = self.modelArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderViewCell", for: indexPath) as! OrderViewCell
+        cell.model = model
+        return cell
+    }
 }
