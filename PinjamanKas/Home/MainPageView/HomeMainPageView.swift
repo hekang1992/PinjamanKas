@@ -98,6 +98,7 @@ extension HomeMainPageView: UITableViewDelegate, UITableViewDataSource {
         switch type {
         case "wedding3":
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainOneViewCell", for: indexPath) as! MainOneViewCell
+            cell.model = listArray[indexPath.row]
             return cell
             
         case "wedding4":
