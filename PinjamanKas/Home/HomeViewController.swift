@@ -48,7 +48,6 @@ class HomeViewController: BaseViewController {
             Task {
                 await self.clickProductInfo(with: productID)
             }
-            
         }
         
         Task {
@@ -60,9 +59,9 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Task {
-            async let homeTask: () = homeInfo()
-            async let idfaTask: () = uploadIDFA()
-            let _ = await (homeTask, idfaTask)
+            async let fetchHomeInfo: Void = homeInfo()
+            async let uploadIDFATask: Void = uploadIDFA()
+            let _ = await (fetchHomeInfo, uploadIDFATask)
         }
     }
     
