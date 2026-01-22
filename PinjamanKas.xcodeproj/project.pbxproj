@@ -10,6 +10,16 @@
 		73004AAA2F21BACB00CEAFAC /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AA92F21BACB00CEAFAC /* NetworkMonitor.swift */; };
 		73004AAC2F21D2B200CEAFAC /* OrderEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AAB2F21D2B200CEAFAC /* OrderEmptyView.swift */; };
 		73004AAE2F21D38A00CEAFAC /* OrderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AAD2F21D38A00CEAFAC /* OrderViewCell.swift */; };
+		73004ADD2F22219600CEAFAC /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AD52F22219600CEAFAC /* HomeCardView.swift */; };
+		73004ADE2F22219600CEAFAC /* HomeHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AD62F22219600CEAFAC /* HomeHeadView.swift */; };
+		73004ADF2F22219600CEAFAC /* HomeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AD72F22219600CEAFAC /* HomeItemView.swift */; };
+		73004AE02F22219600CEAFAC /* HomeMainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AD82F22219600CEAFAC /* HomeMainPageView.swift */; };
+		73004AE12F22219600CEAFAC /* HomeMentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AD92F22219600CEAFAC /* HomeMentView.swift */; };
+		73004AE22F22219600CEAFAC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004ADA2F22219600CEAFAC /* HomeView.swift */; };
+		73004AE32F22219600CEAFAC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004ADB2F22219600CEAFAC /* HomeViewController.swift */; };
+		73004AE72F2221F700CEAFAC /* MainOneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AE62F2221F700CEAFAC /* MainOneViewCell.swift */; };
+		73004AE92F22220100CEAFAC /* MainTwoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AE82F22220100CEAFAC /* MainTwoViewCell.swift */; };
+		73004AEB2F22221200CEAFAC /* MainProductListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AEA2F22221200CEAFAC /* MainProductListViewCell.swift */; };
 		739CE05A2F20679E0017256F /* PopFrontListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0592F20679E0017256F /* PopFrontListView.swift */; };
 		739CE05C2F206B980017256F /* CommonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE05B2F206B980017256F /* CommonViewCell.swift */; };
 		739CE05E2F206CCB0017256F /* SpecialViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE05D2F206CCB0017256F /* SpecialViewCell.swift */; };
@@ -31,23 +41,17 @@
 		73FDF9472F1F187700660198 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9462F1F187700660198 /* NetworkManager.swift */; };
 		73FDF9492F1F1A4000660198 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9482F1F1A4000660198 /* LoginView.swift */; };
 		73FDF94B2F1F1A5000660198 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF94A2F1F1A5000660198 /* LoginViewController.swift */; };
-		73FDF94D2F1F1A5800660198 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF94C2F1F1A5800660198 /* HomeViewController.swift */; };
 		73FDF94F2F1F1A6000660198 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF94E2F1F1A6000660198 /* OrderViewController.swift */; };
 		73FDF9512F1F1A6800660198 /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9502F1F1A6800660198 /* CenterViewController.swift */; };
 		73FDF9532F1F1A7000660198 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9522F1F1A7000660198 /* ProductViewController.swift */; };
 		73FDF9552F1F1A7B00660198 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9542F1F1A7B00660198 /* ProductView.swift */; };
 		73FDF9572F1F1A8600660198 /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9562F1F1A8600660198 /* CenterView.swift */; };
 		73FDF9592F1F1A9700660198 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9582F1F1A9700660198 /* OrderView.swift */; };
-		73FDF95B2F1F1AA100660198 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF95A2F1F1AA100660198 /* HomeView.swift */; };
 		73FDF95D2F1F1BD900660198 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF95C2F1F1BD900660198 /* MainTabBarController.swift */; };
 		73FDF9612F1F216400660198 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9602F1F216400660198 /* UserManager.swift */; };
 		73FDF9632F1F222900660198 /* URLParameterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9622F1F222900660198 /* URLParameterBuilder.swift */; };
 		73FDF9652F1F22D400660198 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9642F1F22D400660198 /* KeychainHelper.swift */; };
 		73FDF9672F1F300200660198 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9662F1F300200660198 /* LoadingView.swift */; };
-		73FDF9692F1F34EE00660198 /* HomeHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9682F1F34EE00660198 /* HomeHeadView.swift */; };
-		73FDF96B2F1F3E3400660198 /* HomeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF96A2F1F3E3400660198 /* HomeItemView.swift */; };
-		73FDF96D2F1F40B800660198 /* HomeMentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF96C2F1F40B800660198 /* HomeMentView.swift */; };
-		73FDF96F2F1F40CB00660198 /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF96E2F1F40CB00660198 /* HomeCardView.swift */; };
 		73FDF9712F1F752200660198 /* CenterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9702F1F752200660198 /* CenterViewCell.swift */; };
 		73FDF9732F1F816D00660198 /* DeepLinkRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9722F1F816D00660198 /* DeepLinkRoute.swift */; };
 		73FDF9752F1F818C00660198 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9742F1F818C00660198 /* SettingViewController.swift */; };
@@ -68,6 +72,16 @@
 		73004AA92F21BACB00CEAFAC /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		73004AAB2F21D2B200CEAFAC /* OrderEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEmptyView.swift; sourceTree = "<group>"; };
 		73004AAD2F21D38A00CEAFAC /* OrderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewCell.swift; sourceTree = "<group>"; };
+		73004AD52F22219600CEAFAC /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
+		73004AD62F22219600CEAFAC /* HomeHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeadView.swift; sourceTree = "<group>"; };
+		73004AD72F22219600CEAFAC /* HomeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemView.swift; sourceTree = "<group>"; };
+		73004AD82F22219600CEAFAC /* HomeMainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainPageView.swift; sourceTree = "<group>"; };
+		73004AD92F22219600CEAFAC /* HomeMentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMentView.swift; sourceTree = "<group>"; };
+		73004ADA2F22219600CEAFAC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		73004ADB2F22219600CEAFAC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		73004AE62F2221F700CEAFAC /* MainOneViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOneViewCell.swift; sourceTree = "<group>"; };
+		73004AE82F22220100CEAFAC /* MainTwoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTwoViewCell.swift; sourceTree = "<group>"; };
+		73004AEA2F22221200CEAFAC /* MainProductListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProductListViewCell.swift; sourceTree = "<group>"; };
 		739CE0592F20679E0017256F /* PopFrontListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFrontListView.swift; sourceTree = "<group>"; };
 		739CE05B2F206B980017256F /* CommonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewCell.swift; sourceTree = "<group>"; };
 		739CE05D2F206CCB0017256F /* SpecialViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialViewCell.swift; sourceTree = "<group>"; };
@@ -92,23 +106,17 @@
 		73FDF9462F1F187700660198 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		73FDF9482F1F1A4000660198 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		73FDF94A2F1F1A5000660198 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		73FDF94C2F1F1A5800660198 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		73FDF94E2F1F1A6000660198 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		73FDF9502F1F1A6800660198 /* CenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
 		73FDF9522F1F1A7000660198 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		73FDF9542F1F1A7B00660198 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		73FDF9562F1F1A8600660198 /* CenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterView.swift; sourceTree = "<group>"; };
 		73FDF9582F1F1A9700660198 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
-		73FDF95A2F1F1AA100660198 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		73FDF95C2F1F1BD900660198 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		73FDF9602F1F216400660198 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		73FDF9622F1F222900660198 /* URLParameterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterBuilder.swift; sourceTree = "<group>"; };
 		73FDF9642F1F22D400660198 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		73FDF9662F1F300200660198 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		73FDF9682F1F34EE00660198 /* HomeHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeadView.swift; sourceTree = "<group>"; };
-		73FDF96A2F1F3E3400660198 /* HomeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemView.swift; sourceTree = "<group>"; };
-		73FDF96C2F1F40B800660198 /* HomeMentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMentView.swift; sourceTree = "<group>"; };
-		73FDF96E2F1F40CB00660198 /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
 		73FDF9702F1F752200660198 /* CenterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterViewCell.swift; sourceTree = "<group>"; };
 		73FDF9722F1F816D00660198 /* DeepLinkRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkRoute.swift; sourceTree = "<group>"; };
 		73FDF9742F1F818C00660198 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +153,47 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		73004AD42F22219600CEAFAC /* MainPageView */ = {
+			isa = PBXGroup;
+			children = (
+				73004AD82F22219600CEAFAC /* HomeMainPageView.swift */,
+				73004AE62F2221F700CEAFAC /* MainOneViewCell.swift */,
+				73004AE82F22220100CEAFAC /* MainTwoViewCell.swift */,
+				73004AEA2F22221200CEAFAC /* MainProductListViewCell.swift */,
+			);
+			path = MainPageView;
+			sourceTree = "<group>";
+		};
+		73004ADC2F22219600CEAFAC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				73004AE42F2221A400CEAFAC /* MinPageView */,
+				73004AD42F22219600CEAFAC /* MainPageView */,
+				73004AE52F2221D700CEAFAC /* Controller */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		73004AE42F2221A400CEAFAC /* MinPageView */ = {
+			isa = PBXGroup;
+			children = (
+				73004ADA2F22219600CEAFAC /* HomeView.swift */,
+				73004AD52F22219600CEAFAC /* HomeCardView.swift */,
+				73004AD62F22219600CEAFAC /* HomeHeadView.swift */,
+				73004AD72F22219600CEAFAC /* HomeItemView.swift */,
+				73004AD92F22219600CEAFAC /* HomeMentView.swift */,
+			);
+			path = MinPageView;
+			sourceTree = "<group>";
+		};
+		73004AE52F2221D700CEAFAC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				73004ADB2F22219600CEAFAC /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		73FBF4F82F1F0E7F0071C925 = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +224,7 @@
 				73FDF93C2F1F159B00660198 /* Product */,
 				73FDF93B2F1F159900660198 /* Center */,
 				73FDF93A2F1F159600660198 /* Order */,
-				73FDF9392F1F159400660198 /* Home */,
+				73004ADC2F22219600CEAFAC /* Home */,
 				73FDF9382F1F159100660198 /* Login */,
 				73FDF9372F1F158F00660198 /* Http */,
 				73FDF9362F1F158900660198 /* Base */,
@@ -214,19 +263,6 @@
 				73FDF94A2F1F1A5000660198 /* LoginViewController.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		73FDF9392F1F159400660198 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				73FDF95A2F1F1AA100660198 /* HomeView.swift */,
-				73FDF9682F1F34EE00660198 /* HomeHeadView.swift */,
-				73FDF96A2F1F3E3400660198 /* HomeItemView.swift */,
-				73FDF96E2F1F40CB00660198 /* HomeCardView.swift */,
-				73FDF96C2F1F40B800660198 /* HomeMentView.swift */,
-				73FDF94C2F1F1A5800660198 /* HomeViewController.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		73FDF93A2F1F159600660198 /* Order */ = {
@@ -442,12 +478,19 @@
 				739CE05A2F20679E0017256F /* PopFrontListView.swift in Sources */,
 				73FDF9472F1F187700660198 /* NetworkManager.swift in Sources */,
 				739CE06A2F20B40B0017256F /* WalletViewController.swift in Sources */,
-				73FDF96B2F1F3E3400660198 /* HomeItemView.swift in Sources */,
 				73FF7EFD2F1FA6A20072F5B6 /* PopOutView.swift in Sources */,
 				73FDF9652F1F22D400660198 /* KeychainHelper.swift in Sources */,
 				73004AAE2F21D38A00CEAFAC /* OrderViewCell.swift in Sources */,
 				73FDF9572F1F1A8600660198 /* CenterView.swift in Sources */,
 				73FDF9672F1F300200660198 /* LoadingView.swift in Sources */,
+				73004AE92F22220100CEAFAC /* MainTwoViewCell.swift in Sources */,
+				73004ADD2F22219600CEAFAC /* HomeCardView.swift in Sources */,
+				73004ADE2F22219600CEAFAC /* HomeHeadView.swift in Sources */,
+				73004ADF2F22219600CEAFAC /* HomeItemView.swift in Sources */,
+				73004AE02F22219600CEAFAC /* HomeMainPageView.swift in Sources */,
+				73004AE12F22219600CEAFAC /* HomeMentView.swift in Sources */,
+				73004AE22F22219600CEAFAC /* HomeView.swift in Sources */,
+				73004AE32F22219600CEAFAC /* HomeViewController.swift in Sources */,
 				73FF7F012F1FB52E0072F5B6 /* BaseView.swift in Sources */,
 				73FDF94F2F1F1A6000660198 /* OrderViewController.swift in Sources */,
 				739CE0682F20B4000017256F /* ContactViewController.swift in Sources */,
@@ -459,30 +502,27 @@
 				739CE0722F20C5190017256F /* ContactManager.swift in Sources */,
 				73FDF9552F1F1A7B00660198 /* ProductView.swift in Sources */,
 				73FDF94B2F1F1A5000660198 /* LoginViewController.swift in Sources */,
-				73FDF96D2F1F40B800660198 /* HomeMentView.swift in Sources */,
 				73FDF9772F1F83C500660198 /* H5WebViewController.swift in Sources */,
 				73FDF9532F1F1A7000660198 /* ProductViewController.swift in Sources */,
 				73FF7F092F1FC4CF0072F5B6 /* FaceViewController.swift in Sources */,
 				739CE05E2F206CCB0017256F /* SpecialViewCell.swift in Sources */,
 				73FDF9732F1F816D00660198 /* DeepLinkRoute.swift in Sources */,
-				73FDF96F2F1F40CB00660198 /* HomeCardView.swift in Sources */,
+				73004AE72F2221F700CEAFAC /* MainOneViewCell.swift in Sources */,
 				73FDF9592F1F1A9700660198 /* OrderView.swift in Sources */,
 				73FDF9712F1F752200660198 /* CenterViewCell.swift in Sources */,
 				73FDF9752F1F818C00660198 /* SettingViewController.swift in Sources */,
-				73FDF94D2F1F1A5800660198 /* HomeViewController.swift in Sources */,
 				73FF7F152F1FD6940072F5B6 /* SimpleCameraManager.swift in Sources */,
 				73004AAC2F21D2B200CEAFAC /* OrderEmptyView.swift in Sources */,
+				73004AEB2F22221200CEAFAC /* MainProductListViewCell.swift in Sources */,
 				73FDF9412F1F169700660198 /* BaseNavigationController.swift in Sources */,
 				73FDF95D2F1F1BD900660198 /* MainTabBarController.swift in Sources */,
 				739CE0622F207F840017256F /* PersonalViewController.swift in Sources */,
 				73FDF9512F1F1A6800660198 /* CenterViewController.swift in Sources */,
-				73FDF95B2F1F1AA100660198 /* HomeView.swift in Sources */,
 				73FDF9432F1F16BF00660198 /* LaunchViewController.swift in Sources */,
 				73FDF9452F1F181000660198 /* BaseModel.swift in Sources */,
 				73FDF97B2F1F847600660198 /* AppHeadView.swift in Sources */,
 				739CE05C2F206B980017256F /* CommonViewCell.swift in Sources */,
 				739CE0662F20AE530017256F /* CityDecodeModel.swift in Sources */,
-				73FDF9692F1F34EE00660198 /* HomeHeadView.swift in Sources */,
 				73004AAA2F21BACB00CEAFAC /* NetworkMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
