@@ -34,6 +34,10 @@ extension AppDelegate {
     }
     
     @objc private func changeRootVc() {
-        window?.rootViewController = MainTabBarController()
+        if UserManager.shared.isLogin {
+            window?.rootViewController = MainTabBarController()
+        }else {
+            window?.rootViewController = BaseNavigationController(rootViewController: LoginViewController())
+        }
     }
 }

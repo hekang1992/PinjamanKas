@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 import SnapKit
+import StoreKit
 
 class H5WebViewController: BaseViewController {
     
@@ -23,7 +24,6 @@ class H5WebViewController: BaseViewController {
         }
         
         config.userContentController = contentController
-        
         let webView = WKWebView(frame: .zero, configuration: config)
         webView.allowsBackForwardNavigationGestures = true
         return webView
@@ -37,6 +37,13 @@ class H5WebViewController: BaseViewController {
         return progressView
     }()
     
+    lazy var bgImageView: UIImageView = {
+        let bgImageView = UIImageView()
+        bgImageView.image = UIImage(named: "ce_bg_image")
+        bgImageView.contentMode = .scaleAspectFill
+        return bgImageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -48,6 +55,12 @@ class H5WebViewController: BaseViewController {
     }
     
     private func setupUI() {
+        
+        view.addSubview(bgImageView)
+        bgImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         view.addSubview(appHeadView)
         appHeadView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
@@ -77,7 +90,7 @@ class H5WebViewController: BaseViewController {
     
     private func loadWebPage() {
         
-        let requestUrl = URLParameterBuilder.appendParams(to: "https://www.baidu.com")
+        let requestUrl = URLParameterBuilder.appendParams(to: pageUrl)
         
         guard let url = URL(string: requestUrl) else {
             return
@@ -118,54 +131,84 @@ class H5WebViewController: BaseViewController {
 extension H5WebViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController,
                                didReceive message: WKScriptMessage) {
-        // 根据不同的方法名处理H5调用
+        print("name===\(message.name)")
+        print("body===\(message.body)")
         switch message.name {
         case "harmonyGrove":
             handleHarmonyGrove(message: message)
+            
         case "whisperedSecrets":
             handleWhisperedSecrets(message: message)
+            
         case "frostyMorn":
             handleFrostyMorn(message: message)
+            
         case "galaxyWaltz":
             handleGalaxyWaltz(message: message)
+            
         case "illusionMirage":
             handleIllusionMirage(message: message)
+            
         case "jadeEmbrace":
             handleJadeEmbrace(message: message)
+            
         default:
-            print("未处理的方法: \(message.name)")
+            break
         }
     }
     
-    // MARK: - H5方法处理实现
     private func handleHarmonyGrove(message: WKScriptMessage) {
-        print("调用 harmonyGrove 方法")
-        // 这里实现 harmonyGrove 的逻辑
-        // message.body 包含H5传递过来的参数
+        let body = message.body as? [String] ?? []
+        let productID = body.first ?? ""
+        let orderID = body.last ?? ""
     }
     
     private func handleWhisperedSecrets(message: WKScriptMessage) {
-        print("调用 whisperedSecrets 方法")
-        // 这里实现 whisperedSecrets 的逻辑
+        let body = message.body as? String ?? ""
+        if body.hasPrefix(DeepLinkRoute.scheme_url) {
+            URLSchemeRouter.handle(pageURL: body, from: self)
+        }else if body.hasPrefix("http") {
+            self.pageUrl = body
+            self.loadWebPage()
+        }
     }
     
     private func handleFrostyMorn(message: WKScriptMessage) {
-        print("调用 frostyMorn 方法")
-        // 这里实现 frostyMorn 的逻辑
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func handleGalaxyWaltz(message: WKScriptMessage) {
-        print("调用 galaxyWaltz 方法")
-        // 这里实现 galaxyWaltz 的逻辑
+        NotificationCenter.default.post(name: Notification.Name("changeRootVc"), object: nil)
     }
     
     private func handleIllusionMirage(message: WKScriptMessage) {
-        print("调用 illusionMirage 方法")
-        // 这里实现 illusionMirage 的逻辑
+        let email = message.body as? String ?? ""
+        let phone = UserManager.shared.getPhone()
+        let body = "Pinjaman Kas: \(phone)"
+        
+        guard let encodedBody = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let emailURL = URL(string: "mailto:\(email)?body=\(encodedBody)"),
+              UIApplication.shared.canOpenURL(emailURL) else {
+            return
+        }
+        UIApplication.shared.open(emailURL, options: [:], completionHandler: nil)
     }
     
     private func handleJadeEmbrace(message: WKScriptMessage) {
-        print("调用 jadeEmbrace 方法")
-        // 这里实现 jadeEmbrace 的逻辑
+        DispatchQueue.main.async {
+            self.toAppStore()
+        }
     }
+}
+
+extension H5WebViewController {
+    
+    func toAppStore() {
+        guard #available(iOS 14.0, *),
+              let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return
+        }
+        SKStoreReviewController.requestReview(in: windowScene)
+    }
+    
 }
