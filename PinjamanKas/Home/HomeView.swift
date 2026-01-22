@@ -123,12 +123,6 @@ class HomeView: BaseView {
         return footImageView
     }()
     
-    lazy var footWhiteView: UIView = {
-        let footWhiteView = UIView()
-        footWhiteView.backgroundColor = .red
-        return footWhiteView
-    }()
-    
     lazy var clickBtn: UIButton = {
         let clickBtn = UIButton(type: .custom)
         clickBtn.addTarget(self, action: #selector(applyClick), for: .touchUpInside)

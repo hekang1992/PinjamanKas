@@ -45,6 +45,7 @@ class OrderViewCell: UITableViewCell {
             threeLabel.text = model.irritation ?? ""
             fourLabel.text = model.dateContent ?? ""
             typeLabel.text = model.soltozzo ?? ""
+            applyLabel.text = model.failed?.showWord ?? ""
         }
     }
 
@@ -55,7 +56,7 @@ class OrderViewCell: UITableViewCell {
         bgView.backgroundColor = UIColor.init(hex: "#FFFFFF")
         bgView.layer.borderWidth = 1
         bgView.layer.borderColor = UIColor.init(hex: "#F1F1F3")?.cgColor
-        bgView.backgroundColor = .red
+        bgView.backgroundColor = .white
         return bgView
     }()
     
@@ -137,6 +138,14 @@ class OrderViewCell: UITableViewCell {
         return applyImageView
     }()
     
+    lazy var applyLabel: UILabel = {
+        let applyLabel = UILabel()
+        applyLabel.textAlignment = .center
+        applyLabel.textColor = UIColor.init(hex: "#030305")
+        applyLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(500))
+        return applyLabel
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
@@ -151,11 +160,14 @@ class OrderViewCell: UITableViewCell {
         bgView.addSubview(threeLabel)
         bgView.addSubview(fourLabel)
         bgView.addSubview(applyImageView)
+        applyImageView.addSubview(applyLabel)
         
         bgView.snp.makeConstraints { make in
             make.width.equalTo(335)
+            make.height.equalTo(153)
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(10)
+            make.top.equalToSuperview().offset(5)
+            make.bottom.equalToSuperview().offset(-10)
         }
         headView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
@@ -200,7 +212,10 @@ class OrderViewCell: UITableViewCell {
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 211, height: 36))
             make.top.equalTo(threeLabel.snp.bottom).offset(17)
-            make.bottom.equalToSuperview().offset(-10)
+        }
+        applyLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.equalTo(30)
         }
     }
     

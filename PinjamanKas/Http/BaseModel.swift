@@ -179,6 +179,12 @@ class magicallyModel: Codable {
     var dateContent: String?
     var irritation: String?
     var soltozzo: String?
+    var furiously: String?
+    var failed: failedModel?
+}
+
+class failedModel: Codable {
+    var showWord: String?
 }
 
 class lighterModel: Codable {
