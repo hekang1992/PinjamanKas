@@ -334,7 +334,7 @@ class CenterView: BaseView {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(privacyBtn.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
-            make.left.equalToSuperview()
+            make.left.equalToSuperview().offset(10)
             make.height.equalTo(300)
             make.bottom.equalToSuperview().offset(-80)
         }

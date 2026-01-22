@@ -60,6 +60,13 @@ extension HomeViewController {
                 await self.homeInfo()
             }
         })
+        
+        mainPageView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            Task {
+                await self.homeInfo()
+            }
+        })
     }
     
     private func setupCallbacks() {
@@ -268,6 +275,7 @@ extension HomeViewController {
     @MainActor
     private func endRefreshing() {
         homeView.scrollView.mj_header?.endRefreshing()
+        mainPageView.tableView.mj_header?.endRefreshing()
     }
 }
 

@@ -13,7 +13,6 @@ class HomeMainPageView: BaseView {
     
     var modelArray: [magicallyModel]? {
         didSet {
-            guard let modelArray = modelArray else { return }
             tableView.reloadData()
         }
     }
@@ -53,6 +52,7 @@ class HomeMainPageView: BaseView {
         super.init(frame: frame)
         addSubview(bgImageView)
         addSubview(headView)
+        addSubview(tableView)
         
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -62,7 +62,11 @@ class HomeMainPageView: BaseView {
             make.left.right.equalToSuperview()
             make.height.equalTo(44)
         }
-        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(headView.snp.bottom).offset(10)
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -78,7 +82,12 @@ extension HomeMainPageView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return modelArray?[section].lighter?.count ?? 0
+        let type = modelArray?[section].appear ?? ""
+        if type == "wedding4" {
+            return 1
+        }else {
+            return modelArray?[section].lighter?.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -100,8 +109,36 @@ extension HomeMainPageView: UITableViewDelegate, UITableViewDataSource {
         default:
             return UITableViewCell()
         }
-        return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let type = modelArray?[section].appear ?? ""
+        if type == "wedding5" {
+            return 30
+        }else {
+            return 0.01
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let type = modelArray?[section].appear ?? ""
+        if type == "wedding5" {
+            let headView = UIView()
+            let nameLabel = UILabel()
+            nameLabel.textAlignment = .left
+            nameLabel.text = languageCode == "701" ? "Produk pinjaman" : "Loan products"
+            nameLabel.textColor = UIColor.init(hex: "#030305")
+            nameLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(500))
+            headView.addSubview(nameLabel)
+            nameLabel.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+                make.width.equalTo(335)
+                make.height.equalTo(15)
+            }
+            return headView
+        }else {
+            return UIView()
+        }
+    }
     
 }
