@@ -74,6 +74,12 @@ extension HomeViewController {
             guard let self = self else { return }
             self.handleProductClick(productID)
         }
+        
+        mainPageView.cellTapBlock = { [weak self] model in
+            guard let self = self else { return }
+            let productID = String(Int(model.holes ?? 0))
+            self.handleProductClick(productID)
+        }
     }
     
     private func loadInitialData() {

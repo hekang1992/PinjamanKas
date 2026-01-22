@@ -201,6 +201,7 @@ class lighterModel: Codable {
     var gleaming: String?
     var wood: String?
     var deserted: String?
+    var th: String?
 }
 
 class tailModel: Codable {

@@ -16,6 +16,8 @@ class HomeMainPageView: BaseView {
             tableView.reloadData()
         }
     }
+    
+    var cellTapBlock: ((lighterModel) -> Void)?
         
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -104,6 +106,7 @@ extension HomeMainPageView: UITableViewDelegate, UITableViewDataSource {
             
         case "wedding5":
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainProductListViewCell", for: indexPath) as! MainProductListViewCell
+            cell.model = listArray[indexPath.row]
             return cell
             
         default:
@@ -139,6 +142,12 @@ extension HomeMainPageView: UITableViewDelegate, UITableViewDataSource {
         }else {
             return UIView()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let listArray = modelArray?[indexPath.section].lighter ?? []
+        let model = listArray[indexPath.row]
+        self.cellTapBlock?(model)
     }
     
 }

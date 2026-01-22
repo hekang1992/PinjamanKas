@@ -20,7 +20,6 @@ class OrderViewController: BaseViewController {
     
     lazy var orderView: OrderView = {
         let orderView = OrderView(frame: .zero)
-        orderView.isHidden = true
         return orderView
     }()
     

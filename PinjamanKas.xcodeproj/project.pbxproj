@@ -31,6 +31,7 @@
 		739CE06A2F20B40B0017256F /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0692F20B40B0017256F /* WalletViewController.swift */; };
 		739CE06C2F20B5C50017256F /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE06B2F20B5C50017256F /* ContactViewCell.swift */; };
 		739CE0722F20C5190017256F /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0712F20C5190017256F /* ContactManager.swift */; };
+		739EFFDF2F22676D00D45062 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739EFFDE2F22676D00D45062 /* OrderView.swift */; };
 		73FBF5232F1F0E880071C925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FBF5192F1F0E880071C925 /* AppDelegate.swift */; };
 		73FBF5262F1F0E880071C925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FBF51A2F1F0E880071C925 /* Assets.xcassets */; };
 		73FBF5282F1F0E880071C925 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73FBF51D2F1F0E880071C925 /* LaunchScreen.storyboard */; };
@@ -46,7 +47,6 @@
 		73FDF9532F1F1A7000660198 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9522F1F1A7000660198 /* ProductViewController.swift */; };
 		73FDF9552F1F1A7B00660198 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9542F1F1A7B00660198 /* ProductView.swift */; };
 		73FDF9572F1F1A8600660198 /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9562F1F1A8600660198 /* CenterView.swift */; };
-		73FDF9592F1F1A9700660198 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9582F1F1A9700660198 /* OrderView.swift */; };
 		73FDF95D2F1F1BD900660198 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF95C2F1F1BD900660198 /* MainTabBarController.swift */; };
 		73FDF9612F1F216400660198 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9602F1F216400660198 /* UserManager.swift */; };
 		73FDF9632F1F222900660198 /* URLParameterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FDF9622F1F222900660198 /* URLParameterBuilder.swift */; };
@@ -93,6 +93,7 @@
 		739CE0692F20B40B0017256F /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		739CE06B2F20B5C50017256F /* ContactViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
 		739CE0712F20C5190017256F /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
+		739EFFDE2F22676D00D45062 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		73FBF5012F1F0E7F0071C925 /* PinjamanKas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinjamanKas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FBF5192F1F0E880071C925 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73FBF51A2F1F0E880071C925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -111,7 +112,6 @@
 		73FDF9522F1F1A7000660198 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		73FDF9542F1F1A7B00660198 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		73FDF9562F1F1A8600660198 /* CenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterView.swift; sourceTree = "<group>"; };
-		73FDF9582F1F1A9700660198 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		73FDF95C2F1F1BD900660198 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		73FDF9602F1F216400660198 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		73FDF9622F1F222900660198 /* URLParameterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterBuilder.swift; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 		73FDF93A2F1F159600660198 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				73FDF9582F1F1A9700660198 /* OrderView.swift */,
+				739EFFDE2F22676D00D45062 /* OrderView.swift */,
 				73FDF94E2F1F1A6000660198 /* OrderViewController.swift */,
 				73004AAB2F21D2B200CEAFAC /* OrderEmptyView.swift */,
 				73004AAD2F21D38A00CEAFAC /* OrderViewCell.swift */,
@@ -488,6 +488,7 @@
 				73004ADE2F22219600CEAFAC /* HomeHeadView.swift in Sources */,
 				73004ADF2F22219600CEAFAC /* HomeItemView.swift in Sources */,
 				73004AE02F22219600CEAFAC /* HomeMainPageView.swift in Sources */,
+				739EFFDF2F22676D00D45062 /* OrderView.swift in Sources */,
 				73004AE12F22219600CEAFAC /* HomeMentView.swift in Sources */,
 				73004AE22F22219600CEAFAC /* HomeView.swift in Sources */,
 				73004AE32F22219600CEAFAC /* HomeViewController.swift in Sources */,
@@ -508,7 +509,6 @@
 				739CE05E2F206CCB0017256F /* SpecialViewCell.swift in Sources */,
 				73FDF9732F1F816D00660198 /* DeepLinkRoute.swift in Sources */,
 				73004AE72F2221F700CEAFAC /* MainOneViewCell.swift in Sources */,
-				73FDF9592F1F1A9700660198 /* OrderView.swift in Sources */,
 				73FDF9712F1F752200660198 /* CenterViewCell.swift in Sources */,
 				73FDF9752F1F818C00660198 /* SettingViewController.swift in Sources */,
 				73FF7F152F1FD6940072F5B6 /* SimpleCameraManager.swift in Sources */,
