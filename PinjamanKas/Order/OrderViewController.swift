@@ -307,6 +307,9 @@ extension OrderViewController {
                     emptyView.isHidden = true
                 }
                 self.tableView.reloadData()
+            }else {
+                tableView.isHidden = true
+                emptyView.isHidden = false
             }
             LoadingView.shared.hide()
             await self.tableView.mj_header?.endRefreshing()

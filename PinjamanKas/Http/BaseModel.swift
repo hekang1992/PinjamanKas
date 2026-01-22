@@ -172,6 +172,13 @@ class magicallyModel: Codable {
     var view: String?
     var headquarters: String?
     var possibly: Int?
+    var rats: String?
+    var emerge: String?
+    var LoanAmountText: String?
+    var moneyContent: String?
+    var dateContent: String?
+    var irritation: String?
+    var soltozzo: String?
 }
 
 class lighterModel: Codable {
