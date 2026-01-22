@@ -19,18 +19,23 @@ class OrderViewCell: UITableViewCell {
             switch possibly {
             case 1:
                 headView.backgroundColor = UIColor(hex: "#FFF3F3")
+                typeLabel.textColor = UIColor(hex: "#FF8981")
                 
             case 2:
                 headView.backgroundColor = UIColor(hex: "#FAFEE6")
+                typeLabel.textColor = UIColor(hex: "#A4C00F")
                 
             case 3:
                 headView.backgroundColor = UIColor(hex: "#FFFCF2")
+                typeLabel.textColor = UIColor(hex: "#9D9D9F")
                 
             case 4:
                 headView.backgroundColor = UIColor(hex: "#F6F6F6")
+                typeLabel.textColor = UIColor(hex: "#9D9D9F")
                 
             default:
                 headView.backgroundColor = .white
+                typeLabel.textColor = .black
             }
             
             nameLabel.text = model.rats ?? ""
@@ -50,6 +55,7 @@ class OrderViewCell: UITableViewCell {
         bgView.backgroundColor = UIColor.init(hex: "#FFFFFF")
         bgView.layer.borderWidth = 1
         bgView.layer.borderColor = UIColor.init(hex: "#F1F1F3")?.cgColor
+        bgView.backgroundColor = .red
         return bgView
     }()
     
@@ -82,7 +88,7 @@ class OrderViewCell: UITableViewCell {
         let oneLabel = UILabel()
         oneLabel.textAlignment = .left
         oneLabel.textColor = UIColor.init(hex: "#9D9D9F")
-        oneLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight(300))
+        oneLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         return oneLabel
     }()
     
@@ -98,7 +104,7 @@ class OrderViewCell: UITableViewCell {
         let threeLabel = UILabel()
         threeLabel.textAlignment = .left
         threeLabel.textColor = UIColor.init(hex: "#9D9D9F")
-        threeLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight(300))
+        threeLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         return threeLabel
     }()
     
@@ -113,9 +119,22 @@ class OrderViewCell: UITableViewCell {
     lazy var typeLabel: UILabel = {
         let typeLabel = UILabel()
         typeLabel.textAlignment = .left
-        typeLabel.textColor = UIColor.init(hex: "#FFFFFF")
         typeLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(400))
         return typeLabel
+    }()
+    
+//    lazy var applyBtn: UIButton = {
+//        let applyBtn = UIButton(type: .custom)
+//        applyBtn.setTitleColor(UIColor.init(hex: "#030305"), for: .normal)
+//        applyBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(500))
+//        applyBtn.setBackgroundImage(UIImage(named: "orc_ding_image"), for: .normal)
+//        return applyBtn
+//    }()
+    
+    lazy var applyImageView: UIImageView = {
+        let applyImageView = UIImageView()
+        applyImageView.image = UIImage(named: "orc_ding_image")
+        return applyImageView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -131,11 +150,12 @@ class OrderViewCell: UITableViewCell {
         bgView.addSubview(twoLabel)
         bgView.addSubview(threeLabel)
         bgView.addSubview(fourLabel)
+        bgView.addSubview(applyImageView)
+        
         bgView.snp.makeConstraints { make in
-            make.size.equalTo(CGSize(width: 335, height: 184))
+            make.width.equalTo(335)
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(-8)
         }
         headView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
@@ -175,6 +195,12 @@ class OrderViewCell: UITableViewCell {
             make.centerY.equalTo(threeLabel)
             make.right.equalToSuperview().offset(-18)
             make.height.equalTo(16)
+        }
+        applyImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 211, height: 36))
+            make.top.equalTo(threeLabel.snp.bottom).offset(17)
+            make.bottom.equalToSuperview().offset(-10)
         }
     }
     
