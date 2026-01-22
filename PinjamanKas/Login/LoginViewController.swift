@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 import Alamofire
+import FBSDKCoreKit
+import AppTrackingTransparency
 
 class LoginViewController: BaseViewController {
     
@@ -40,6 +42,9 @@ class LoginViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.loginView.phoneFiled.becomeFirstResponder()
+        Task {
+            await self.getIDFA()
+        }
     }
     
     @MainActor
@@ -174,4 +179,55 @@ extension LoginViewController {
         countdownTimer?.invalidate()
         countdownTimer = nil
     }
+}
+
+extension LoginViewController {
+    
+    private func getIDFA() async {
+        guard #available(iOS 14, *) else { return }
+        try? await Task.sleep(nanoseconds: 1_000_000_000)
+        let status = await ATTrackingManager.requestTrackingAuthorization()
+        
+        switch status {
+        case .authorized, .denied, .notDetermined:
+            Task {
+                await self.uploadIDFA()
+            }
+            
+        case .restricted:
+            break
+            
+        @unknown default:
+            break
+        }
+    }
+    
+    private func uploadIDFA() async {
+        let idfa = KeychainHelper.shared.getIDFA()
+        let idfv = KeychainHelper.shared.getDeviceIDFV()
+        let params = ["controlling": idfv, "africa": idfa]
+        do {
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/contrition/witnesses/hospital", method: .post, params: params)
+            let sinking = model.sinking ?? ""
+            if ["0", "00"].contains(sinking) {
+                if let fcModel = model.sagged?.facebook {
+                    fcInfo(with: fcModel)
+                }
+            }
+        } catch {
+            
+        }
+    }
+    
+    private func fcInfo(with model: facebookModel) {
+        Settings.shared.displayName = model.displayName ?? ""
+        Settings.shared.appURLSchemeSuffix = model.appURLSchemeSuffix ?? ""
+        Settings.shared.appID = model.appID ?? ""
+        Settings.shared.clientToken = model.clientToken ?? ""
+        ApplicationDelegate.shared.application(
+            UIApplication.shared,
+            didFinishLaunchingWithOptions: nil
+        )
+    }
+    
 }

@@ -26,9 +26,36 @@ class LaunchViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
-        Task {
-            await self.initInfo()
+        NetworkMonitor.shared.statusChanged = { status in
+            switch status {
+            case .notReachable:
+                UserDefaults.standard.set("Bad Network", forKey: "network_type")
+                print("Bad Network=====")
+                
+            case .reachable(.ethernetOrWiFi):
+                UserDefaults.standard.set("WIFI", forKey: "network_type")
+                print("WIFI=====")
+                NetworkMonitor.shared.stopListening()
+                Task {
+                    await self.initInfo()
+                }
+                
+            case .reachable(.cellular):
+                UserDefaults.standard.set("5G", forKey: "network_type")
+                print("5G=====")
+                NetworkMonitor.shared.stopListening()
+                Task {
+                    await self.initInfo()
+                }
+                
+            case .unknown:
+                UserDefaults.standard.set("Unknown Network", forKey: "network_type")
+                print("Unknown Network=====")
+            }
         }
+
+        NetworkMonitor.shared.startListening()
+        
     }
     
 }
@@ -50,6 +77,7 @@ extension LaunchViewController {
             LoadingView.shared.hide()
         }
     }
+    
 }
 
 

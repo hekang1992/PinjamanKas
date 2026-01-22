@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73004AAA2F21BACB00CEAFAC /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AA92F21BACB00CEAFAC /* NetworkMonitor.swift */; };
 		739CE05A2F20679E0017256F /* PopFrontListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0592F20679E0017256F /* PopFrontListView.swift */; };
 		739CE05C2F206B980017256F /* CommonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE05B2F206B980017256F /* CommonViewCell.swift */; };
 		739CE05E2F206CCB0017256F /* SpecialViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE05D2F206CCB0017256F /* SpecialViewCell.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		6335EAF615887F3988B94E9C /* Pods_PinjamanKas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinjamanKas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73004AA92F21BACB00CEAFAC /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		739CE0592F20679E0017256F /* PopFrontListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFrontListView.swift; sourceTree = "<group>"; };
 		739CE05B2F206B980017256F /* CommonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewCell.swift; sourceTree = "<group>"; };
 		739CE05D2F206CCB0017256F /* SpecialViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialViewCell.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		73FDF93D2F1F15C600660198 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				73004AA92F21BACB00CEAFAC /* NetworkMonitor.swift */,
 				739CE0712F20C5190017256F /* ContactManager.swift */,
 				73FDF9662F1F300200660198 /* LoadingView.swift */,
 				73FDF97A2F1F847600660198 /* AppHeadView.swift */,
@@ -472,6 +475,7 @@
 				739CE05C2F206B980017256F /* CommonViewCell.swift in Sources */,
 				739CE0662F20AE530017256F /* CityDecodeModel.swift in Sources */,
 				73FDF9692F1F34EE00660198 /* HomeHeadView.swift in Sources */,
+				73004AAA2F21BACB00CEAFAC /* NetworkMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

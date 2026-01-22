@@ -8,12 +8,26 @@
 import UIKit
 import Foundation
 import Security
+import AppTrackingTransparency
+import AdSupport
 
 class KeychainHelper {
     
     static let shared = KeychainHelper()
-    private let service = "com.app.keychain.service"
-    private let account = "com.app.device.idfv"
+    private let service = "app.pinjamankas.keychain.service"
+    private let account = "app.pinjamankas.device.idfv"
+    
+    func getIDFA() -> String {
+        let manager = ASIdentifierManager.shared()
+        
+        let idfa = manager.advertisingIdentifier.uuidString
+        
+        if idfa == "00000000-0000-0000-0000-000000000000" {
+            return ""
+        }
+        
+        return idfa
+    }
 
     func getDeviceIDFV() -> String {
         if let savedIDFV = read(service: service, account: account) {

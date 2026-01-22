@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Alamofire
 import MJRefresh
+import FBSDKCoreKit
 
 class HomeViewController: BaseViewController {
     
@@ -59,7 +60,9 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Task {
-            await self.homeInfo()
+            async let homeTask: () = homeInfo()
+            async let idfaTask: () = uploadIDFA()
+            let _ = await (homeTask, idfaTask)
         }
     }
     
@@ -127,6 +130,34 @@ extension HomeViewController {
         } catch {
             
         }
+    }
+    
+    private func uploadIDFA() async {
+        let idfa = KeychainHelper.shared.getIDFA()
+        let idfv = KeychainHelper.shared.getDeviceIDFV()
+        let params = ["controlling": idfv, "africa": idfa]
+        do {
+            let model: BaseModel = try await NetworkManager.shared.request("/softly/contrition/witnesses/hospital", method: .post, params: params)
+            let sinking = model.sinking ?? ""
+            if ["0", "00"].contains(sinking) {
+                if let fcModel = model.sagged?.facebook {
+                    fcInfo(with: fcModel)
+                }
+            }
+        } catch {
+            
+        }
+    }
+    
+    private func fcInfo(with model: facebookModel) {
+        Settings.shared.displayName = model.displayName ?? ""
+        Settings.shared.appURLSchemeSuffix = model.appURLSchemeSuffix ?? ""
+        Settings.shared.appID = model.appID ?? ""
+        Settings.shared.clientToken = model.clientToken ?? ""
+        ApplicationDelegate.shared.application(
+            UIApplication.shared,
+            didFinishLaunchingWithOptions: nil
+        )
     }
     
 }

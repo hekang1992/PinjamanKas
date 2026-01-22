@@ -58,6 +58,14 @@ class saggedModel: Codable {
     var swallowed: String?
     var furnishing: [furnishingModel]?
     var rooms: roomsModel?
+    var facebook: facebookModel?
+}
+
+class facebookModel: Codable {
+    var appURLSchemeSuffix: String?
+    var appID: String?
+    var displayName: String?
+    var clientToken: String?
 }
 
 class roomsModel: Codable {
