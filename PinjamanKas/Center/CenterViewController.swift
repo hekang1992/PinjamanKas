@@ -45,6 +45,11 @@ class CenterViewController: BaseViewController {
             }
         }
         
+        centerView.orderClickBlock = { [weak self] type in
+            guard let self = self else { return }
+            self.goOrderPageInfo(with: type)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +84,12 @@ extension CenterViewController {
                 self.centerView.scrollView.mj_header?.endRefreshing()
             }
         }
+    }
+    
+    private func goOrderPageInfo(with type: String) {
+        let orderVc = OrderViewController()
+        orderVc.type = type
+        self.navigationController?.pushViewController(orderVc, animated: true)
     }
     
 }

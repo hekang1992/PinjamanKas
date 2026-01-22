@@ -13,10 +13,12 @@ class CenterView: BaseView {
     var cellBlock: ((tailModel) -> Void)?
     
     private var selectedButton: UIButton?
-        
+    
     let phone = UserManager.shared.getPhone()
     
     var modelArray: [tailModel] = []
+    
+    var orderClickBlock: ((String) -> Void)?
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -339,6 +341,24 @@ class CenterView: BaseView {
     }
     
     @objc private func buttonTapped(_ sender: UIButton) {
+        let tag = sender.tag
+        switch tag {
+        case 0:
+            self.orderClickBlock?("4")
+            
+        case 1:
+            self.orderClickBlock?("7")
+            
+        case 2:
+            self.orderClickBlock?("6")
+            
+        case 3:
+            self.orderClickBlock?("5")
+            
+        default:
+            break
+        }
+        
         selectButton(sender)
     }
     
