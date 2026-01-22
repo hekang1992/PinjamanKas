@@ -109,7 +109,15 @@ extension BaseViewController {
             let model: BaseModel = try await NetworkManager.shared.request("/softly/stack/hagen/corleones", method: .post, params: params)
             let sinking = model.sinking ?? ""
             if ["0", "00"].contains(sinking) {
-                
+                let pageUrl = model.sagged?.busied ?? ""
+                if pageUrl.isEmpty {
+                    return
+                }
+                if pageUrl.hasPrefix(DeepLinkRoute.scheme_url) {
+                    URLSchemeRouter.handle(pageURL: pageUrl, from: self)
+                }else if pageUrl.hasPrefix("http") {
+                    self.pushWebVc(with: pageUrl)
+                }
             }
         } catch {
             

@@ -343,4 +343,18 @@ extension OrderViewController: UITableViewDelegate, UITableViewDataSource {
         cell.model = model
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = self.modelArray[indexPath.row]
+        let pageUrl = model.alarming ?? ""
+        if pageUrl.isEmpty {
+            return
+        }
+        if pageUrl.hasPrefix(DeepLinkRoute.scheme_url) {
+            URLSchemeRouter.handle(pageURL: pageUrl, from: self)
+        }else if pageUrl.hasPrefix("http") {
+            self.pushWebVc(with: pageUrl)
+        }
+    }
+    
 }

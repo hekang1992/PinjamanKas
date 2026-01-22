@@ -181,6 +181,7 @@ class magicallyModel: Codable {
     var soltozzo: String?
     var furiously: String?
     var failed: failedModel?
+    var alarming: String?
 }
 
 class failedModel: Codable {
