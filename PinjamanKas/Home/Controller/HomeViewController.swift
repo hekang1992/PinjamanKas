@@ -25,12 +25,15 @@ class HomeViewController: BaseViewController {
         return view
     }()
     
+    private let locationManager = LocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupRefresh()
         setupCallbacks()
         loadInitialData()
+        getLocationInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,14 +102,30 @@ extension HomeViewController {
 
 // MARK: - Action Handlers
 extension HomeViewController {
+    
+    func getLocationInfo() {
+        locationManager.fetchLocationInfo { [weak self] locationInfo in
+            guard let locationInfo = locationInfo else {
+                print("获取位置信息失败")
+                return
+            }
+            print("省: \(locationInfo["plausible"] ?? "")")
+            print("国家code: \(locationInfo["circumstances"] ?? "")")
+            print("国家: \(locationInfo["accustomed"] ?? "")")
+            print("街道: \(locationInfo["ants"] ?? "")")
+            print("纬度: \(locationInfo["donkey"] ?? "")")
+            print("经度: \(locationInfo["skittish"] ?? "")")
+            print("市: \(locationInfo["pants"] ?? "")")
+            print("区/县: \(locationInfo["rat"] ?? "")")
+        }
+    }
+    
     private func handleProductClick(_ productID: String) {
-        // 检查登录状态
         guard UserManager.shared.isLogin else {
             showLoginViewController()
             return
         }
         
-        // 检查协议确认状态
         guard homeView.mentView.sureBtn.isSelected else {
             let message = languageCode == "701" ?
             "Harap konfirmasi perjanjian pinjaman terlebih dahulu." :
@@ -115,7 +134,6 @@ extension HomeViewController {
             return
         }
         
-        // 获取产品信息
         Task {
             await self.clickProductInfo(with: productID)
         }
