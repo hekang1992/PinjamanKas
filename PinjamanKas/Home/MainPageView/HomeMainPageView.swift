@@ -67,7 +67,8 @@ class HomeMainPageView: BaseView {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(headView.snp.bottom).offset(10)
             make.left.right.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-85)
+//            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-30)
         }
     }
     
