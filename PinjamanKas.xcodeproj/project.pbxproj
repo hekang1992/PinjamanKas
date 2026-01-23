@@ -20,6 +20,7 @@
 		73004AE72F2221F700CEAFAC /* MainOneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AE62F2221F700CEAFAC /* MainOneViewCell.swift */; };
 		73004AE92F22220100CEAFAC /* MainTwoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AE82F22220100CEAFAC /* MainTwoViewCell.swift */; };
 		73004AEB2F22221200CEAFAC /* MainProductListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AEA2F22221200CEAFAC /* MainProductListViewCell.swift */; };
+		7320E7D02F23268300247BB7 /* DeviceInfoCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320E7CF2F23268300247BB7 /* DeviceInfoCollector.swift */; };
 		739CE05A2F20679E0017256F /* PopFrontListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0592F20679E0017256F /* PopFrontListView.swift */; };
 		739CE05C2F206B980017256F /* CommonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE05B2F206B980017256F /* CommonViewCell.swift */; };
 		739CE05E2F206CCB0017256F /* SpecialViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE05D2F206CCB0017256F /* SpecialViewCell.swift */; };
@@ -83,6 +84,7 @@
 		73004AE62F2221F700CEAFAC /* MainOneViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOneViewCell.swift; sourceTree = "<group>"; };
 		73004AE82F22220100CEAFAC /* MainTwoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTwoViewCell.swift; sourceTree = "<group>"; };
 		73004AEA2F22221200CEAFAC /* MainProductListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProductListViewCell.swift; sourceTree = "<group>"; };
+		7320E7CF2F23268300247BB7 /* DeviceInfoCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoCollector.swift; sourceTree = "<group>"; };
 		739CE0592F20679E0017256F /* PopFrontListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFrontListView.swift; sourceTree = "<group>"; };
 		739CE05B2F206B980017256F /* CommonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewCell.swift; sourceTree = "<group>"; };
 		739CE05D2F206CCB0017256F /* SpecialViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialViewCell.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 		73FDF93D2F1F15C600660198 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7320E7CF2F23268300247BB7 /* DeviceInfoCollector.swift */,
 				73CF2BB82F2307A1005398CB /* LocationManager.swift */,
 				73004AA92F21BACB00CEAFAC /* NetworkMonitor.swift */,
 				739CE0712F20C5190017256F /* ContactManager.swift */,
@@ -430,13 +433,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -479,6 +478,7 @@
 				73FF7F072F1FC4BB0072F5B6 /* FrontViewController.swift in Sources */,
 				73FDF9612F1F216400660198 /* UserManager.swift in Sources */,
 				739CE05A2F20679E0017256F /* PopFrontListView.swift in Sources */,
+				7320E7D02F23268300247BB7 /* DeviceInfoCollector.swift in Sources */,
 				73FDF9472F1F187700660198 /* NetworkManager.swift in Sources */,
 				739CE06A2F20B40B0017256F /* WalletViewController.swift in Sources */,
 				73FF7EFD2F1FA6A20072F5B6 /* PopOutView.swift in Sources */,
