@@ -125,4 +125,28 @@ extension BaseViewController {
         
     }
     
+    func softlySmallInfo(with params: [String: String]) async {
+        let longitude = UserLocationDataManager.getLongitude()
+        let latitude = UserLocationDataManager.getLatitude()
+        
+        let json: [String: String?] = [
+            "considering": KeychainHelper.shared.getDeviceIDFV(),
+            "scratched": KeychainHelper.shared.getIDFA(),
+            "skittish": longitude,
+            "donkey": latitude
+        ]
+        
+        var finalParams = json.compactMapValues { $0 }
+        finalParams.merge(params) { (current, new) in new }
+        
+        do {
+            let _: BaseModel = try await NetworkManager.shared.request(
+                "/softly/asked/three/small",
+                method: .post,
+                params: finalParams
+            )
+        } catch {
+            
+        }
+    }
 }

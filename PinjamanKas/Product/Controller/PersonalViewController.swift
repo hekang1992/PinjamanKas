@@ -17,6 +17,12 @@ class PersonalViewController: BaseViewController {
     
     var modelArray: [furnishingModel] = []
     
+    private let locationManager = LocationManager()
+    
+    var brute: String = ""
+    
+    var brawny: String = ""
+    
     lazy var headImageView: UIImageView = {
         let headImageView = UIImageView()
         headImageView.image = UIImage(named: "pro_head_bg_image")
@@ -104,6 +110,10 @@ class PersonalViewController: BaseViewController {
             make.width.equalTo(335)
             make.bottom.equalTo(applyBtn.snp.top).offset(-10)
         }
+        
+        locationManager.fetchLocationInfo { locationInfo in }
+        
+        brute = String(Int(Date().timeIntervalSince1970))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -149,6 +159,7 @@ extension PersonalViewController {
     }
     
     private func saveInfo(with params: [String: String]) async {
+        brawny = String(Date().timeIntervalSince1970)
         do {
             LoadingView.shared.show()
             let model: BaseModel = try await NetworkManager.shared.request("/softly/fight/monthsmaybe/happy", method: .post, params: params)
@@ -156,7 +167,16 @@ extension PersonalViewController {
             let sinking = model.sinking ?? ""
             if ["0", "00"].contains(sinking) {
                 Task {
-                    await self.nextDetailInfo(with: params["rival"] ?? "")
+                    async let _ = self.nextDetailInfo(with: params["rival"] ?? "")
+                    
+                    try? await Task.sleep(nanoseconds: 3_000_000_000)
+                    let params = ["bladder": self.params["productID"] ?? "",
+                                  "hinted": "4",
+                                  "shipment": self.params["orderID"] ?? "",
+                                  "brute": self.brute,
+                                  "brawny": self.brawny]
+                    async let _ = self.softlySmallInfo(with: params)
+                    
                 }
             }else {
                 ToastManager.showMessage(model.strangler ?? "")

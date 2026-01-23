@@ -103,23 +103,6 @@ extension HomeViewController {
 // MARK: - Action Handlers
 extension HomeViewController {
     
-    func getLocationInfo() {
-        locationManager.fetchLocationInfo { [weak self] locationInfo in
-            guard let locationInfo = locationInfo else {
-                print("获取位置信息失败")
-                return
-            }
-            print("省: \(locationInfo["plausible"] ?? "")")
-            print("国家code: \(locationInfo["circumstances"] ?? "")")
-            print("国家: \(locationInfo["accustomed"] ?? "")")
-            print("街道: \(locationInfo["ants"] ?? "")")
-            print("纬度: \(locationInfo["donkey"] ?? "")")
-            print("经度: \(locationInfo["skittish"] ?? "")")
-            print("市: \(locationInfo["pants"] ?? "")")
-            print("区/县: \(locationInfo["rat"] ?? "")")
-        }
-    }
-    
     private func handleProductClick(_ productID: String) {
         guard UserManager.shared.isLogin else {
             showLoginViewController()
@@ -144,10 +127,33 @@ extension HomeViewController {
         navc.modalPresentationStyle = .overFullScreen
         self.present(navc, animated: true)
     }
+    
+    private func getLocationInfo() {
+        locationManager.fetchLocationInfo { [weak self] locationInfo in
+            guard let locationInfo = locationInfo else {
+                return
+            }
+            Task {
+                await self?.uploadLocation(with: locationInfo)
+            }
+        }
+    }
+    
+    
 }
 
 // MARK: - Network Methods
 extension HomeViewController {
+    
+    private func uploadLocation(with params: [String: String]) async {
+        do {
+            let _: BaseModel = try await NetworkManager.shared.request("/softly/appeared/saidhe/hastilythey", method: .post, params: params)
+        } catch {
+        
+        }
+    }
+    
+    
     private func homeInfo() async {
         do {
             LoadingView.shared.show()

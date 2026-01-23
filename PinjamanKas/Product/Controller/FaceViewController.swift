@@ -111,6 +111,12 @@ class FaceViewController: BaseViewController {
         return clickBtn
     }()
     
+    private let locationManager = LocationManager()
+    
+    var brute: String = ""
+    
+    var brawny: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F5F5F5")
@@ -221,6 +227,10 @@ class FaceViewController: BaseViewController {
             await self.frontInfo()
         }
         
+        locationManager.fetchLocationInfo { locationInfo in }
+        
+        brute = String(Int(Date().timeIntervalSince1970))
+        
     }
     
 }
@@ -276,6 +286,7 @@ extension FaceViewController {
     }
     
     private func uploadFrontImageInfo(with data: Data) async {
+        brawny = String(Int(Date().timeIntervalSince1970))
         do {
             LoadingView.shared.show()
             let params = ["appear": String(Int(2 + 8)),
@@ -286,7 +297,16 @@ extension FaceViewController {
             let sinking = model.sinking ?? ""
             if ["0", "00"].contains(sinking) {
                 Task {
-                    await self.nextDetailInfo(with: self.params["productID"] ?? "")
+                    async let _ = self.nextDetailInfo(with: self.params["productID"] ?? "")
+                    
+                    try? await Task.sleep(nanoseconds: 3_000_000_000)
+                    let params = ["bladder": self.params["productID"] ?? "",
+                                  "hinted": "3",
+                                  "shipment": self.params["orderID"] ?? "",
+                                  "brute": self.brute,
+                                  "brawny": self.brawny]
+                    async let _ = self.softlySmallInfo(with: params)
+                    
                 }
             }else {
                 ToastManager.showMessage(model.strangler ?? "")

@@ -57,6 +57,10 @@ class LocationManager: NSObject {
                 self.completion?(nil)
                 return
             }
+                        
+            let longitude = "\(location.coordinate.longitude)"
+            let latitude = "\(location.coordinate.latitude)"
+            UserLocationDataManager.saveLocationInfo(with: longitude, latitude: latitude)
             
             let locationInfo = self.parsePlacemark(placemark, location: location)
             self.completion?(locationInfo)
@@ -75,7 +79,6 @@ class LocationManager: NSObject {
         locationDict["donkey"] = "\(location.coordinate.latitude)"
         locationDict["skittish"] = "\(location.coordinate.longitude)"
         locationDict["pants"] = placemark.locality ?? ""
-        locationDict["shitting"] = placemark.subLocality ?? ""
         locationDict["rat"] = placemark.subLocality ?? ""
         
         return locationDict
@@ -109,4 +112,22 @@ extension LocationManager: CLLocationManagerDelegate {
             completion?(nil)
         }
     }
+}
+
+class UserLocationDataManager {
+    
+    static func saveLocationInfo(with longitude: String, latitude: String) {
+        UserDefaults.standard.set(longitude, forKey: "longitude")
+        UserDefaults.standard.set(latitude, forKey: "latitude")
+        UserDefaults.standard.synchronize()
+    }
+    
+    static func getLongitude() -> String {
+        return UserDefaults.standard.string(forKey: "longitude") ?? ""
+    }
+    
+    static func getLatitude() -> String {
+        return UserDefaults.standard.string(forKey: "latitude") ?? ""
+    }
+    
 }

@@ -111,6 +111,12 @@ class FrontViewController: BaseViewController {
         return clickBtn
     }()
     
+    private let locationManager = LocationManager()
+    
+    var brute: String = ""
+    
+    var brawny: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F5F5F5")
@@ -221,6 +227,10 @@ class FrontViewController: BaseViewController {
             await self.frontInfo()
         }
         
+        locationManager.fetchLocationInfo { locationInfo in }
+        
+        brute = String(Int(Date().timeIntervalSince1970))
+        
     }
     
 }
@@ -296,6 +306,7 @@ extension FrontViewController {
     }
     
     private func sheetListView(with model: saggedModel) {
+        brawny = String(Int(Date().timeIntervalSince1970))
         let popView = PopFrontListView(frame: self.view.bounds)
         let name = model.steering ?? ""
         let number = model.hellos ?? ""
@@ -312,12 +323,21 @@ extension FrontViewController {
         popView.confirmBlock = { [weak self] name, number, date in
             guard let self = self else { return }
             Task {
-                await self.saveFrontInfo(with: name, number: number, date: date)
+                let grand = await self.saveFrontInfo(with: name, number: number, date: date)
+                if grand {
+                    try? await Task.sleep(nanoseconds: 3_000_000_000)
+                    let params = ["bladder": self.params["productID"] ?? "",
+                                  "hinted": "2",
+                                  "shipment": self.params["orderID"] ?? "",
+                                  "brute": self.brute,
+                                  "brawny": self.brawny]
+                    await self.softlySmallInfo(with: params)
+                }
             }
         }
     }
     
-    private func saveFrontInfo(with name: String, number: String, date: String) async {
+    private func saveFrontInfo(with name: String, number: String, date: String) async -> Bool {
         
         let apiUrl = languageCode == "701" ? "/softly/sollozzo/leather/flickered" : "/softly/suddenly/sulked/youre"
         
@@ -338,11 +358,14 @@ extension FrontViewController {
                     faceVc.params = self.params
                     self.navigationController?.pushViewController(faceVc, animated: true)
                 }
+                return true
             }else {
                 ToastManager.showMessage(model.strangler ?? "")
+                return false
             }
         } catch {
             LoadingView.shared.hide()
+            return false
         }
     }
     

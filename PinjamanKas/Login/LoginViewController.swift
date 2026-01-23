@@ -22,6 +22,10 @@ class LoginViewController: BaseViewController {
         return loginView
     }()
     
+    private let locationManager = LocationManager()
+    
+    var brute: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +41,7 @@ class LoginViewController: BaseViewController {
         
         setupButtonActions()
         
+        brute = String(Int(Date().timeIntervalSince1970))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,6 +55,7 @@ class LoginViewController: BaseViewController {
     @MainActor
     deinit {
         stopCountdown()
+        print("❎ LoginViewController=======")
     }
     
 }
@@ -62,6 +68,7 @@ extension LoginViewController {
     }
     
     @objc func getVerificationCode() {
+        brute = String(Int(Date().timeIntervalSince1970))
         guard let phone = loginView.phoneFiled.text, !phone.isEmpty else {
             ToastManager.showMessage(languageCode == "701" ? "Silakan masukkan nomor ponsel yang benar." : "Please enter the correct mobile phone number.")
             return
@@ -90,6 +97,14 @@ extension LoginViewController {
         }
         Task {
             await self.loginInfo(with: phone, code: code)
+            if UserManager.shared.isLogin {
+                let params = ["bladder": "",
+                              "hinted": "1",
+                              "shipment": "",
+                              "brute": brute,
+                              "brawny": String(Int(Date().timeIntervalSince1970))]
+                await self.softlySmallInfo(with: params)
+            }
         }
     }
     
