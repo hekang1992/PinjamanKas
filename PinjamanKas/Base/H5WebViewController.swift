@@ -14,6 +14,8 @@ class H5WebViewController: BaseViewController {
     
     var pageUrl: String = ""
     
+    private let locationManager = LocationManager()
+    
     private lazy var webView: WKWebView = {
         let config = WKWebViewConfiguration()
         let contentController = WKUserContentController()
@@ -158,9 +160,19 @@ extension H5WebViewController: WKScriptMessageHandler {
     }
     
     private func handleHarmonyGrove(message: WKScriptMessage) {
+        locationManager.fetchLocationInfo { locationInfo in }
         let body = message.body as? [String] ?? []
         let productID = body.first ?? ""
         let orderID = body.last ?? ""
+        Task{
+            try? await Task.sleep(nanoseconds: 3_000_000_000)
+            let params = ["bladder": productID,
+                          "hinted": "9",
+                          "shipment": orderID,
+                          "brute": String(Int(Date().timeIntervalSince1970)),
+                          "brawny": String(Int(Date().timeIntervalSince1970))]
+            await self.softlySmallInfo(with: params)
+        }
     }
     
     private func handleWhisperedSecrets(message: WKScriptMessage) {

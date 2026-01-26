@@ -81,7 +81,7 @@ extension BaseViewController {
                     
                 case "":
                     Task {
-                        await self.applyOrderInfo(with: model)
+                        await self.applyOrderInfo(with: model, productID: productID)
                     }
                     
                 default:
@@ -94,12 +94,13 @@ extension BaseViewController {
         }
     }
     
-    func applyOrderInfo(with model: BaseModel) async {
+    func applyOrderInfo(with model: BaseModel, productID: String) async {
         let site = model.sagged?.retainer?.shipment ?? ""
         let bridge = model.sagged?.retainer?.bridge ?? ""
         let drove = model.sagged?.retainer?.drove ?? ""
         let beauties = model.sagged?.retainer?.beauties ?? ""
         let land = model.sagged?.retainer?.land ?? ""
+        let ccTime = String(Int(Date().timeIntervalSince1970))
         do {
             let params = ["site": site,
                           "bridge": bridge,
@@ -117,6 +118,15 @@ extension BaseViewController {
                     URLSchemeRouter.handle(pageURL: pageUrl, from: self)
                 }else if pageUrl.hasPrefix("http") {
                     self.pushWebVc(with: pageUrl)
+                    Task{
+                        try? await Task.sleep(nanoseconds: 3_000_000_000)
+                        let params = ["bladder": productID,
+                                      "hinted": "8",
+                                      "shipment": site,
+                                      "brute": ccTime,
+                                      "brawny": String(Int(Date().timeIntervalSince1970))]
+                        await self.softlySmallInfo(with: params)
+                    }
                 }
             }
         } catch {
