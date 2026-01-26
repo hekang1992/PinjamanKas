@@ -27,18 +27,20 @@ class HomeViewController: BaseViewController {
     
     private let locationManager = LocationManager()
     
+    private let deviceInfoCollector = DeviceInfoCollector()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupRefresh()
         setupCallbacks()
         loadInitialData()
-        getLocationInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadDataOnAppear()
+        getLocationInfo()
     }
 }
 
@@ -130,11 +132,37 @@ extension HomeViewController {
     
     private func getLocationInfo() {
         locationManager.fetchLocationInfo { [weak self] locationInfo in
-            guard let locationInfo = locationInfo else {
+            guard let self = self, let locationInfo = locationInfo else {
+                Task {
+                    await self?.uploadDeviceInfo()
+                }
                 return
             }
             Task {
-                await self?.uploadLocation(with: locationInfo)
+                async let _: Void = self.uploadLocation(with: locationInfo)
+                async let _: Void = self.uploadDeviceInfo()
+            }
+        }
+    }
+    
+    private func uploadDeviceInfo() async {
+        
+        deviceInfoCollector.collectDeviceInfo { deviceInfo in
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: deviceInfo, options: [])
+                let base64String = jsonData.base64EncodedString()
+                
+                Task {
+                    do {
+                        let params = ["sagged": base64String]
+                        let _: BaseModel = try await NetworkManager.shared.request("/softly/after/pearl/respect", method: .post, params: params)
+                    } catch {
+                        
+                    }
+                }
+                
+            } catch {
+                
             }
         }
     }
@@ -149,7 +177,7 @@ extension HomeViewController {
         do {
             let _: BaseModel = try await NetworkManager.shared.request("/softly/appeared/saidhe/hastilythey", method: .post, params: params)
         } catch {
-        
+            
         }
     }
     
