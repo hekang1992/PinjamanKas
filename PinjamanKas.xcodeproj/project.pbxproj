@@ -20,6 +20,7 @@
 		73004AE72F2221F700CEAFAC /* MainOneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AE62F2221F700CEAFAC /* MainOneViewCell.swift */; };
 		73004AE92F22220100CEAFAC /* MainTwoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AE82F22220100CEAFAC /* MainTwoViewCell.swift */; };
 		73004AEB2F22221200CEAFAC /* MainProductListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AEA2F22221200CEAFAC /* MainProductListViewCell.swift */; };
+		73185AD12F271637009C994E /* CustomPagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73185AD02F271637009C994E /* CustomPagerCell.swift */; };
 		7320E7D02F23268300247BB7 /* DeviceInfoCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320E7CF2F23268300247BB7 /* DeviceInfoCollector.swift */; };
 		739CE05A2F20679E0017256F /* PopFrontListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0592F20679E0017256F /* PopFrontListView.swift */; };
 		739CE05C2F206B980017256F /* CommonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE05B2F206B980017256F /* CommonViewCell.swift */; };
@@ -84,6 +85,7 @@
 		73004AE62F2221F700CEAFAC /* MainOneViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOneViewCell.swift; sourceTree = "<group>"; };
 		73004AE82F22220100CEAFAC /* MainTwoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTwoViewCell.swift; sourceTree = "<group>"; };
 		73004AEA2F22221200CEAFAC /* MainProductListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProductListViewCell.swift; sourceTree = "<group>"; };
+		73185AD02F271637009C994E /* CustomPagerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPagerCell.swift; sourceTree = "<group>"; };
 		7320E7CF2F23268300247BB7 /* DeviceInfoCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoCollector.swift; sourceTree = "<group>"; };
 		739CE0592F20679E0017256F /* PopFrontListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFrontListView.swift; sourceTree = "<group>"; };
 		739CE05B2F206B980017256F /* CommonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewCell.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				73004AE62F2221F700CEAFAC /* MainOneViewCell.swift */,
 				73004AE82F22220100CEAFAC /* MainTwoViewCell.swift */,
 				73004AEA2F22221200CEAFAC /* MainProductListViewCell.swift */,
+				73185AD02F271637009C994E /* CustomPagerCell.swift */,
 			);
 			path = MainPageView;
 			sourceTree = "<group>";
@@ -433,9 +436,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PinjamanKas/Pods-PinjamanKas-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -515,6 +522,7 @@
 				73FDF9712F1F752200660198 /* CenterViewCell.swift in Sources */,
 				73FDF9752F1F818C00660198 /* SettingViewController.swift in Sources */,
 				73FF7F152F1FD6940072F5B6 /* SimpleCameraManager.swift in Sources */,
+				73185AD12F271637009C994E /* CustomPagerCell.swift in Sources */,
 				73004AAC2F21D2B200CEAFAC /* OrderEmptyView.swift in Sources */,
 				73004AEB2F22221200CEAFAC /* MainProductListViewCell.swift in Sources */,
 				73FDF9412F1F169700660198 /* BaseNavigationController.swift in Sources */,

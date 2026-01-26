@@ -85,6 +85,16 @@ extension HomeViewController {
             let productID = String(Int(model.holes ?? 0))
             self.handleProductClick(productID)
         }
+        
+        mainPageView.bannerTapBlock = { [weak self] model in
+            guard let self = self else { return }
+            let pageUrl = model.busied ?? ""
+            if pageUrl.hasPrefix(DeepLinkRoute.scheme_url) {
+                URLSchemeRouter.handle(pageURL: pageUrl, from: self)
+            } else if pageUrl.hasPrefix("http") {
+                self.pushWebVc(with: pageUrl)
+            }
+        }
     }
     
     private func loadInitialData() {

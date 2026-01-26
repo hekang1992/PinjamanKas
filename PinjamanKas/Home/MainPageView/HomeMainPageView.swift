@@ -18,6 +18,8 @@ class HomeMainPageView: BaseView {
     }
     
     var cellTapBlock: ((lighterModel) -> Void)?
+    
+    var bannerTapBlock: ((lighterModel) -> Void)?
         
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -104,6 +106,11 @@ extension HomeMainPageView: UITableViewDelegate, UITableViewDataSource {
             
         case "wedding4":
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainTwoViewCell", for: indexPath) as! MainTwoViewCell
+            cell.modelArray = listArray
+            cell.tapBlock = { [weak self] model in
+                guard let self = self else { return }
+                self.bannerTapBlock?(model)
+            }
             return cell
             
         case "wedding5":
