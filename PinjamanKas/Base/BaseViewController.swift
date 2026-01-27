@@ -150,11 +150,21 @@ extension BaseViewController {
         finalParams.merge(params) { (current, new) in new }
         
         do {
-            let _: BaseModel = try await NetworkManager.shared.request(
+            let model: BaseModel = try await NetworkManager.shared.request(
                 "/softly/asked/three/small",
                 method: .post,
                 params: finalParams
             )
+            
+            let type = params["hinted"] ?? ""
+            
+            if type == "1" {
+                if model.sinking == "0" || model.sinking == "00" {
+                    UserDefaults.standard.removeObject(forKey: "brute")
+                    UserDefaults.standard.removeObject(forKey: "brawny")
+                }
+            }
+            
         } catch {
             
         }

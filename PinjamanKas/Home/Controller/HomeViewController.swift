@@ -131,6 +131,20 @@ extension HomeViewController {
         
         Task {
             await self.clickProductInfo(with: productID)
+            
+            let brute = UserDefaults.standard.object(forKey: "brute") as? String ?? ""
+            let brawny = UserDefaults.standard.object(forKey: "brawny") as? String ?? ""
+            if !brute.isEmpty && !brawny.isEmpty {
+                if UserManager.shared.isLogin {
+                    let params = ["bladder": "",
+                                  "hinted": "1",
+                                  "shipment": "",
+                                  "brute": brute,
+                                  "brawny": brawny]
+                    try? await Task.sleep(nanoseconds: 300_000_000)
+                    await self.softlySmallInfo(with: params)                    
+                }
+            }
         }
     }
     

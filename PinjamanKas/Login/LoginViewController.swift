@@ -22,9 +22,11 @@ class LoginViewController: BaseViewController {
         return loginView
     }()
     
-    private let locationManager = LocationManager()
+//    private let locationManager = LocationManager()
     
     var brute: String = ""
+    
+    var brawny: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +43,16 @@ class LoginViewController: BaseViewController {
         
         setupButtonActions()
         
+//        locationManager.fetchLocationInfo { locationInfo in }
+        
         brute = String(Int(Date().timeIntervalSince1970))
+        UserDefaults.standard.set(brute, forKey: "brute")
+        UserDefaults.standard.synchronize()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.loginView.phoneFiled.becomeFirstResponder()
+//        self.loginView.phoneFiled.becomeFirstResponder()
         Task {
             await self.getIDFA()
         }
@@ -81,6 +87,9 @@ extension LoginViewController {
     @objc func getLogin() {
         self.loginView.phoneFiled.resignFirstResponder()
         self.loginView.codeFiled.resignFirstResponder()
+        brawny = String(Int(Date().timeIntervalSince1970))
+        UserDefaults.standard.set(brawny, forKey: "brawny")
+        UserDefaults.standard.synchronize()
         guard let phone = loginView.phoneFiled.text, !phone.isEmpty else {
             ToastManager.showMessage(languageCode == "701" ? "Silakan masukkan nomor ponsel yang benar." : "Please enter the correct mobile phone number.")
             return
@@ -97,14 +106,6 @@ extension LoginViewController {
         }
         Task {
             await self.loginInfo(with: phone, code: code)
-            if UserManager.shared.isLogin {
-                let params = ["bladder": "",
-                              "hinted": "1",
-                              "shipment": "",
-                              "brute": brute,
-                              "brawny": String(Int(Date().timeIntervalSince1970))]
-                await self.softlySmallInfo(with: params)
-            }
         }
     }
     

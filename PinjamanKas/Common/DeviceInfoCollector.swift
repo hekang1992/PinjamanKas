@@ -38,11 +38,11 @@ class DeviceInfoCollector {
             let systemAttributes = try fileManager.attributesOfFileSystem(forPath: NSHomeDirectory())
             
             if let totalSize = systemAttributes[.systemSize] as? NSNumber {
-                storageInfo["heated"] = "\(totalSize.uint64Value)" // 手机存储内存总大小
+                storageInfo["heated"] = "\(totalSize.uint64Value)"
             }
             
             if let freeSize = systemAttributes[.systemFreeSize] as? NSNumber {
-                storageInfo["garage"] = "\(freeSize.uint64Value)" // 可用存储大小
+                storageInfo["garage"] = "\(freeSize.uint64Value)"
             }
         } catch {
             storageInfo["heated"] = "0"
@@ -102,7 +102,7 @@ class DeviceInfoCollector {
         var deviceInfo: [String: Any] = [:]
         
         let device = UIDevice.current
-        let screen = UIScreen.main
+//        let screen = UIScreen.main
         
         deviceInfo["capable"] = device.systemVersion
         
@@ -110,9 +110,10 @@ class DeviceInfoCollector {
         
         deviceInfo["alerted"] = getDeviceModel()
         
-        let screenSize = screen.nativeBounds.size
-        deviceInfo["laconic"] = Int(screenSize.height)
-        deviceInfo["rush"] = Int(screenSize.width)
+        deviceInfo["magazine"] = Device.identifier
+        
+        deviceInfo["laconic"] = Int(UIScreen.main.bounds.size.height)
+        deviceInfo["rush"] = Int(UIScreen.main.bounds.size.width)
         
         deviceInfo["errand"] = String(Device.current.diagonal)
         
