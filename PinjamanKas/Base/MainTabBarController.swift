@@ -45,7 +45,7 @@ class MainTabBarController: UITabBarController {
             customBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)
         ])
         
-        let images = [("home_nor", "home_sel"), ("center_nor", "center_sel")]
+        let images = [("center_nor", "center_sel"), ("home_nor", "home_sel")]
         
         let stackView = UIStackView()
         stackView.axis = .horizontal

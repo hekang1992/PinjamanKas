@@ -55,7 +55,7 @@ class LoginView: BaseView {
     lazy var descLabel: UILabel = {
         let descLabel = UILabel()
         descLabel.textAlignment = .center
-        descLabel.text = languageCode == "701" ? "Pinjaman Kas temui anda yang lebih baik" : "Pinjaman Kas meet a better you"
+        descLabel.text = languageCode == "701" ? "Pinjam Cepa temui anda yang lebih baik" : "Pinjam Cepa meet a better you"
         descLabel.numberOfLines = 0
         descLabel.textColor = UIColor.init(hex: "#030305")
         descLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
