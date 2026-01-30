@@ -10,6 +10,7 @@ import SnapKit
 import Alamofire
 import MJRefresh
 import FBSDKCoreKit
+import CoreLocation
 
 class HomeViewController: BaseViewController {
     
@@ -75,6 +76,7 @@ extension HomeViewController {
     }
     
     private func setupCallbacks() {
+        
         homeView.clickBlock = { [weak self] productID in
             guard let self = self else { return }
             self.handleProductClick(productID)
@@ -127,6 +129,14 @@ extension HomeViewController {
             "Please confirm the loan agreement first."
             ToastManager.showMessage(message)
             return
+        }
+        
+        let status = CLLocationManager().authorizationStatus
+        if languageCode == "701" {
+            if status == .denied || status == .restricted {
+                self.showPermissionAlert()
+                return
+            }
         }
         
         Task {
@@ -373,4 +383,22 @@ extension HomeViewController {
             didFinishLaunchingWithOptions: nil
         )
     }
+    
+    func showPermissionAlert() {
+        
+        let alert = UIAlertController(
+            title: "定位",
+            message: "请在设置中开启定位权限",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
+        alert.addAction(UIAlertAction(title: "去设置", style: .default) { _ in
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url)
+            }
+        })
+        self.present(alert, animated: true)
+    }
+    
 }
+

@@ -136,6 +136,7 @@ extension BaseViewController {
     }
     
     func softlySmallInfo(with params: [String: String]) async {
+        guard languageCode == "701" else { return }
         let longitude = UserLocationDataManager.getLongitude()
         let latitude = UserLocationDataManager.getLatitude()
         
