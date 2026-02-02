@@ -21,7 +21,7 @@ class HomeAuthStepView: UIView {
         let layer = CAShapeLayer()
         layer.strokeColor = UIColor(hex: "#E8FA00")?.cgColor
         layer.lineWidth = 8
-        layer.lineDashPattern = [2, 2]
+        layer.lineDashPattern = [3, 3]
         layer.fillColor = nil
         return layer
     }()
@@ -161,3 +161,4 @@ class HomeAuthStepView: UIView {
         }
     }
 }
+
