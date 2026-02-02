@@ -196,7 +196,7 @@ extension H5WebViewController: WKScriptMessageHandler {
     private func handleIllusionMirage(message: WKScriptMessage) {
         let email = message.body as? String ?? ""
         let phone = UserManager.shared.getPhone()
-        let body = "Pinjam Cepa: \(phone)"
+        let body = "Pinjam Cepat: \(phone)"
         
         guard let encodedBody = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let emailURL = URL(string: "mailto:\(email)?body=\(encodedBody)"),

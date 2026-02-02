@@ -14,6 +14,8 @@ import CoreLocation
 
 class HomeViewController: BaseViewController {
     
+    var baseModel: BaseModel?
+    
     private lazy var homeView: HomeView = {
         let view = HomeView()
         view.isHidden = true
@@ -107,9 +109,17 @@ extension HomeViewController {
     
     private func loadDataOnAppear() {
         Task {
-            async let fetchHomeInfo: Void = homeInfo()
-            async let uploadIDFATask: Void = uploadIDFA()
-            _ = await (fetchHomeInfo, uploadIDFATask)
+            await withTaskGroup(of: Void.self) { group in
+                group.addTask {
+                    await self.homeInfo()
+                }
+                group.addTask {
+                    await self.uploadIDFA()
+                }
+                await group.waitForAll()
+            }
+            
+            await self.getProductDetailInfo()
         }
     }
 }
@@ -223,7 +233,7 @@ extension HomeViewController {
                 "/softly/great/family/sonny",
                 method: .get
             )
-            
+            self.baseModel = model
             handleHomeInfoResponse(model)
             
             LoadingView.shared.hide()
@@ -402,3 +412,28 @@ extension HomeViewController {
     
 }
 
+extension HomeViewController {
+    
+    private func getProductDetailInfo() async {
+        let listArray = self.baseModel?.sagged?.magically ?? []
+        
+        if let listModel = listArray.first(where: { $0.appear == "wedding2" }) {
+            let productID = listModel.lighter?.first?.holes ?? 0
+            
+            let params = ["rival": productID]
+            do {
+                let model: BaseModel = try await NetworkManager.shared.request("/softly/angry/corleone/fontane", method: .post, params: params)
+                let sinking = model.sinking ?? ""
+                if ["0", "00"].contains(sinking){
+                    let interior = model.sagged?.earth?.interior ?? ""
+                    self.homeView.stepView.type = interior
+                }
+            } catch {
+                
+            }
+            
+        }
+        
+    }
+    
+}

@@ -41,6 +41,11 @@ class LoginViewController: BaseViewController {
             self.dismiss(animated: true)
         }
         
+        loginView.leftBlock = { [weak self] in
+            let pageUrl = h5_url + "/sapphireTide"
+            self?.pushWebVc(with: pageUrl)
+        }
+        
         setupButtonActions()
         
 //        locationManager.fetchLocationInfo { locationInfo in }

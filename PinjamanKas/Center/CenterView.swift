@@ -20,6 +20,10 @@ class CenterView: BaseView {
     
     var orderClickBlock: ((String) -> Void)?
     
+    var leftBlock: (() -> Void)?
+    
+    var rightBlock: (() -> Void)?
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "ce_bg_image")
@@ -173,6 +177,7 @@ class CenterView: BaseView {
         let serviceBtn = UIButton(type: .custom)
         serviceBtn.setBackgroundImage(UIImage(named: languageCode == "701" ? "s_ci_y_image" : "s_c_y_image"), for: .normal)
         serviceBtn.adjustsImageWhenHighlighted = false
+        serviceBtn.addTarget(self, action: #selector(serviceBtnClick), for: .touchUpInside)
         return serviceBtn
     }()
     
@@ -180,6 +185,7 @@ class CenterView: BaseView {
         let privacyBtn = UIButton(type: .custom)
         privacyBtn.setBackgroundImage(UIImage(named: languageCode == "701" ? "sa_ci_y_image" : "sa_c_y_image"), for: .normal)
         privacyBtn.adjustsImageWhenHighlighted = false
+        privacyBtn.addTarget(self, action: #selector(privacyBtnClick), for: .touchUpInside)
         return privacyBtn
     }()
     
@@ -403,4 +409,15 @@ extension CenterView: UITableViewDelegate, UITableViewDataSource {
         self.cellBlock?(model)
     }
     
+}
+
+extension CenterView {
+    
+    @objc func serviceBtnClick() {
+        self.leftBlock?()
+    }
+    
+    @objc func privacyBtnClick() {
+        self.rightBlock?()
+    }
 }

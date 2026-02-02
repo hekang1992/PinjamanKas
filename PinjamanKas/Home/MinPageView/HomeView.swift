@@ -37,14 +37,14 @@ class HomeView: BaseView {
     }
     
     var clickBlock: ((String) -> Void)?
-        
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "home_gb_image")
         bgImageView.contentMode = .scaleAspectFill
         return bgImageView
     }()
-
+    
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
@@ -83,6 +83,11 @@ class HomeView: BaseView {
     lazy var mentView: HomeMentView = {
         let mentView = HomeMentView(frame: .zero)
         return mentView
+    }()
+    
+    lazy var stepView: HomeAuthStepView = {
+        let stepView = HomeAuthStepView(frame: .zero)
+        return stepView
     }()
     
     lazy var applyBtn: UIButton = {
@@ -138,7 +143,12 @@ class HomeView: BaseView {
         contentView.addSubview(oneItemView)
         contentView.addSubview(twoItemView)
         scrollView.addSubview(cardView)
-        scrollView.addSubview(mentView)
+        if languageCode == "701" {
+            scrollView.addSubview(stepView)
+        }else {
+            scrollView.addSubview(mentView)
+        }
+        
         scrollView.addSubview(applyBtn)
         scrollView.addSubview(clickBtn)
         
@@ -175,15 +185,30 @@ class HomeView: BaseView {
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 335, height: 199))
         }
-        mentView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.left.equalTo(cardView).offset(10)
-            make.top.equalTo(cardView.snp.bottom).offset(10)
-            make.height.equalTo(32)
+        
+        if languageCode == "701" {
+            stepView.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.left.equalTo(cardView).offset(10)
+                make.top.equalTo(cardView.snp.bottom).offset(10)
+                make.height.equalTo(40)
+            }
+        }else {
+            mentView.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.left.equalTo(cardView).offset(10)
+                make.top.equalTo(cardView.snp.bottom).offset(10)
+                make.height.equalTo(32)
+            }
         }
+        
         applyBtn.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(mentView.snp.bottom).offset(19)
+            if languageCode == "701" {
+                make.top.equalTo(stepView.snp.bottom).offset(19)
+            }else {
+                make.top.equalTo(mentView.snp.bottom).offset(19)
+            }
             make.size.equalTo(CGSize(width: 335, height: 50))
         }
         clickBtn.snp.makeConstraints { make in

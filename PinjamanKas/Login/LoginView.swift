@@ -12,6 +12,8 @@ class LoginView: BaseView {
         
     var backBlock: (() -> Void)?
     
+    var leftBlock: (() -> Void)?
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "login_bg_imgae")
@@ -55,7 +57,7 @@ class LoginView: BaseView {
     lazy var descLabel: UILabel = {
         let descLabel = UILabel()
         descLabel.textAlignment = .center
-        descLabel.text = languageCode == "701" ? "Pinjam Cepa temui anda yang lebih baik" : "Pinjam Cepa meet a better you"
+        descLabel.text = languageCode == "701" ? "Pinjam Cepat temui anda yang lebih baik" : "Pinjam Cepat meet a better you"
         descLabel.numberOfLines = 0
         descLabel.textColor = UIColor.init(hex: "#030305")
         descLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -330,7 +332,7 @@ extension LoginView {
     }
     
     @objc private func handleTextTap(_ gesture: UITapGestureRecognizer) {
-        ToastManager.showMessage("登陆协议====")
+        self.leftBlock?()
     }
     
     @objc func loginClick() {

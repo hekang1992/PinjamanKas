@@ -32,6 +32,16 @@ class CenterViewController: BaseViewController {
             }
         })
         
+        centerView.leftBlock = { [weak self] in
+            let pageUrl = h5_url + "/radiantDawn"
+            self?.pushWebVc(with: pageUrl)
+        }
+        
+        centerView.rightBlock = { [weak self] in
+            let pageUrl = h5_url + "/sapphireTide"
+            self?.pushWebVc(with: pageUrl)
+        }
+        
         centerView.cellBlock = { [weak self] model in
             guard let self = self else { return }
             let pageUrl = model.strange ?? ""
