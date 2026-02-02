@@ -10,6 +10,8 @@ import SnapKit
 
 class HomeMentView: BaseView {
     
+    var meBlock: (() -> Void)?
+    
     lazy var sureBtn: UIButton = {
         let sureBtn = UIButton(type: .custom)
         sureBtn.isSelected = true
@@ -72,7 +74,7 @@ class HomeMentView: BaseView {
 extension HomeMentView {
     
     @objc private func handleTextTap(_ gesture: UITapGestureRecognizer) {
-        ToastManager.showMessage("协议====")
+        self.meBlock?()
     }
     
     @objc private func sureClick() {

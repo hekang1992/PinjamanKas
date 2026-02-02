@@ -71,6 +71,13 @@ class HomeAuthStepView: UIView {
         view.layer.masksToBounds = true
         return view
     }()
+    
+    lazy var logoImageView: UIImageView = {
+        let logoImageView = UIImageView()
+        logoImageView.image = UIImage(named: "daod_ad_image")
+        logoImageView.contentMode = .scaleAspectFit
+        return logoImageView
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -87,6 +94,7 @@ class HomeAuthStepView: UIView {
         addSubview(rightLabel)
         addSubview(lineView)
         addSubview(nameLabel)
+        addSubview(logoImageView)
         
         lineView.layer.addSublayer(dashLayer)
         
@@ -114,6 +122,11 @@ class HomeAuthStepView: UIView {
             make.left.equalToSuperview()
             make.top.bottom.equalTo(bgView)
             make.right.equalTo(nameLabel.snp.centerX)
+        }
+        logoImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(bgView)
+            make.right.equalToSuperview().offset(10)
+            make.width.height.equalTo(25)
         }
     }
     

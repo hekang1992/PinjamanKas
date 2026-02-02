@@ -84,6 +84,11 @@ extension HomeViewController {
             self.handleProductClick(productID)
         }
         
+        homeView.mentBlock = { [weak self] in
+            let pageUrl = h5_url + "/breezeHolds"
+            self?.pushWebVc(with: pageUrl)
+        }
+        
         mainPageView.cellTapBlock = { [weak self] model in
             guard let self = self else { return }
             let productID = String(Int(model.holes ?? 0))

@@ -38,6 +38,8 @@ class HomeView: BaseView {
     
     var clickBlock: ((String) -> Void)?
     
+    var mentBlock: (() -> Void)?
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "home_gb_image")
@@ -82,6 +84,9 @@ class HomeView: BaseView {
     
     lazy var mentView: HomeMentView = {
         let mentView = HomeMentView(frame: .zero)
+        mentView.meBlock = { [weak self] in
+            self?.mentBlock?()
+        }
         return mentView
     }()
     
@@ -201,6 +206,7 @@ class HomeView: BaseView {
                 make.height.equalTo(32)
             }
         }
+        
         
         applyBtn.snp.makeConstraints { make in
             make.centerX.equalToSuperview()

@@ -69,8 +69,7 @@ extension LaunchViewController {
             let sinking = model.sinking ?? ""
             if ["0", "00"].contains(sinking) {
                 let petes = model.sagged?.petes ?? ""
-//                LanguageManager.shared.saveLanguageInfo(petes: petes)
-                LanguageManager.shared.saveLanguageInfo(petes: "701")
+                LanguageManager.shared.saveLanguageInfo(petes: petes)
                 NotificationCenter.default.post(name: Notification.Name("changeRootVc"), object: nil)
             }
             LoadingView.shared.hide()
