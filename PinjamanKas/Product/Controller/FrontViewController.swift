@@ -86,7 +86,8 @@ class FrontViewController: BaseViewController {
     lazy var dImageView: UIImageView = {
         let dImageView = UIImageView()
         dImageView.image = UIImage(named: "foot_aina_f_image")
-        dImageView.isHidden = languageCode == "701" ? false : true
+//        dImageView.isHidden = languageCode == "701" ? false : true
+        dImageView.isHidden = true
         return dImageView
     }()
     
