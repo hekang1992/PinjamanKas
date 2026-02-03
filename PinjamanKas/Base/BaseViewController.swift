@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import TYAlertController
 
 class BaseViewController: UIViewController {
     
@@ -31,6 +32,23 @@ extension BaseViewController {
         webVc.pageUrl = pageUrl
         self.navigationController?.pushViewController(webVc, animated: true)
     }
+    
+    func popStandView() {
+       let popView = StandView(frame: self.view.bounds)
+       let alertVc = TYAlertController(alert: popView, preferredStyle: .actionSheet)
+       self.present(alertVc!, animated: true)
+       
+       popView.cancelBlock = { [weak self] in
+           self?.dismiss(animated: true)
+       }
+       
+       popView.goBlock = { [weak self] in
+           self?.dismiss(animated: true) { [weak self] in
+               self?.toProductDetailVc()
+           }
+       }
+   }
+   
     
     func toProductDetailVc() {
         guard let nav = navigationController,

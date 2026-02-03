@@ -86,7 +86,7 @@ class PersonalViewController: BaseViewController {
         
         appHeadView.backBlock = { [weak self] in
             guard let self = self else { return }
-            self.toProductDetailVc()
+            popStandView()
         }
         
         view.addSubview(applyBtn)

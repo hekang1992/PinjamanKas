@@ -22,6 +22,7 @@
 		73004AEB2F22221200CEAFAC /* MainProductListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73004AEA2F22221200CEAFAC /* MainProductListViewCell.swift */; };
 		73185AD12F271637009C994E /* CustomPagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73185AD02F271637009C994E /* CustomPagerCell.swift */; };
 		7320E7D02F23268300247BB7 /* DeviceInfoCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7320E7CF2F23268300247BB7 /* DeviceInfoCollector.swift */; };
+		7344C3562F31E19A006DEE99 /* StandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7344C3552F31E19A006DEE99 /* StandView.swift */; };
 		73497C4F2F30CD41008C0DD6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73497C4D2F30CD41008C0DD6 /* InfoPlist.strings */; };
 		73497C522F30D2ED008C0DD6 /* HomeAuthStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73497C512F30D2ED008C0DD6 /* HomeAuthStepView.swift */; };
 		739CE05A2F20679E0017256F /* PopFrontListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE0592F20679E0017256F /* PopFrontListView.swift */; };
@@ -89,6 +90,7 @@
 		73004AEA2F22221200CEAFAC /* MainProductListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProductListViewCell.swift; sourceTree = "<group>"; };
 		73185AD02F271637009C994E /* CustomPagerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPagerCell.swift; sourceTree = "<group>"; };
 		7320E7CF2F23268300247BB7 /* DeviceInfoCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoCollector.swift; sourceTree = "<group>"; };
+		7344C3552F31E19A006DEE99 /* StandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandView.swift; sourceTree = "<group>"; };
 		73497C4E2F30CD41008C0DD6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		73497C502F30CD5F008C0DD6 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		73497C512F30D2ED008C0DD6 /* HomeAuthStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAuthStepView.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				739CE05D2F206CCB0017256F /* SpecialViewCell.swift */,
 				739CE0632F20A0570017256F /* PopSelectListView.swift */,
 				739CE06B2F20B5C50017256F /* ContactViewCell.swift */,
+				7344C3552F31E19A006DEE99 /* StandView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				739CE0602F207B430017256F /* CompleteViewController.swift in Sources */,
 				73FBF5232F1F0E880071C925 /* AppDelegate.swift in Sources */,
 				73FDF93F2F1F168500660198 /* BaseViewController.swift in Sources */,
+				7344C3562F31E19A006DEE99 /* StandView.swift in Sources */,
 				73FF7F032F1FB9DD0072F5B6 /* ProductListView.swift in Sources */,
 				739CE0722F20C5190017256F /* ContactManager.swift in Sources */,
 				73FDF9552F1F1A7B00660198 /* ProductView.swift in Sources */,
