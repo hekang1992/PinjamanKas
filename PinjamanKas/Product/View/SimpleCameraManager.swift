@@ -61,16 +61,19 @@ private extension SimpleCameraManager {
         guard let vc = presentingVC else { return }
         
         let alert = UIAlertController(
-            title: "无法使用相机",
-            message: "请在设置中开启相机权限",
+            title: LanguageManager.shared.getLanguage() == "701" ? "Izin Kamera" : "Camera Permission",
+            message: LanguageManager.shared.getLanguage() == "701" ? "Izin kamera belum diaktifkan, sehingga Anda tidak dapat mengambil foto kartu identitas! Silakan berikan otorisasi izin di Pengaturan terlebih dahulu, kemudian Anda dapat melanjutkan pengajuan Anda." : "Camera permission is not enabled, so you cannot take photos of your ID card! Authorize the permission in Settings first, and then you can continue with your application.",
             preferredStyle: .alert
         )
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
-        alert.addAction(UIAlertAction(title: "去设置", style: .default) { _ in
+        
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.getLanguage() == "701" ? "Membatalkan" : "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.getLanguage() == "701" ? "Pengaturan" : "Settings", style: .default) { _ in
             if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url)
             }
         })
+        
+        
         vc.present(alert, animated: true)
     }
 }

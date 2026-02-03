@@ -235,7 +235,8 @@ class retainerModel: Codable {
              shipment,
              soltozzo,
              meadowbrook,
-             continued
+             continued,
+             emerge
     }
     
     required init(from decoder: Decoder) throws {
@@ -243,6 +244,7 @@ class retainerModel: Codable {
         
         meadowbrook = try container.decodeIfPresent(meadowbrookModel.self, forKey: .meadowbrook)
         
+        emerge = try container.decodeIfPresent(String.self, forKey: .emerge)
         continued = try container.decodeIfPresent(String.self, forKey: .continued)
         
         if let stringValue = try? container.decode(String.self, forKey: .rats) {

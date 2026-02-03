@@ -102,13 +102,13 @@ class ContactManager: NSObject {
     
     private func showSettingAlert(on vc: UIViewController) {
         let alert = UIAlertController(
-            title: "通讯录权限未开启",
-            message: "请前往设置开启通讯录权限",
+            title: LanguageManager.shared.getLanguage() == "701" ? "Izin Kontak" : "Contacts Permission",
+            message: LanguageManager.shared.getLanguage() == "701" ? "Mengaktifkan izin daftar kontak dapat mempercepat proses tinjauan pengajuan Anda, dan semua informasi Anda akan dirahasiakan dengan ketat. Silakan buka Pengaturan untuk memberikan otorisasi izin, terima kasih!" : "Enabling contact list permission can speed up your application review process, and all your information will be kept strictly confidential. Please go to Settings to authorize the permission, thank you!",
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
-        alert.addAction(UIAlertAction(title: "去设置", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.getLanguage() == "701" ? "Membatalkan" : "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.getLanguage() == "701" ? "Pengaturan" : "Settings", style: .default) { _ in
             if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url)
             }

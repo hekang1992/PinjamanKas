@@ -402,16 +402,18 @@ extension HomeViewController {
     func showPermissionAlert() {
         
         let alert = UIAlertController(
-            title: "定位",
-            message: "请在设置中开启定位权限",
+            title: LanguageManager.shared.getLanguage() == "701" ? "Izin Lokasi" : "Location Permission",
+            message: LanguageManager.shared.getLanguage() == "701" ? "Izin lokasi diperlukan untuk menyelesaikan verifikasi identitas, dan hanya akan digunakan untuk tujuan ini. Silakan buka Pengaturan untuk memberikan otorisasi izin sekarang." : "Location permission is required to complete identity verification, and it will only be used for this purpose. Please go to Settings to authorize the permission now.",
             preferredStyle: .alert
         )
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
-        alert.addAction(UIAlertAction(title: "去设置", style: .default) { _ in
+        
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.getLanguage() == "701" ? "Membatalkan" : "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.getLanguage() == "701" ? "Pengaturan" : "Settings", style: .default) { _ in
             if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url)
             }
         })
+        
         self.present(alert, animated: true)
     }
     

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class ProductView: BaseView {
     
@@ -24,6 +25,12 @@ class ProductView: BaseView {
             
             oneLabel.text = "\(model.continued ?? ""):"
             twoLabel.text = model.meadowbrook?.toes?.merrick ?? ""
+            
+            
+            let logoUrl = model.emerge ?? ""
+            
+            logoImageView.kf.setImage(with: URL(string: logoUrl))
+            
         }
     }
     
