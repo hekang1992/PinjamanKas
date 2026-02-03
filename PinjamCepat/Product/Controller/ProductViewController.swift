@@ -2,7 +2,7 @@
 //  ProductViewController.swift
 //  PinjamCepat
 //
-//  Created by hekang on 2026/1/20.
+//  Created by Emma Johnson on 2026/1/20.
 //
 
 import UIKit

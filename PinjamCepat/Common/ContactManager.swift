@@ -2,7 +2,7 @@
 //  ContactManager.swift
 //  PinjamCepat
 //
-//  Created by hekang on 2026/1/21.
+//  Created by Emma Johnson on 2026/1/21.
 //
 
 import UIKit

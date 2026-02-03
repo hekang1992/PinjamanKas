@@ -2,7 +2,7 @@
 //  StandView.swift
 //  PinjamCepat
 //
-//  Created by hekang on 2026/2/3.
+//  Created by Emma Johnson on 2026/2/3.
 //
 
 import UIKit
