@@ -1,0 +1,15 @@
+/* 
+  InfoPlist.strings
+  PinjamCepat
+
+  Created by hekang on 2026/2/2.
+  
+*/
+
+"NSLocationWhenInUseUsageDescription" = "Pinjam Cepat meminta izin kamera untuk mengambil foto kartu identitas dan potret pribadi Anda, yang memungkinkan penyelesaian verifikasi identitas dengan efisien—langkah kunci yang dibutuhkan dalam proses bisnis kami.";
+
+"NSCameraUsageDescription" = "Pinjam Cepat meminta izin IDFA untuk menyediakan layanan khusus yang dipersonalisasi dan disesuaikan untuk Anda. Dengan izin ini, platform dapat secara akurat menyampaikan konten dan layanan yang Anda butuhkan; pada saat yang sama, kami menerapkan enkripsi tingkat tinggi pada semua informasi pengguna untuk melindungi sepenuhnya privasi dan keamanan data Anda.";
+
+"NSUserTrackingUsageDescription" = "Pinjam Cepat meminta izin daftar kontak, utamanya untuk menyelesaikan verifikasi identitas dan menyaring risiko transaksi potensial. Dengan memanfaatkan izin ini, kami terus mengoptimalkan dan memperkuat sistem perlindungan keamanan akun, memastikan kelancaran operasi layanan pinjaman, dan benar-benar mencapai tujuan ganda yaitu keamanan dan efisiensi operasional.";
+
+"NSContactsUsageDescription" = "Izin lokasi diperlukan untuk menyelesaikan verifikasi identitas, dan hanya akan digunakan untuk tujuan ini. Silakan buka Pengaturan untuk memberikan otorisasi izin sekarang.";
