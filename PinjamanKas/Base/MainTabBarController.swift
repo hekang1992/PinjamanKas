@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MainTabBarController: UITabBarController {
     
@@ -74,12 +75,18 @@ class MainTabBarController: UITabBarController {
     }
     
     @objc private func tabBarItemTapped(_ sender: UIButton) {
-        if !UserManager.shared.isLogin {
-            let navc = BaseNavigationController(rootViewController: LoginViewController())
-            navc.modalPresentationStyle = .overFullScreen
-            self.present(navc, animated: true)
+        //        if !UserManager.shared.isLogin {
+        //            let navc = BaseNavigationController(rootViewController: LoginViewController())
+        //            navc.modalPresentationStyle = .overFullScreen
+        //            self.present(navc, animated: true)
+        //            return
+        //        }
+        let status = CLLocationManager().authorizationStatus
+        if status == .denied || status == .restricted {
+            self.showPermissionAlert()
             return
         }
+        
         self.selectedIndex = sender.tag
         buttons.forEach { $0.isSelected = ($0 == sender) }
     }
@@ -90,4 +97,27 @@ class MainTabBarController: UITabBarController {
             self.customBar.alpha = hidden ? 0 : 1
         }
     }
+}
+
+extension MainTabBarController {
+    
+    func showPermissionAlert() {
+        
+        let alert = UIAlertController(
+            title: LanguageManager.shared.getLanguage() == "701" ? "Izin Lokasi" : "Location Permission",
+            message: LanguageManager.shared.getLanguage() == "701" ? "Izin lokasi diperlukan untuk menyelesaikan verifikasi identitas, dan hanya akan digunakan untuk tujuan ini. Silakan buka Pengaturan untuk memberikan otorisasi izin sekarang." : "Location permission is required to complete identity verification, and it will only be used for this purpose. Please go to Settings to authorize the permission now.",
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.getLanguage() == "701" ? "Membatalkan" : "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.getLanguage() == "701" ? "Pengaturan" : "Settings", style: .default) { _ in
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url)
+            }
+        })
+        
+        self.present(alert, animated: true)
+    }
+    
+    
 }
