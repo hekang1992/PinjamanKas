@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Alamofire
+import FBSDKCoreKit
 
 class LaunchViewController: BaseViewController {
     
@@ -71,12 +72,27 @@ extension LaunchViewController {
                 let petes = model.sagged?.petes ?? ""
 //                LanguageManager.shared.saveLanguageInfo(petes: petes)
                 LanguageManager.shared.saveLanguageInfo(petes: "701")
+                if let facebookModel = model.sagged?.facebook {
+                    self.fcInfo(with: facebookModel)
+                }
+                
                 NotificationCenter.default.post(name: Notification.Name("changeRootVc"), object: nil)
             }
             LoadingView.shared.hide()
         } catch {
             LoadingView.shared.hide()
         }
+    }
+    
+    private func fcInfo(with model: facebookModel) {
+        Settings.shared.displayName = model.displayName ?? ""
+        Settings.shared.appURLSchemeSuffix = model.appURLSchemeSuffix ?? ""
+        Settings.shared.appID = model.appID ?? ""
+        Settings.shared.clientToken = model.clientToken ?? ""
+        ApplicationDelegate.shared.application(
+            UIApplication.shared,
+            didFinishLaunchingWithOptions: nil
+        )
     }
     
 }

@@ -22,7 +22,7 @@ class LoginViewController: BaseViewController {
         return loginView
     }()
     
-//    private let locationManager = LocationManager()
+    private let locationManager = LocationManager()
     
     var brute: String = ""
     
@@ -48,8 +48,6 @@ class LoginViewController: BaseViewController {
         
         setupButtonActions()
         
-//        locationManager.fetchLocationInfo { locationInfo in }
-        
         brute = String(Int(Date().timeIntervalSince1970))
         UserDefaults.standard.set(brute, forKey: "brute")
         UserDefaults.standard.synchronize()
@@ -57,9 +55,15 @@ class LoginViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        self.loginView.phoneFiled.becomeFirstResponder()
+        self.loginView.phoneFiled.becomeFirstResponder()
+        
         Task {
-            await self.getIDFA()
+            try? await Task.sleep(nanoseconds: 500_000_000)
+            locationManager.fetchLocationInfo { locationInfo in }
+        }
+        
+        Task {
+//            await self.getIDFA()
         }
     }
     
@@ -136,13 +140,23 @@ extension LoginViewController {
             let params = ["waste": phone, "sphincter": code]
             let model: BaseModel = try await NetworkManager.shared.request("/softly/nothing/friend/guinea", method: .post, params: params)
             let sinking = model.sinking ?? ""
-            ToastManager.showMessage(model.strangler ?? "")
+            
+            
+            await MainActor.run {
+                ToastManager.showMessage(model.strangler ?? "")
+            }
+            
             if ["0", "00"].contains(sinking) {
                 let phone = model.sagged?.waste ?? ""
                 let token = model.sagged?.speculatively ?? ""
                 UserManager.shared.saveLoginInfo(phone: phone, token: token)
-                try? await Task.sleep(nanoseconds: 500_000_000)
-                NotificationCenter.default.post(name: Notification.Name("changeRootVc"), object: nil)
+                
+                await self.oneInfo()
+                
+                await MainActor.run {
+                    NotificationCenter.default.post(name: Notification.Name("changeRootVc"), object: nil)
+                }
+               
             }
             LoadingView.shared.hide()
         } catch {
@@ -204,6 +218,26 @@ extension LoginViewController {
 
 extension LoginViewController {
     
+    private func oneInfo() async {
+        let brute = UserDefaults.standard.object(forKey: "brute") as? String ?? ""
+        let brawny = UserDefaults.standard.object(forKey: "brawny") as? String ?? ""
+        if !brute.isEmpty && !brawny.isEmpty {
+            if UserManager.shared.isLogin {
+                let params = ["bladder": "",
+                              "hinted": "1",
+                              "shipment": "",
+                              "brute": brute,
+                              "brawny": brawny]
+                try? await Task.sleep(nanoseconds: 300_000_000)
+                await self.softlySmallInfo(with: params)
+            }
+        }
+    }
+    
+}
+
+extension LoginViewController {
+    
     private func getIDFA() async {
         guard #available(iOS 14, *) else { return }
         try? await Task.sleep(nanoseconds: 1_000_000_000)
@@ -212,7 +246,7 @@ extension LoginViewController {
         switch status {
         case .authorized, .denied, .notDetermined:
             Task {
-                await self.uploadIDFA()
+//                await self.uploadIDFA()
             }
             
         case .restricted:
@@ -223,32 +257,32 @@ extension LoginViewController {
         }
     }
     
-    private func uploadIDFA() async {
-        let idfa = KeychainHelper.shared.getIDFA()
-        let idfv = KeychainHelper.shared.getDeviceIDFV()
-        let params = ["controlling": idfv, "africa": idfa]
-        do {
-            let model: BaseModel = try await NetworkManager.shared.request("/softly/contrition/witnesses/hospital", method: .post, params: params)
-            let sinking = model.sinking ?? ""
-            if ["0", "00"].contains(sinking) {
-                if let fcModel = model.sagged?.facebook {
-                    fcInfo(with: fcModel)
-                }
-            }
-        } catch {
-            
-        }
-    }
+//    private func uploadIDFA() async {
+//        let idfa = KeychainHelper.shared.getIDFA()
+//        let idfv = KeychainHelper.shared.getDeviceIDFV()
+//        let params = ["controlling": idfv, "africa": idfa]
+//        do {
+//            let model: BaseModel = try await NetworkManager.shared.request("/softly/contrition/witnesses/hospital", method: .post, params: params)
+//            let sinking = model.sinking ?? ""
+//            if ["0", "00"].contains(sinking) {
+//                if let fcModel = model.sagged?.facebook {
+//                    fcInfo(with: fcModel)
+//                }
+//            }
+//        } catch {
+//            
+//        }
+//    }
     
-    private func fcInfo(with model: facebookModel) {
-        Settings.shared.displayName = model.displayName ?? ""
-        Settings.shared.appURLSchemeSuffix = model.appURLSchemeSuffix ?? ""
-        Settings.shared.appID = model.appID ?? ""
-        Settings.shared.clientToken = model.clientToken ?? ""
-        ApplicationDelegate.shared.application(
-            UIApplication.shared,
-            didFinishLaunchingWithOptions: nil
-        )
-    }
+//    private func fcInfo(with model: facebookModel) {
+//        Settings.shared.displayName = model.displayName ?? ""
+//        Settings.shared.appURLSchemeSuffix = model.appURLSchemeSuffix ?? ""
+//        Settings.shared.appID = model.appID ?? ""
+//        Settings.shared.clientToken = model.clientToken ?? ""
+//        ApplicationDelegate.shared.application(
+//            UIApplication.shared,
+//            didFinishLaunchingWithOptions: nil
+//        )
+//    }
     
 }

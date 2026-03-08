@@ -24,7 +24,7 @@ class LoginView: BaseView {
         let backBtn = UIButton(type: .custom)
         backBtn.setBackgroundImage(UIImage(named: "back_pop_image"), for: .normal)
         backBtn.addTarget(self, action: #selector(backClick), for: .touchUpInside)
-        backBtn.isHidden = true
+//        backBtn.backgroundColor = .red
         return backBtn
     }()
     
@@ -215,7 +215,7 @@ class LoginView: BaseView {
             make.width.height.equalTo(30)
         }
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(backBtn.snp.bottom)
+            make.top.equalTo(backBtn.snp.bottom).offset(8)
             make.left.right.bottom.equalToSuperview()
         }
         bgView.snp.makeConstraints { make in

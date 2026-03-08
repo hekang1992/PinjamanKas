@@ -11,6 +11,7 @@ import Alamofire
 import MJRefresh
 import FBSDKCoreKit
 import CoreLocation
+import AppTrackingTransparency
 
 class HomeViewController: BaseViewController {
     
@@ -38,13 +39,50 @@ class HomeViewController: BaseViewController {
         setupRefresh()
         setupCallbacks()
         loadInitialData()
+        
+        Task {
+            await self.getIDFA()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadDataOnAppear()
-        getLocationInfo()
+        if UserManager.shared.isLogin {
+            getLocationInfo()
+            
+            let status = CLLocationManager().authorizationStatus
+            if languageCode == "701" {
+                if status == .denied || status == .restricted {
+                    self.showPermissionAlert()
+                }
+            }
+            
+        }
     }
+}
+
+extension HomeViewController {
+    
+    private func getIDFA() async {
+        guard #available(iOS 14, *) else { return }
+        try? await Task.sleep(nanoseconds: 1_000_000_000)
+        let status = await ATTrackingManager.requestTrackingAuthorization()
+        
+        switch status {
+        case .authorized, .denied, .notDetermined:
+            Task {
+//                await self.uploadIDFA()
+            }
+            
+        case .restricted:
+            break
+            
+        @unknown default:
+            break
+        }
+    }
+    
 }
 
 extension HomeViewController {
@@ -67,12 +105,18 @@ extension HomeViewController {
             Task {
                 await self.homeInfo()
             }
+            Task {
+                await self.uploadDeviceInfo()
+            }
         })
         
         mainPageView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             guard let self = self else { return }
             Task {
                 await self.homeInfo()
+            }
+            Task {
+                await self.uploadDeviceInfo()
             }
         })
     }
@@ -85,6 +129,12 @@ extension HomeViewController {
         }
         
         homeView.mentBlock = { [weak self] in
+            
+            guard UserManager.shared.isLogin else {
+                self?.showLoginViewController()
+                return
+            }
+            
             let pageUrl = h5_url + "/breezeHolds"
             self?.pushWebVc(with: pageUrl)
         }
@@ -119,7 +169,7 @@ extension HomeViewController {
                     await self.homeInfo()
                 }
                 group.addTask {
-                    await self.uploadIDFA()
+//                    await self.uploadIDFA()
                 }
                 await group.waitForAll()
             }
@@ -146,30 +196,16 @@ extension HomeViewController {
             return
         }
         
-        let status = CLLocationManager().authorizationStatus
-        if languageCode == "701" {
-            if status == .denied || status == .restricted {
-                self.showPermissionAlert()
-                return
-            }
-        }
+//        let status = CLLocationManager().authorizationStatus
+//        if languageCode == "701" {
+//            if status == .denied || status == .restricted {
+//                self.showPermissionAlert()
+//                return
+//            }
+//        }
         
         Task {
             await self.clickProductInfo(with: productID)
-            
-            let brute = UserDefaults.standard.object(forKey: "brute") as? String ?? ""
-            let brawny = UserDefaults.standard.object(forKey: "brawny") as? String ?? ""
-            if !brute.isEmpty && !brawny.isEmpty {
-                if UserManager.shared.isLogin {
-                    let params = ["bladder": "",
-                                  "hinted": "1",
-                                  "shipment": "",
-                                  "brute": brute,
-                                  "brawny": brawny]
-                    try? await Task.sleep(nanoseconds: 300_000_000)
-                    await self.softlySmallInfo(with: params)                    
-                }
-            }
         }
     }
     
@@ -400,6 +436,17 @@ extension HomeViewController {
     }
     
     func showPermissionAlert() {
+        
+        let lastShownDate = UserDefaults.standard.object(forKey: "lastPermissionAlertDate") as? Date
+        let calendar = Calendar.current
+        
+        if let lastDate = lastShownDate {
+            if calendar.isDateInToday(lastDate) {
+                return
+            }
+        }
+        
+        UserDefaults.standard.set(Date(), forKey: "lastPermissionAlertDate")
         
         let alert = UIAlertController(
             title: LanguageManager.shared.getLanguage() == "701" ? "Izin Lokasi" : "Location Permission",

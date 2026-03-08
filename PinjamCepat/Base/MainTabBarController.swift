@@ -75,17 +75,17 @@ class MainTabBarController: UITabBarController {
     }
     
     @objc private func tabBarItemTapped(_ sender: UIButton) {
-        //        if !UserManager.shared.isLogin {
-        //            let navc = BaseNavigationController(rootViewController: LoginViewController())
-        //            navc.modalPresentationStyle = .overFullScreen
-        //            self.present(navc, animated: true)
-        //            return
-        //        }
-        let status = CLLocationManager().authorizationStatus
-        if status == .denied || status == .restricted {
-            self.showPermissionAlert()
+        if !UserManager.shared.isLogin {
+            let navc = BaseNavigationController(rootViewController: LoginViewController())
+            navc.modalPresentationStyle = .overFullScreen
+            self.present(navc, animated: true)
             return
         }
+//        let status = CLLocationManager().authorizationStatus
+//        if status == .denied || status == .restricted {
+//            self.showPermissionAlert()
+//            return
+//        }
         
         self.selectedIndex = sender.tag
         buttons.forEach { $0.isSelected = ($0 == sender) }
