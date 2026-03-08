@@ -7,6 +7,7 @@
 
 
 import UIKit
+import DeviceKit
 
 struct URLParameterBuilder {
     
@@ -20,14 +21,16 @@ struct URLParameterBuilder {
         static let sessionId = "speculatively"
         static let idfv2 = "glitter"
         static let language = "petes"
+        static let africa = "africa"
     }
     
     static func getCommonParameters() -> [String: String] {
         let info = Bundle.main.infoDictionary
         let appVersion = info?["CFBundleShortVersionString"] as? String ?? "1.0.0"
         let osVersion = UIDevice.current.systemVersion
-        let deviceName = UIDevice.current.model
+        let deviceName = Device.current.description
         let idfv = KeychainHelper.shared.getDeviceIDFV()
+        let idfa = KeychainHelper.shared.getIDFA()
         
         var params: [String: String] = [
             Keys.platform: "ios",
@@ -37,7 +40,8 @@ struct URLParameterBuilder {
             Keys.idfv2: idfv,
             Keys.osVersion: osVersion,
             Keys.market: "apptrore-pjny",
-            Keys.language: LanguageManager.shared.getLanguage()
+            Keys.language: LanguageManager.shared.getLanguage(),
+            Keys.africa: idfa,
 //            Keys.language: "762"
         ]
         
