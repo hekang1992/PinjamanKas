@@ -105,8 +105,8 @@ extension HomeViewController {
             Task {
                 await self.homeInfo()
             }
-            Task {
-                await self.uploadDeviceInfo()
+            if UserManager.shared.isLogin {
+                getLocationInfo()
             }
         })
         
@@ -115,8 +115,8 @@ extension HomeViewController {
             Task {
                 await self.homeInfo()
             }
-            Task {
-                await self.uploadDeviceInfo()
+            if UserManager.shared.isLogin {
+                getLocationInfo()
             }
         })
     }

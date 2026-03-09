@@ -59,6 +59,7 @@ class saggedModel: Codable {
     var furnishing: [furnishingModel]?
     var rooms: roomsModel?
     var facebook: facebookModel?
+    var agreementacy: Int?
 }
 
 class facebookModel: Codable {

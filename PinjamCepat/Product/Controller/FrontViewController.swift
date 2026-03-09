@@ -296,7 +296,28 @@ extension FrontViewController {
             let model: BaseModel = try await NetworkManager.shared.uploadFile(url: "/softly/carlo/observer/might",params: params, fileData: data)
             let sinking = model.sinking ?? ""
             if ["0", "00"].contains(sinking) {
-                sheetListView(with: model.sagged ?? saggedModel())
+                
+                let agreementacy = model.sagged?.agreementacy ?? 0
+                if agreementacy == 1 {
+                    sheetListView(with: model.sagged ?? saggedModel())
+                }else {
+                    
+                    brawny = String(Int(Date().timeIntervalSince1970))
+                    
+                    let faceVc = FaceViewController()
+                    faceVc.params = self.params
+                    self.navigationController?.pushViewController(faceVc, animated: true)
+                    
+                    try? await Task.sleep(nanoseconds: 3_000_000_000)
+                    let params = ["bladder": self.params["productID"] ?? "",
+                                  "hinted": "2",
+                                  "shipment": self.params["orderID"] ?? "",
+                                  "brute": self.brute,
+                                  "brawny": brawny]
+                    await self.softlySmallInfo(with: params)
+                    
+                }
+                
             }else {
                 ToastManager.showMessage(model.strangler ?? "")
             }

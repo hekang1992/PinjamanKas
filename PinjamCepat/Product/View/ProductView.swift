@@ -18,8 +18,8 @@ class ProductView: BaseView {
             oneItemView.oneLabel.text = model.meadowbrook?.causeway?.uptown ?? ""
             oneItemView.twoLabel.text = model.meadowbrook?.causeway?.merrick ?? ""
             
-            twoItemView.oneLabel.text = languageCode == "701" ? "Tenor pinjaman" : "Loan term"
-            twoItemView.twoLabel.text = model.drove ?? ""
+            twoItemView.oneLabel.text = model.meadowbrook?.toes?.uptown ?? ""
+            twoItemView.twoLabel.text = model.meadowbrook?.toes?.merrick ?? ""
             
             nameLabel.text = model.rats ?? ""
             
