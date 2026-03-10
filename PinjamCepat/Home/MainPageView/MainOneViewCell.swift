@@ -37,6 +37,8 @@ class MainOneViewCell: UITableViewCell {
         applyBtn.setTitleColor(UIColor.init(hex: "#030305"), for: .normal)
         applyBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(700))
         applyBtn.setBackgroundImage(UIImage(named: "apply_b_image"), for: .normal)
+        applyBtn.isEnabled = false
+        applyBtn.adjustsImageWhenDisabled = false
         return applyBtn
     }()
     
