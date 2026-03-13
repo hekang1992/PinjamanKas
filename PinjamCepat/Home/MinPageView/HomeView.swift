@@ -40,6 +40,11 @@ class HomeView: BaseView {
     
     var mentBlock: (() -> Void)?
     
+    var oneBlock: (() -> Void)?
+    var twoBlock: (() -> Void)?
+    var threeBlock: (() -> Void)?
+    var fourBlock: ((String) -> Void)?
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "home_gb_image")
@@ -107,6 +112,7 @@ class HomeView: BaseView {
     lazy var descImageView: UIImageView = {
         let descImageView = UIImageView()
         descImageView.image = UIImage(named: languageCode == "701" ? "ni_bg_f_image" : "desc_oc_image")
+        descImageView.isUserInteractionEnabled = true
         return descImageView
     }()
     
@@ -137,6 +143,30 @@ class HomeView: BaseView {
         let clickBtn = UIButton(type: .custom)
         clickBtn.addTarget(self, action: #selector(applyClick), for: .touchUpInside)
         return clickBtn
+    }()
+    
+    lazy var oneBtn: UIButton = {
+        let oneBtn = UIButton(type: .custom)
+        oneBtn.addTarget(self, action: #selector(oneBtnClick), for: .touchUpInside)
+        return oneBtn
+    }()
+    
+    lazy var twoBtn: UIButton = {
+        let twoBtn = UIButton(type: .custom)
+        twoBtn.addTarget(self, action: #selector(twoBtnClick), for: .touchUpInside)
+        return twoBtn
+    }()
+    
+    lazy var threeBtn: UIButton = {
+        let threeBtn = UIButton(type: .custom)
+        threeBtn.addTarget(self, action: #selector(threeBtnClick), for: .touchUpInside)
+        return threeBtn
+    }()
+    
+    lazy var fourBtn: UIButton = {
+        let fourBtn = UIButton(type: .custom)
+        fourBtn.addTarget(self, action: #selector(fourBtnClick), for: .touchUpInside)
+        return fourBtn
     }()
     
     override init(frame: CGRect) {
@@ -229,6 +259,10 @@ class HomeView: BaseView {
             scrollView.addSubview(footLabel)
             scrollView.addSubview(mscrollView)
             mscrollView.addSubview(footImageView)
+            descImageView.addSubview(oneBtn)
+            descImageView.addSubview(twoBtn)
+            descImageView.addSubview(threeBtn)
+            descImageView.addSubview(fourBtn)
             
             descImageView.snp.makeConstraints { make in
                 make.centerX.equalToSuperview()
@@ -253,6 +287,29 @@ class HomeView: BaseView {
                 make.size.equalTo(CGSize(width: 485, height: 76))
                 make.right.equalToSuperview().offset(-20)
             }
+            
+            oneBtn.snp.makeConstraints { make in
+                make.top.left.equalToSuperview()
+                make.size.equalTo(CGSize(width: 112, height: 120))
+            }
+            
+            twoBtn.snp.makeConstraints { make in
+                make.top.equalToSuperview()
+                make.left.equalTo(oneBtn.snp.right)
+                make.size.equalTo(CGSize(width: 112, height: 120))
+            }
+            
+            threeBtn.snp.makeConstraints { make in
+                make.top.equalToSuperview()
+                make.left.equalTo(twoBtn.snp.right)
+                make.size.equalTo(CGSize(width: 112, height: 120))
+            }
+            
+            fourBtn.snp.makeConstraints { make in
+                make.bottom.left.right.equalToSuperview()
+                make.height.equalTo(120)
+            }
+            
         }else {
             scrollView.addSubview(descImageView)
             descImageView.snp.makeConstraints { make in
@@ -277,6 +334,24 @@ extension HomeView {
     @objc private func applyClick() {
         if let listModel = listModel {
             self.clickBlock?(String(listModel.holes ?? 0))
+        }
+    }
+    
+    @objc func oneBtnClick() {
+        self.oneBlock?()
+    }
+    
+    @objc func twoBtnClick() {
+        self.twoBlock?()
+    }
+    
+    @objc func threeBtnClick() {
+        self.threeBlock?()
+    }
+    
+    @objc func fourBtnClick() {
+        if let listModel = listModel {
+            self.fourBlock?(String(listModel.holes ?? 0))
         }
     }
     

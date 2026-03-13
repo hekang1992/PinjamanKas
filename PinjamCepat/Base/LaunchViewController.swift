@@ -70,8 +70,8 @@ extension LaunchViewController {
             let sinking = model.sinking ?? ""
             if ["0", "00"].contains(sinking) {
                 let petes = model.sagged?.petes ?? ""
-                LanguageManager.shared.saveLanguageInfo(petes: petes)
-//                LanguageManager.shared.saveLanguageInfo(petes: "762")
+//                LanguageManager.shared.saveLanguageInfo(petes: petes)
+                LanguageManager.shared.saveLanguageInfo(petes: "762")
                 if let facebookModel = model.sagged?.facebook {
                     self.fcInfo(with: facebookModel)
                 }

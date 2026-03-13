@@ -139,6 +139,50 @@ extension HomeViewController {
             self?.pushWebVc(with: pageUrl)
         }
         
+        homeView.oneBlock = { [weak self] in
+            guard let self = self else { return }
+            guard UserManager.shared.isLogin else {
+                self.showLoginViewController()
+                return
+            }
+            
+            let orderVc = OrderViewController()
+            orderVc.type = "4"
+            self.navigationController?.pushViewController(orderVc, animated: true)
+            
+        }
+        
+        homeView.twoBlock = { [weak self] in
+            guard let self = self else { return }
+            guard UserManager.shared.isLogin else {
+                self.showLoginViewController()
+                return
+            }
+            
+            let pageUrl = h5_url + "/radiantDawn"
+            self.pushWebVc(with: pageUrl)
+        }
+        
+        homeView.threeBlock = { [weak self] in
+            guard let self = self else { return }
+            guard UserManager.shared.isLogin else {
+                self.showLoginViewController()
+                return
+            }
+            
+            let pageUrl = h5_url + "/sapphireTide"
+            self.pushWebVc(with: pageUrl)
+        }
+        
+        homeView.fourBlock = { [weak self] productID in
+            guard let self = self else { return }
+            guard UserManager.shared.isLogin else {
+                self.showLoginViewController()
+                return
+            }
+            self.handleProductClick(productID)
+        }
+        
         mainPageView.cellTapBlock = { [weak self] model in
             guard let self = self else { return }
             let productID = String(Int(model.holes ?? 0))
