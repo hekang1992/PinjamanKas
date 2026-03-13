@@ -9,8 +9,9 @@ import UIKit
 import Alamofire
 import Toast_Swift
 
-let base_url = "http://8.215.85.208:9703/faci"
-let h5_url = "http://8.215.85.208:9703"
+let base_url = "https://royalesafyree.com/faci"
+let h5_url = "https://royalesafyree.com"
+
 final class NetworkManager {
 
     static let shared = NetworkManager()

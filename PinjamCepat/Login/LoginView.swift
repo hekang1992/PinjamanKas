@@ -138,7 +138,7 @@ class LoginView: BaseView {
     lazy var twoLabel: UILabel = {
         let twoLabel = UILabel()
         twoLabel.textAlignment = .center
-        twoLabel.text = languageCode == "701" ? "+62" : "+91"
+        twoLabel.text = languageCode == "701" ? "+63" : "+91"
         twoLabel.textColor = UIColor.init(hex: "#030305")
         twoLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         return twoLabel
